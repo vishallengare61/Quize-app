@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+
+.practiceReport {
+    padding: 5vh 0vh;
+  }
+  
+  .practiceReport .overallAccuracy {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 20px;
+    color: #333;
+    line-height: 1.4;
+    font-family: "jaldi", sans-serif;
+  }
+  
+  /* .practiceReport .totalUser {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+  } */
+  
+  /* .practiceReport .totalUser .btn {
+    font-family: "jaldi", Sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #1B50A3;
+    padding: 0;
+    margin: 0;
+  } */
+  
+  .practiceReport hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #FFFFFF;
+    margin: 0 0 1em 0;
+    padding: 0; 
+  }
+  
+  .practiceReport .reportFirstRow {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .practiceReport .reportFirstRow .backToChapter .btn {
+    padding: 9px 0px;
+    width: 160px;
+    font-family: "jaldi", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #007bba;
+    background-color: rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #007bba;
+    border-radius: 50px;
+    box-shadow: 19px 19px 40px 0px rgb(0 0 0 / 10%);
+  }
+  
+  .practiceReport .reportFirstRow .backToChapter .btn span {
+    margin-right: 8px;
+  }
+  
+  .practiceReport .reportFirstRow .backToChapter .btn:hover {
+    background-color: #007bba;
+    color: #ffffff;
+  }
+  
+  .practiceReport .reportFirstRow .practiceAgain .btn {
+    padding: 9px 0px;
+    width: 160px;
+    font-family: "jaldi", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #057ebc;
+    border-radius: 49px;
+    box-shadow: 19px 19px 40px 0px rgb(0 0 0 / 10%);
+  }
+  
+  .practiceReport .reportFirstRow .practiceAgain .btn span {
+    margin-left: 6px;
+  }
+  
+  .practiceReport .reportFirstRow .practiceAgain .btn:hover {
+    background-color: #ffffff;
+    color: #007bba;
+  }
+  
+  .practiceReport .practiceReportHeading {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.4;
+    font-family: "jaldi", sans-serif;
+    text-align: center;
+  }
+  
+  .practiceReport .practiceReportHeading span {
+    color: #007bba;
+  }
+  
+  .practiceReport .practiceReportSubHeading {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 1.4;
+    font-family: "jaldi", sans-serif;
+    margin: 0;
+  }
+  
+  .practiceReport .topCard {
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+    border-radius: 10px;
+    padding: 60px 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  
+  .practiceReport .topCard .highchartsStyleSecond {
+    height: 10vh;
+  }
+  
+  .practiceReport .topCard .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .practiceReport .topCard .col-md-6 h5 {
+    color: #333333;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-family: "jaldi", sans-serif;
+  }
+  
+  .practiceReport .topCard .col-md-6 h6 {
+    margin-bottom: 0px;
+    color: #808080;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: "jaldi", sans-serif;
+    margin-top: -10px;
+  }
+  
+  .practiceReport .lastCard {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 0px 0px 0px 5px;
+    border-color: #007bba;
+    box-shadow: 29px 29px 60px 0px rgb(0 0 0 / 20%);
+    padding: 36px;
+    margin-top: 50px;
+  }
+  
+  .practiceReport .lastCard h2 {
+    margin: 0px 0px 45px 0px;
+    font-family: "Lato", Sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .practiceReport .lastCard h2 span {
+    color: #07cb22;
+  }
+  
+  .practiceReport .lastCard p {
+    font-family: "Lato", Sans-serif;
+    font-size: 16px;
+    margin: 10px 0px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  
+  .practiceReport .lastCard p span {
+    font-weight: bold;
+  }
+  
+  .practiceReport .lastCard .btn {
+    padding: 17px 50px;
+    font-family: "Lato", Sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffcc03;
+    border-radius: 50px;
+    box-shadow: 19px 19px 40px 0px rgb(0 0 0 / 10%);
+  }
+  
+  .practiceReport .lastCard .btn:hover {
+    background-color: #ff4935;
+  }
+  
+  .practiceReport .lastCard .col-xl-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 1199px) {
+    .practiceReport .lastCard .btn {
+      margin-top: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 760px) {
+    .practiceReport {
+      padding: 2vh 10px;
+    }
+    .practiceReport .practiceReportHeading {
+      font-size: 41px;
+    }
+    .practiceReport .reportFirstRow {
+      padding: 0px 15px;
+    }
+    .practiceReport .reportFirstRow .backToChapter .btn,
+    .practiceReport .reportFirstRow .practiceAgain .btn {
+      padding: 10px 0px;
+      width: 150px;
+      margin-bottom: 10px;
+    }
+    .practiceReport .topCard {
+      padding: 35px 10px;
+    }
+    .practiceReport .topCard .col-md-6 {
+      align-items: center;
+    }
+    .practiceReport .lastCard {
+      margin-top: 25px;
+    }
+    .practiceReport .lastCard h2 {
+      margin: 0px 0px 30px 0px;
+    }
+  }
+  
+  @media screen and (max-width: 350px) {
+    .practiceReport .practiceReportHeading {
+      font-size: 30px;
+    }
+    .practiceReport .practiceReportSubHeading {
+      font-size: 13px;
+    }
+    .practiceReport .lastCard h2 {
+      font-size: 30px;
+    }
+    .practiceReport .lastCard .btn {
+      padding: 17px 30px;
+      font-size: 12px;
+    }
+    .practiceReport .reportFirstRow {
+      padding: 0px 15px;
+    }
+    .practiceReport .reportFirstRow .backToChapter .btn,
+    .practiceReport .reportFirstRow .practiceAgain .btn {
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  

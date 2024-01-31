@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+body {
+    /* background: rgb(232, 230, 230); */
+    font-family: 'Roboto', sans-serif;
+}
+
+/* .disply-container1{
+    width: 120%;
+margin-left: -10%;
+} */
+
+
+.disply-container{
+    padding-left: 18%;
+    margin-top: 65px;
+}
+
+.errorMsg{
+    color: red;
+    font-weight: 400;
+}
+
+@media(max-width:768px){
+	#sidebar{margin-left: -250px;}
+	#sidebar.active{
+		margin-left: 0px;
+	}
+	#sidebarCollapse span{
+		display: none;
+	}
+    .disply-container{                           
+        padding-left: 30px !important;
+    }
+}

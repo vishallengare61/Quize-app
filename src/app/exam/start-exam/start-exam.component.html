@@ -1,0 +1,153 @@
+<div class="disply-container">
+    <div class="practicePaperSecondSection mathjax" #mathjax>
+        <div class="container">
+            <div class="row practiceExamScreen">
+                <div class="time">
+                    <h5 style="color: #007bba;">Time Remainig- <p class="timePara font-weight-bold"
+                            style="margin-right: 10px; display: inline-block;"> {{formatTime(totalTimeInSeconds)}}</p>
+                    </h5>
+                </div>
+                <div class="col-xl-8 practiceQuestionAndSolutionDiv">
+                    <div class="card" >
+                        <div class="row" *ngIf="!showLoader">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 ">
+                                <h2>Question : {{currentQuestion + 1}} / {{questions.length}}</h2>
+                            </div>
+                            <div class="col-xl-12">
+                                <!-- QUESTION BODY -->
+                                <div class="card-body question-content QuestionAndSolutionSection">
+                                    <!-- Question Text & Image -->
+                                    <div class="text-black">
+                                        <div class="mt-2">
+                                            <ng-container *ngFor="let item of questions; let i = index">
+                                                <p *ngIf="i === currentQuestion"
+                                                    class="font-sm-1 mb-1 comprehension-question"
+                                                    [innerHtml]="questions[currentQuestion]?.question">
+                                                </p>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+
+                                    <!-- Question Options for MCQ or MCC Type -->
+                                    <div class="mt-3">
+                                        <div class="mb-2 option-container">
+                                            <ul>
+                                                <li class="cursor-pointer mb-2 text-black"
+                                                    *ngFor="let option of questions[currentQuestion]?.options; let optionIndex = index">
+                                                    <div class="d-flex">
+                                                        <label class="labl">
+                                                            <input type="radio" name="option" id="{{option['id']}}"
+                                                                [checked]="optionIndex === selectedOptionIndex"
+                                                                (click)="selectMCQ($event, optionIndex)" />
+                                                            <div
+                                                                [ngClass]="{'selected-option': optionIndex === selectedOptionsMap[questions[currentQuestion]?.id]}">
+                                                                <span
+                                                                    class="font-weight-bold font-sm-1 optionNumbering">{{optionIndex
+                                                                    + 1}}</span>
+                                                                <span class="ml-3 option-text font-sm-1"
+                                                                    [innerHtml]="option"></span>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="allButtonsDiv">
+                                    <div class="prevNextBtnDiv">
+                                        <div>
+                                            <a href="javascript:void(0)" (click)="previousQuestion()">
+                                                <span [ngClass]="{'no-question': currentQuestion===0}"><i
+                                                        class="fa fa-angle-double-left"></i> Previous</span>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:void(0)" class="ml-4" (click)="nextQuestion()"
+                                                [ngClass]="{'no-question': currentQuestion === questions.length-1 }">
+                                                Next <span><i class="fa fa-angle-double-right"
+                                                        aria-hidden="true"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div><button type="button" class="btn btn-sm btn-success" data-toggle="modal"
+                                            data-target="#confirmationModal">Finish Practice</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loader" *ngIf="showLoader">
+                            <div class="justify-content-center jimu-primary-loading"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 practiceLegendsDiv">
+                    <div class="card">
+                        <h2>Question Status</h2>
+                        <div class="row questionNumberHEight">
+                            <div class="col-xl-15" *ngFor="let question of questions; let i=index">
+                                <div class="circleSection" (click)="jumpToQuestion(i)">
+                                    <div class="circle" [ngClass]="{
+                                        'answeredQuestion': isQuestionAnswered(i),
+                                        'currentClass': i === currentQuestion
+                                    }">{{i + 1}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="separtaor"></div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="circleSection">
+                                    <div class="circle" id="currentQuestion">{{currentQuestion + 1}}</div>
+                                    <h2>Current</h2>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="circleSection">
+                                    <div class="circleOne">{{ notAttemptedQuestions.length }}</div>
+                                    <h2>Not Attempted</h2>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="circleSection">
+                                    <div class="circleTwo">{{ answeredQuestionValues.length }}</div>
+                                    <h2>Answered</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade confirmationModalmsg" id="confirmationModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content" style="border-radius: 16px;border: none;">
+                            <div class="modal-header" style="border: none;">
+                                <h5 class="modal-title" id="confirmationModalLabel"
+                                    style="font-size: 25px;font-weight: bold;color: #04607D;font-family: 'jaldi', sans-serif;">
+                                    Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-center" style="color: #544F4F; font-size: 16px;">Do you want to finish
+                                    this practice?</p>
+                            </div>
+                            <div class="modal-footer"
+                                style="background-color: #00A3F1; border-radius: 0 0 16px 16px;justify-content: space-between;">
+                                <button type="button" id="dimissModal" class="btn btn-sm btn-secondary"
+                                    style="border-radius: 6px;" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-sm text-white"
+                                    style="background-color: #FF4935; border-radius: 6px;"
+                                    (click)="completeTest()">Yes!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

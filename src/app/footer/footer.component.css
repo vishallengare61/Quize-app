@@ -1,0 +1,345 @@
+/* 
+.footerWebsite .scrollToTopBtn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10000;
+  }
+  
+  .footerWebsite .footer {
+    background-color: #057fb7;
+    padding: 20px 70px;
+  }
+
+  
+  .footerWebsite .footer .footerLogo {
+    height: 70px;
+
+    margin-top: 10px;
+  }
+  
+  .footerWebsite .footer .line {
+    border-left: 4px solid #ffffff;
+    height: 25px;
+  }
+  
+  .footerWebsite .footer .lineDiv {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .footerWebsite .footer .lineDiv h2 {
+    color: #ffffff;
+    font-family: "Jaldi";
+    font-size: 20px;
+    margin-left: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer ul {
+    list-style-type: none;
+  }
+  
+  .footerWebsite .footer ul li,
+  .footerWebsite .footer ul a {
+
+    color: #ffffff;
+    font-size: 18px;
+    font-family: "Jaldi";
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer .iconDiv {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e9e9e9;
+    margin-right: 15px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footerWebsite .footer .iconDiv .fa {
+    color: #ffffff;
+    font-size: 21px;
+  }
+  
+  .footerWebsite .footer .phn {
+    font-weight: bold;
+    font-size: 17px;
+    font-family: "Jaldi";
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer .phnNumber a {
+    font-size: 18px;
+    font-family: "Jaldi";
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer .phnEmail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+  
+  .footerWebsite .footer .socialIcons {
+    display: flex;
+    padding-top: 10px;
+  }
+  
+  .footerWebsite .footer .socialIcons > a {
+    background-color: #ffffff;
+    color: #0066bf;
+    width: 55px;
+    height: 55px;
+    margin: 3px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .footerWebsite .footer .socialIcons > a:hover {
+    transform: rotate(360deg);
+  }
+  
+  .footerWebsite .footer .socialIcons .twitter:hover {
+    color: #46d4fe !important;
+    border-color: #46d4fe !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .facebook:hover {
+    color: #37589b !important;
+    border-color: #37589b !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .insta:hover {
+    color: red !important;
+    border-color: #3f729b !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .linkedin:hover {
+    color: #3399cc !important;
+    border-color: #3399cc !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .youtube:hover {
+    color: red !important;
+    border-color: #3399cc !important;
+  }
+  
+  .footerWebsite .footer .copyPrivacy {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+  
+  .footerWebsite .footer .copyPrivacy h2,
+  .footerWebsite .footer .copyPrivacy a {
+    font-family: "Jaldi";
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .footerWebsite .footer .copyPrivacy a:hover {
+    text-decoration: underline;
+  }
+  
+  @media screen and (max-width: 760px) {
+    .footerWebsite .footer {
+      padding: 20px 15px;
+    }
+    
+    .footerWebsite .footer .lineDiv {
+      margin-top: 20px;
+    }
+  }
+   */
+
+   .footerWebsite .scrollToTopBtn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10000;
+  }
+  
+  .footerWebsite .footer {
+    background-color: #057fb7;
+    padding: 20px 70px;
+  }
+  
+  .footerWebsite .footer .gplay {
+    width: 210px;
+    height: 81px;
+  }
+  
+  .footerWebsite .footer .footerLogo {
+    /* width: 273px; */
+    height: 90px;
+    margin-top: 10px;
+  }
+  
+  .footerWebsite .footer .line {
+    border-left: 4px solid #ffffff;
+    height: 25px;
+  }
+  
+  .footerWebsite .footer .lineDiv {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .footerWebsite .footer .lineDiv h2 {
+    color: #ffffff;
+    font-family: "Jaldi";
+    font-size: 20px;
+    margin-left: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer ul {
+    list-style-type: none;
+  }
+  
+  .footerWebsite .footer ul li {
+    padding: 6px 0px;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: "Jaldi";
+    letter-spacing: 1px;
+    border-bottom: 1px solid #e9e9e9;
+  }
+  
+  .footerWebsite .footer ul li a {
+    padding: 6px 0px;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: "Jaldi";
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer .iconDiv {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e9e9e9;
+    margin-right: 15px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footerWebsite .footer .iconDiv .fa {
+    color: #ffffff;
+    font-size: 21px;
+  }
+  
+  .footerWebsite .footer .phn {
+    font-weight: bold;
+    font-size: 17px;
+    font-family: "Jaldi";
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer .phnNumber {
+    font-size: 18px;
+    font-family: "Jaldi";
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer .phnNumber a {
+    font-size: 18px;
+    font-family: "Jaldi";
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  
+  .footerWebsite .footer .phnEmail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+  
+  .footerWebsite .footer .socialIcons {
+    display: flex;
+    padding-top: 10px;
+  }
+  
+  .footerWebsite .footer .socialIcons > a {
+    background-color: #ffffff;
+    color: #0066bf;
+    width: 55px;
+    height: 55px;
+    margin: 3px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .footerWebsite .footer .socialIcons > a:hover {
+    transform: rotate(360deg);
+  }
+  
+  .footerWebsite .footer .socialIcons .twitter:hover {
+    color: #46d4fe !important;
+    border-color: #46d4fe !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .facebook:hover {
+    color: #37589b !important;
+    border-color: #37589b !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .insta:hover {
+    color: red !important;
+    border-color: #3f729b !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .linkedin:hover {
+    color: #3399cc !important;
+    border-color: #3399cc !important;
+  }
+  
+  .footerWebsite .footer .socialIcons .youtube:hover {
+    color: red !important;
+    border-color: #3399cc !important;
+  }
+  
+  .footerWebsite .footer .copyPrivacy {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+  
+  .footerWebsite .footer .copyPrivacy h2,
+  .footerWebsite .footer .copyPrivacy a {
+    font-family: "Jaldi";
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .footerWebsite .footer .copyPrivacy a:hover {
+    text-decoration: underline;
+  }
+  
+  @media screen and (max-width: 760px) {
+    .footerWebsite .footer {
+      padding: 20px 15px;
+    }
+  
+    .footerWebsite .footer .lineDiv {
+      margin-top: 20px;
+    }
+  }
+  

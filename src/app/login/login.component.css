@@ -1,0 +1,687 @@
+/* .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; 
+  width: 100%;
+  overflow: hidden; 
+  margin-top: 10%
+} */
+
+/* .row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; 
+  overflow-y: auto; 
+  max-height: calc( 100vh - 100px ); 
+  padding: 0 20px; 
+  overflow-y: scroll; 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+} */
+
+/* .row::-webkit-scrollbar {
+  display: none; 
+}
+
+.row {
+  align-items: center;
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+
+/* .login-box {
+  max-width: 50% !important;
+  justify-content: center;
+  border: 1px solid green !important;
+  background-color: rgb(234 247 243) !important;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+} */
+
+/* #login-box {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+  padding-top: -10px;
+}
+
+.form-group {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.login-title,
+.loginbttm {
+  text-align: center;
+} */
+
+/* .msgLink {
+  text-align: center;
+}
+
+.msgLink:hover {
+  cursor: pointer;
+  color: blue !important;
+  border-bottom: 1px solid;
+}
+
+.success-img {
+  text-align: center;
+} */
+
+/* :host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+svg#clouds {
+  position: fixed;
+  bottom: -160px;
+  left: -230px;
+  z-index: -10;
+  width: 1920px;
+}
+
+.registerSuccessMsg {
+  text-align: center;
+}
+
+#registerMsgBox {
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .card-container > *:not(.circle-link),
+  .terminal {
+    width: 100%;
+  }
+
+  .card:not(.highlight-card) {
+    height: 16px;
+    margin: 8px 0;
+  }
+
+  .card.highlight-card span {
+    margin-left: 72px;
+  }
+
+  svg#rocket-smoke {
+    right: 120px;
+    transform: rotate(-5deg);
+  }
+}
+
+#login-btn {
+  position: relative;
+  padding: 1rem 2rem 0.5rem 2.5rem;
+  color: #000000;
+  border: 3px solid #776e62;
+  -webkit-transition: padding 0.3s ease-in-out;
+  transition: padding 0.3s ease-in-out;
+}
+
+#login-btn:before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+#login-btn:hover {
+  padding: 0.75rem 2.25rem;
+}
+
+#login-btn:hover:before {
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 575px) {
+  svg#rocket-smoke {
+    display: none;
+    visibility: hidden;
+  }
+}
+/* validations section */
+
+input.ng-invalid.ng-touched {
+  border: 2px solid;
+  border-color: red !important;
+}
+.successImg {
+  width: 60% !important;
+  height: 60% !important;
+}
+
+
+
+
+
+
+.containerR {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  background: #FCEDDA;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.containerR header {
+  font-size: 1.2rem;
+  color: #000;
+  font-weight: 600;
+  text-align: center;
+}
+
+.containerR .form {
+  margin-top: 15px;
+}
+
+.form .input-box {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.input-box label {
+  color: #000;
+}
+
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 35px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #808080;
+  margin-top: 5px;
+  border: 1px solid #EE4E34;
+  border-radius: 6px;
+  padding: 0 15px;
+  background: #FCEDDA;
+}
+
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+
+.form .gender-box {
+  margin-top: 10px;
+}
+
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+
+.form .gender {
+  column-gap: 5px;
+}
+
+.gender input {
+  accent-color: #EE4E34;
+}
+
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+
+.gender label {
+  color: #000;
+}
+
+.address :where(input, .select-box) {
+  margin-top: 10px;
+}
+
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #808080;
+  font-size: 1rem;
+  background: #FCEDDA;
+}
+
+.form button {
+  height: 40px;
+  width: 100%;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #EE4E34;
+}
+
+.form button:hover {
+  background: #EE3E34;
+}
+.navbarWebsite .navbar-brand .navbarLogoDiv {
+  width: 100%;
+  height: 70px;
+}
+
+.navbarWebsite .navbar-brand .navbarLogoDiv img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.navbarWebsite .navbar {
+  box-shadow: 0 0 5px #dae2e6;
+  padding-right: 70px;
+  padding-left: 70px;
+}
+
+.navbarWebsite .navbar li a {
+  font-family: 'jaldi', sans-serif;
+  color: rgb(155, 147, 147);
+  font-size: 20px;
+  margin-right: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbarWebsite .navbar li a sup {
+  font-size: 10px;
+  text-transform: capitalize;
+  color: #ff4935;
+}
+
+.navbarWebsite .navbar li .btn {
+  width: 100px;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-family: 'jaldi', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #007cbb;
+  color: #ffffff;
+}
+
+.navbarWebsite .navbar li .btnRegister:hover {
+  background-color: #ff4935;
+}
+
+.orDiv h6 {
+  font-family: 'jaldi', sans-serif;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.switchAccount {
+  font-family: 'jaldi', sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: 700;
+  letter-spacing: 3.2px;
+  padding: 9px 15px;
+  transition: all 0.3s;
+  color: #007cbb;
+  border-radius: 7px;
+  box-shadow: 0px 2px 0px 0px #e23522;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  border: 1px solid #007cbb;
+  border-bottom: none;
+}
+
+.switchAccountOne {
+  font-family: 'jaldi', sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: 700;
+  letter-spacing: 3.2px;
+  padding: 9px 15px;
+  transition: all 0.3s;
+  color: #e23522;
+  border-radius: 7px;
+  box-shadow: 0px 2px 0px 0px #007cbb;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  border: 1px solid #e23522;
+  border-bottom: none;
+  margin-right: 50px;
+}
+
+.activeBooks,
+.activeBooksOne {
+  fill: #ffffff;
+  color: #ffffff;
+}
+
+.activeBooks {
+  background-color: #007cbb;
+}
+
+.activeBooksOne {
+  background-color: #e23522;
+}
+
+.loginModal ::-webkit-input-placeholder,
+.loginModal :-ms-input-placeholder,
+.loginModal ::placeholder {
+  font-family: 'jaldi', sans-serif;
+  font-size: 15px;
+}
+
+.loginModal .btn {
+  text-align: center;
+  color: white;
+  width: 160px;
+  border-radius: 0px;
+  font-family: 'jaldi', sans-serif;
+}
+
+.loginModal .modal-body {
+  padding: 0;
+}
+
+.loginModal .studentBg {
+  background-color: #007cbb;
+}
+
+.loginModal .mentorBg {
+  background-color: #e23522;
+}
+
+.loginModal .signUpContentSection {
+  padding: 20px 0px 70px 40px;
+}
+
+.loginModal .signUpContentSection h2 {
+  font-family: 'jaldi', sans-serif;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.loginModal .signUpContentSection p {
+  text-align: justify;
+}
+
+.loginModal .rocket-launch,
+.loginModal .rocket-launchTwo {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 115px;
+  height: 116px;
+}
+
+.loginModal .signUpFormSection {
+  padding: 15px 10px 15px 10px;
+}
+
+.loginModal .signUpFormSection .btnOtpPassword {
+  font-family: 'jaldi', sans-serif;
+  font-size: 15px;
+  background-color: #ffffff;
+  color: #007cbb;
+  font-weight: bold;
+}
+
+.loginModal .signUpFormSection .activeBooks {
+  fill: #ffffff;
+  color: #ffffff;
+  background-color: #007cbb;
+}
+
+.loginModal .signUpFormSection .signupImage {
+  width: 115px;
+  height: 81px;
+}
+
+.loginModal .signUpFormSection .welcomeTitleStudent {
+  color: #007cbb;
+  font-family: 'jaldi', sans-serif;
+}
+
+.loginModal .signUpFormSection .welcomeTitleTeacher {
+  color: #e23522;
+  font-family: 'jaldi', sans-serif;
+}
+
+.loginModal .signUpFormSection .alreadyAccount {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.loginModal .signUpFormSection label {
+  color: #000000;
+  font-weight: bold;
+  font-family: 'jaldi', sans-serif;
+  font-size: 18px;
+}
+
+.loginModal .signUpFormSection input {
+  outline: 0;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.loginModal .signUpFormSection .studentInput {
+  border-color: #007cbb;
+}
+
+.loginModal .signUpFormSection .mentorInput {
+  border-color: #e23522;
+}
+
+.loginSignupModal h2 {
+  font-family: 'jaldi', sans-serif;
+  margin-top: 20px;
+}
+
+.loginSignupModal label {
+  font-family: 'jaldi', sans-serif;
+  color: grey;
+  margin-top: 10px;
+}
+
+@media screen and (max-width:760px) {
+  .navbarWebsite .navbar {
+    padding: 10px;
+  }
+
+  .navbarWebsite .navbar ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbarWebsite .navbar li .btn {
+    margin-right: 25px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .LoginSignupSection {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.modalCloseButton {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  z-index: 1000000;
+}
+
+@media screen and (max-width: 768px) {
+  .loginModal .signUpFormSection {
+    padding: 25px 10px 10px 10px;
+  }
+
+  .loginModal .signUpFormSection .btnOtpPassword {
+    font-size: 10px;
+    margin: 5px;
+  }
+
+  .loginModal .signUpContentSection {
+    padding: 10px 10px 70px 10px;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@200;300;400;600;700&display=swap');
+.firstRow{
+  margin-top: 85px;
+  /* width: 80%; */
+  /* margin-left: 15%; */
+}
+.firstRow.inactive{
+  margin-left: -20% !important;
+  }
+  .firstRowBg{
+      width: 100vw;
+      position: absolute;
+  }
+  .btnLogin {
+      margin-top: 78px;
+    }
+    /* .contentDiv {
+      padding: 50px 70px;
+  } */
+  .titleOne {
+      color: #ff4935;
+      font-family: "jaldi", Sans-serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      line-height: 1.5em;
+      padding-top: 12vh;
+    }
+    .titleTwo {
+      color: #080f44;
+      font-family: "Jaldi", Sans-serif;
+      font-size: 65px;
+      font-weight: 800;
+      line-height: 1em;
+      letter-spacing: 0px;
+      padding: 20px 0px 0px 0px;
+    }
+    .titleThree {
+      color: #141824;
+      font-family: "Jaldi", Sans-serif;
+      font-size: 2.1em;
+      font-weight: 400;
+      line-height: 1.278em;
+      letter-spacing: 0px;
+    }
+  
+  
+    @media screen and (max-width: 768px) {
+      #carouselExampleSlidesOnly {
+        margin-top: 30px;
+        height: 340px;
+      }
+      .websiteMmp .mmpOffers .mmpOffersImage {
+        width: 100px;
+        height: 90px;
+      }
+      .contentDiv {
+        padding: 30px 15px !important;
+      }
+      .contentDiv .headerContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      .contentDiv .titleOne {
+        display: flex;
+        justify-content: center;
+      }
+      .contentDiv .titleTwo {
+        text-align: center;
+        font-size: 50px !important;
+      }
+      .contentDiv .titleThree {
+        font-size: 1.8em !important;
+        text-align: center;
+      }
+      .firstRow .firstRowBg {
+        display: none;
+      }
+      .firstRow .carousel-item img {
+        margin-top: 15px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      .websiteMmp .contentDiv .titleOne {
+        font-size: 20px !important;
+      }
+      .websiteMmp .contentDiv .titleTwo {
+        font-size: 30px !important;
+      }
+    }
+    @media screen and (max-width: 400px) {
+      #carouselExampleSlidesOnly {
+        height: 300px;
+      }
+      .homeVideos .videoFrame {
+        width: 280px !important;
+        height: 127px !important;
+      }
+      .homeVideos .card {
+        width: 280px !important;
+        height: 127px !important;
+      }
+      .websiteMmp .knowMoreSection .knowMoreImage {
+        width: 250px;
+        height: 175px;
+      }
+      .sliderDiv {
+        width: 288px !important;
+        margin: auto !important;
+      }
+      .firstRow .carousel-item {
+        width: 280px;
+        height: 380px;
+      }
+      .firstRow .carousel-item img {
+        margin-top: 15px;
+      }
+    }
+    
+    
+   
+  .headerContent {
+    padding-left: 50px !important;
+  }

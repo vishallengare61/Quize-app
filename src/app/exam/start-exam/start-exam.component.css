@@ -1,0 +1,507 @@
+.time {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: -20px;
+}
+.time .timePara {
+  margin-right: 10px;
+}
+  .practicePaperSecondSection {
+    padding-top: 50px;
+    background-color: #ffffff;
+    padding-bottom: 25px;
+  }
+  .practicePaperSecondSection .no-question {
+    display: none;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv,
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .card,
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .card {
+    border-radius: 10px;
+    border: 1px solid #c7c7c7;
+    padding: 10px;
+    height: 77vh;
+    margin: 3px;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv h2 {
+    font-weight: 600;
+    font-size: 16px;
+    font-family: "jaldi", sans-serif;
+    padding-right: 20px;
+  }
+
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .QuestionAndSolutionSection {
+    padding: 20px 0px 6px 0px;
+    height: 56vh;
+    overflow-y: scroll;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .QuestionAndSolutionSection h6 {
+    color: #141824;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 1.7em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px 0px 0px;
+  }
+
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .btnFinishPractice {
+    font-family: 'jaldi', Sans-serif;
+    font-size: .9em;
+    font-weight: 700;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    fill: #ffffff;
+    color: #ffffff;
+    background-color: #ff4935;
+    border-radius: 50px 50px 50px 50px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .btnFinishPractice:hover {
+    background-color: #007bba;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .prevNextBtnDiv {
+    display: flex;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .prevNextBtnDiv a {
+    color: #464646;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .prevNextBtnDiv .btnPrevious {
+    font-family: 'jaldi', Sans-serif;
+    font-size: .9em;
+    font-weight: 700;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 50px 0px 0px 50px;
+    padding: 10px 10px;
+    color: #ffffff;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .prevNextBtnDiv .btnNext {
+    font-family: 'jaldi', Sans-serif;
+    font-size: .9em;
+    font-weight: 700;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 0px 50px 50px 0px;
+    margin-left: 10px;
+    padding: 10px 10px;
+    color: #ffffff;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .prevNextBtnDiv .btnPrevious:hover,
+  .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .prevNextBtnDiv .btnNext:hover {
+    background-color: #ff4935;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv h2 {
+    font-weight: 600;
+    font-size: 16px;
+    font-family: "jaldi", sans-serif;
+    padding-right: 20px;
+    text-align: center;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .col-xl-15 {
+    width: 20%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .btnNumbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 15px;
+    margin-top: 10px;
+    flex: none;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .questionNumberHEight {
+    height: 46vh;
+    overflow-y: scroll;
+    display: block;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .separtaor {
+    border-top: 1px solid black;
+    width: 100%;
+    margin: 6vh 0px;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .circleSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .circleSection h2 {
+    margin-left: 10px;
+    color: #7a7a7a;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'jaldi', sans-serif;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .circleSection .circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #AAAAAA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+  }
+  #currentQuestion{
+    background-color: orange !important;
+  }
+  .currentClass {
+    background-color: orange !important;
+}
+.answeredQuestion {
+  background-color: #2CB20F !important;
+}
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .circleSection .circleOne {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #AAAAAA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .circleSection .circleTwo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #2CB20F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+  }
+  .practicePaperSecondSection .practiceExamScreen .practiceLegendsDiv .circleSection .circleThree {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    flex: none;
+    background-color: #FF0404;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+  }
+  .practicePaperSecondSection .closeSolutionDiv {
+    display: flex;
+    justify-content: center;
+  }
+  .practicePaperSecondSection .btnViewSolution {
+    font-family: 'jaldi', Sans-serif;
+    font-size: .9em;
+    font-weight: 700;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 50px;
+    padding: 10px 10px;
+    color: #ffffff;
+  }
+  .practicePaperSecondSection .btnCloseSolution {
+    font-family: 'jaldi', Sans-serif;
+    font-size: .7em;
+    font-weight: 600;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    background-color: #FF0404;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 50px;
+    padding: 10px 0px;
+    color: #ffffff;
+    width: 160px;
+  }
+  .practicePaperSecondSection .row .first {
+    border-radius: 10px;
+    border: 1px solid #c7c7c7;
+    padding: 10px;
+    height: 75vh;
+    flex: 2;
+  }
+  .practicePaperSecondSection .row .first .questionTypeDiv {
+    display: flex;
+    align-items: center;
+  }
+  .practicePaperSecondSection .row .first .questionTypeDiv .questionNumber h2 {
+    font-weight: 600;
+    font-size: 16px;
+    font-family: "jaldi", sans-serif;
+    padding-right: 20px;
+  }
+  .practicePaperSecondSection .row .first .questionTypeDiv .verticalLine {
+    border-left: 1px solid #ddd;
+    height: 2rem;
+  }
+  .practicePaperSecondSection .row .first .questionTypeDiv .questionType h2 {
+    font-weight: 600;
+    font-size: 16px;
+    font-family: "jaldi", sans-serif;
+    padding-left: 50px;
+  }
+  .practicePaperSecondSection .row .first .QuestionAndSolutionSection {
+    padding: 20px 0px 6px 0px;
+    height: 51vh;
+    overflow-y: scroll;
+  }  
+
+  .practicePaperSecondSection .row .first .QuestionAndSolutionSection h6 {
+    color: #141824;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 1.7em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+  }
+  .allButtonsDiv {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px 0px 0px;
+  }
+
+  .allButtonsDiv .prevNextBtnDiv {
+    display: flex;
+  }
+  .allButtonsDiv .prevNextBtnDiv a {
+    color: #464646;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .allButtonsDiv .prevNextBtnDiv .btnPrevious {
+    font-family: 'jaldi', Sans-serif;
+    font-size: .9em;
+    font-weight: 700;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 50px 0px 0px 50px;
+    padding: 10px 10px;
+    color: #ffffff;
+  }
+  .allButtonsDiv .prevNextBtnDiv .btnNext {
+    font-family: 'jaldi', Sans-serif;
+    font-size: .9em;
+    font-weight: 700;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 0px 50px 50px 0px;
+    margin-left: 10px;
+    padding: 10px 10px;
+    color: #ffffff;
+  }
+  .allButtonsDiv .prevNextBtnDiv .btnPrevious:hover,
+  .allButtonsDiv .prevNextBtnDiv .btnNext:hover {
+    background-color: #ff4935;
+  }
+  .allButtonsDiv .prevNextBtnDiv .fa-angle-right {
+    padding-left: 10px;
+  }
+
+  @media screen and (max-width: 760px) {
+    .practicePaperSecondSection .row {
+      align-items: stretch;
+    }
+    
+    .practicePaperSecondSection .row .first {
+      margin: 5px;
+      padding: 10px;
+    }
+    
+    .practicePaperSecondSection .row .first .allButtonsDiv {
+      flex-wrap: wrap;
+    }
+    
+    .practicePaperSecondSection .row .second {
+      margin: 5px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .QuestionAndSolutionSection {
+      height: 52vh;
+    }
+  }
+
+  .question-content {
+    padding: 1rem 1rem 1rem 0rem !important;
+    font-weight: normal !important;
+  }
+  .labl {
+    display : block;
+    width: 90%;
+
+  }
+  .labl > input{
+    visibility: hidden; 
+    position: absolute; 
+  }
+  .labl > input + div{ 
+    cursor:pointer;
+    padding: 3px 10px;
+    border:1px solid #7FBCBCBC;
+    border-radius: 5px;
+    font-family: 'jaldi', sans-serif;
+    display: flex;
+    align-items: center;
+    font-weight: normal !important;
+  }
+  .optionNumbering{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: none;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: #007bba !important;
+  }
+  /* .labl > input:checked + div{ 
+    background-color: rgb(14, 215, 14);
+    border: 1px solid #0781B1;
+  } */
+  .labl > input:checked + div > .optionNumbering{
+    background-color: #048adf;
+    border: 1px solid #048adf;
+    border-radius: 50%;
+    color: #FFFFFF;
+    height: 25px;
+    width: 25px;
+}
+
+  ul {
+    list-style: none;
+  }
+
+  @media screen and (max-width: 760px) {
+    .practicePaperNav .navData .examTitle h4 {
+      font-size: 1.1em;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  
+    .practicePaperSecondSection {
+      margin-top: 40px;
+    }
+  
+    .practicePaperSecondSection .row .first .questionTypeDiv .questionType h2 {
+      padding-left: 20px;
+    }
+  
+    .labl {
+      width: 95%;
+    }
+  }
+
+  .selected-option {
+    background-color: rgb(138 237 139) !important;
+}
+.selectedQuestion {
+  background-color: rgb(138 237 139) !important;
+  color: #fff; 
+}
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.jimu-primary-loading:before,
+.jimu-primary-loading:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.jimu-primary-loading:before {
+  left: -19.992px;
+}
+.jimu-primary-loading:after {
+  left: 19.992px;
+  -webkit-animation-delay: 0.32s !important;
+  animation-delay: 0.32s !important;
+}
+.jimu-primary-loading:before,
+.jimu-primary-loading:after,
+.jimu-primary-loading {
+  background: #076fe5;
+  -webkit-animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+  animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+  width: 13.6px;
+  height: 32px;
+}
+.jimu-primary-loading {
+  text-indent: -9999em;
+  margin: auto;
+  position: absolute;
+  right: calc(50% - 6.8px);
+  top: calc(50% - 16px);
+  -webkit-animation-delay: 0.16s !important;
+  animation-delay: 0.16s !important;
+}
+@-webkit-keyframes loading-keys-app-loading {
+  0%,
+  80%,
+  100% {
+    opacity: .75;
+    box-shadow: 0 0 #076fe5;
+    height: 32px;
+  }
+  40% {
+    opacity: 1;
+    box-shadow: 0 -8px #076fe5;
+    height: 40px;
+  }
+}
+@keyframes loading-keys-app-loading {
+  0%,
+  80%,
+  100% {
+    opacity: .75;
+    box-shadow: 0 0 #076fe5;
+    height: 32px;
+  }
+  40% {
+    opacity: 1;
+    box-shadow: 0 -8px #076fe5;
+    height: 40px;
+  }
+}

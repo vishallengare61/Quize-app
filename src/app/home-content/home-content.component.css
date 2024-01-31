@@ -1,0 +1,849 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@200;300;400;600;700&display=swap');
+
+/* .disply-container{
+  border: 1px solid black;
+  padding-left: 15%;
+} */
+.firstRow{
+    margin-top: 85px;
+    /* width: 80%; */
+    /* margin-left: 15%; */
+}
+.firstRow.inactive{
+margin-left: -20% !important;
+}
+.firstRowBg{
+    width: 100vw;
+    position: absolute;
+}
+.btnLogin {
+    margin-top: 78px;
+  }
+  /* .contentDiv {
+    padding: 50px 70px;
+} */
+.titleOne {
+    color: #ff4935;
+    font-family: "jaldi", Sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    padding-top: 12vh;
+  }
+  .titleTwo {
+    color: #080f44;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 65px;
+    font-weight: 800;
+    line-height: 1em;
+    letter-spacing: 0px;
+    padding: 20px 0px 0px 0px;
+  }
+  .titleThree {
+    color: #141824;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 2.1em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    #carouselExampleSlidesOnly {
+      margin-top: 30px;
+      height: 340px;
+    }
+    .websiteMmp .mmpOffers .mmpOffersImage {
+      width: 100px;
+      height: 90px;
+    }
+    .contentDiv {
+      padding: 30px 15px !important;
+    }
+    .contentDiv .headerContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .contentDiv .titleOne {
+      display: flex;
+      justify-content: center;
+    }
+    .contentDiv .titleTwo {
+      text-align: center;
+      font-size: 50px !important;
+    }
+    .contentDiv .titleThree {
+      font-size: 1.8em !important;
+      text-align: center;
+    }
+    .firstRow .firstRowBg {
+      display: none;
+    }
+    .firstRow .carousel-item img {
+      margin-top: 15px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .websiteMmp .contentDiv .titleOne {
+      font-size: 20px !important;
+    }
+    .websiteMmp .contentDiv .titleTwo {
+      font-size: 30px !important;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    #carouselExampleSlidesOnly {
+      height: 300px;
+    }
+    .homeVideos .videoFrame {
+      width: 280px !important;
+      height: 127px !important;
+    }
+    .homeVideos .card {
+      width: 280px !important;
+      height: 127px !important;
+    }
+    .websiteMmp .knowMoreSection .knowMoreImage {
+      width: 250px;
+      height: 175px;
+    }
+    .sliderDiv {
+      width: 288px !important;
+      margin: auto !important;
+    }
+    .firstRow .carousel-item {
+      width: 280px;
+      height: 380px;
+    }
+    .firstRow .carousel-item img {
+      margin-top: 15px;
+    }
+  }
+  .sliderDiv {
+    width: 100%;
+  }
+  
+  .sliderDiv img {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+  }
+  #carouselExampleSlidesOnly{
+    margin-top: 20px;
+
+  }
+  .knowMoreSection {
+    padding: 50px 70px 50px 70px;
+  }
+  
+  .knowMoreSection .knowMoreImage {
+    width: 420px;
+  }
+  
+  .knowMoreSection .knowMoreImage img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .knowMoreSection .knowMoreTitle {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 35px;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+  }
+  
+  .knowMoreSection .knowMoreSubTitle {
+    color: #0089C9;
+    font-family: "Jaldi", sans-serif;
+    font-size: 25px;
+    text-transform: capitalize;
+  }
+  
+  .knowMoreSection p {
+    color: #000000;
+    font-family: 'jaldi', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .broughtBy {
+    position: absolute;
+    width: 100%;
+    right: 15px;
+  }
+  .mmpOffersBgSection {
+    position: relative;
+    /* margin-top: 10px; */
+    /* padding-left: 15%; */
+  }
+  .mmpOffersBg {
+    position: absolute;
+    width: 100%;
+    right: 15px;
+  }
+  .mmpOffers {
+    padding: 50px 70px 55px 70px;
+  }
+  
+  .mmpOffers .mmpOffersHeading {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .mmpOffers .mmpOffersImage {
+    width: 125px;
+    height: 111px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .mmpOffers .mmpOffersImage img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .mmpOffers .knowMoreSubTitle {
+    color: #007cbb;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin-top: -5px;
+    padding: 15px 0px 5px 0px;
+    text-align: center;
+  }
+  
+  .mmpOffers p {
+    color: #000000;
+    font-family: 'jaldi', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 0 15px;
+  }
+  .preparation {
+    padding: 55px 70px 50px 70px;
+  }
+  
+  .preparation .preparationHeading {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .preparation .preparationSubHeading {
+    color: #434141;
+    font-family: 'jaldi', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 40px;
+  }
+  
+  .preparation .prepAllCards {
+    padding: 10px 0px 0px 0px;
+  }
+  
+  .preparation .prepAllCards .card {
+    box-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px 25px;
+  }
+  
+  .preparation .prepAllCards .card h1 {
+    color: #000000;
+    font-family: "Jaldi", sans-serif;
+    font-size: 34px;
+    line-height: 1.3;
+  }
+  
+  .preparation .prepAllCards .card p {
+    color: #000000;
+    font-family: "Jaldi", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    margin-bottom: 0;
+    min-height: 22vh;
+  }
+  
+  .preparation .prepAllCards .card ul {
+    padding: 10px 0px 0px 0px;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  .preparation .prepAllCards .card ul li {
+    color: #000000;
+    font-family: "Jaldi", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.273em;
+    letter-spacing: 0px;
+    padding: 5px 0px;
+  }
+  
+  .preparation .prepAllCards .card ul li .fa-check {
+    color: #0781B1;
+    padding-right: 18px;
+  }
+  
+  .preparation .prepAllCards .card ul li span:hover {
+    color: #ff4935;
+  }
+  
+  .preparation .prepAllCards .card:hover h2 {
+    color: #0781B1;
+  }
+  .whyMmpStudent {
+    padding: 50px 70px;
+  }
+  
+  .whyMmpStudent .gplay {
+    width: 164px;
+    height: 63px;
+    transition-duration: 0.3s;
+    transition-property: transform;
+  }
+  
+  .whyMmpStudent .gplay:hover {
+    transform: scale(1.1);
+  }
+  
+  .whyMmpStudent .imageSection {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+  }
+  
+  .whyMmpStudent .imageSection img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .whyMmpStudent .content h2 {
+    color: #000000;
+    font-family: "jaldi", sans-serif;
+    font-size: 26px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    word-spacing: 9px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  
+  .whyMmpStudent .content p {
+    color: #141824;
+    font-family: "Jaldi", sans-serif;
+    font-size: 2.25em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+    padding: 36px 0px 0px 0px;
+  }
+  
+  .whyMmpStudent .content ul {
+    list-style-type: none;
+  }
+  
+  .whyMmpStudent .content ul li {
+    margin: 0px 0px 10px 0px;
+  }
+  
+  .whyMmpStudent .content ul li .fa,
+  .whyMmpStudent .content ul li .fas {
+    color: #ff4935;
+    width: 1.25em;
+    font-size: 25px;
+  }
+  
+  .whyMmpStudent .content ul li span {
+    color: #000000;
+    font-family: "Jaldi", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 10px;
+    line-height: 1.3;
+  }
+  
+  .whyMmpStudent a {
+    color: #ff4935;
+    font-family: 'jaldi', sans-serif;
+    font-size: 26px;
+  }
+  
+  .whyMmpStudent a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
+  .whyMmpStudent a:hover .fa-angle-double-right {
+    font-weight: bold;
+  }
+  
+  .whyMmpStudent .fa-angle-double-right {
+    margin-left: 5px;
+  }
+  .whyMmpTeacher {
+    padding: 50px 70px;
+  }
+  
+  .whyMmpTeacher .gplay {
+    width: 164px;
+    height: 63px;
+    transition-duration: 0.3s;
+    transition-property: transform;
+  }
+  
+  .whyMmpTeacher .gplay:hover {
+    transform: scale(1.1);
+  }
+  
+  .whyMmpTeacher .imageSection {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+  }
+  
+  .whyMmpTeacher .imageSection img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .whyMmpTeacher .content h2 {
+    color: #000000;
+    font-family: "jaldi", sans-serif;
+    font-size: 26px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    word-spacing: 9px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  
+  .whyMmpTeacher .content p {
+    color: #141824;
+    font-family: "Jaldi", sans-serif;
+    font-size: 2.25em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+    padding: 36px 0px 0px 0px;
+  }
+  
+  .whyMmpTeacher .content ul {
+    list-style-type: none;
+  }
+  
+  .whyMmpTeacher .content ul li {
+    margin: 0px 0px 10px 0px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .whyMmpTeacher .content ul li .fa,
+  .whyMmpTeacher .content ul li .fas {
+    color: #ff4935;
+    width: 1.25em;
+    font-size: 25px;
+  }
+  
+  .whyMmpTeacher .content ul li span {
+    color: #000000;
+    font-family: "Jaldi", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 10px;
+    line-height: 1.3;
+  }
+  
+  .whyMmpTeacher a {
+    color: #ff4935;
+    font-family: 'jaldi', sans-serif;
+    font-size: 26px;
+  }
+  
+  .whyMmpTeacher a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
+  .whyMmpTeacher a:hover .fa-angle-double-right {
+    font-weight: bold;
+  }
+  
+  .whyMmpTeacher .fa-angle-double-right {
+    margin-left: 5px;
+  }
+  .testimonialBg {
+    position: absolute;
+    width: 100vw;
+    min-height: 75vh;
+    right: 0;
+  }    
+
+  .testimonial {
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    min-height: 80vh;
+  }
+  
+  .testimonial .testimonialImageDiv {
+    width: 150px;
+    height: 150px; 
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .testimonial .testimonialImageDiv img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  .testimonial .testDEscription {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 0;
+    letter-spacing: 1.5;
+    padding-top: 60px;
+  }
+  
+  .testimonial .testimonialName {
+    color: #143745;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.3;
+    padding: 20px 0px 0px 0px;
+  }
+  
+  .testimonial .testimonialSubheading {
+    color: #2C2E35;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    margin-bottom: 1.6em;
+    margin: 0;
+  }
+  
+  .testimonial .carousel-control-next,
+  .testimonial .carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+  }
+  .broughtBy {
+    position: absolute;
+    width: 100vw;
+    right: 15px;
+  }
+  .examSection {
+    padding: 50px 70px 50px 70px;
+  }
+  
+  .examSection h2 {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .examSection p {
+    color: #434141;
+    font-family: 'jaldi', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 40px;
+  }
+  
+  .examSection .allIconsRow > div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .examSection .imageDiv {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .examSection .imageDiv img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .associations {
+    padding: 50px 100px 50px 100px;
+  }
+  
+  .associations .heading {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  
+  .associations .subHeading {
+    text-align: center;
+    color: #5e6067;
+    font-family: 'jaldi', sans-serif;
+    font-size: 1.375em;
+    font-weight: 300;
+    line-height: 1.545em;
+    letter-spacing: 0px;
+  }
+  
+  .associations .associationsList {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .associations .card {
+    border: none;
+    border-radius: 10px;
+    height: 100%;
+    background: transparent;
+  }
+  
+  .associations .card .ImageDiv {
+    width: 100px;
+    height: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .associations .card .ImageDiv img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .associations .card h2 {
+    color: #000000;
+    font-family: "Jaldi", sans-serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+  }
+  
+  
+  .associations .heading {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  
+  .associations .subHeading {
+    text-align: center;
+    color: #5e6067;
+    font-family: 'jaldi', sans-serif;
+    font-size: 1.375em;
+    font-weight: 300;
+    line-height: 1.545em;
+    letter-spacing: 0px;
+  }
+  
+  .associations .associationsList {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .associations .card {
+    border: none;
+    border-radius: 10px;
+    height: 100%;
+    background: transparent;
+  }
+  
+  .associations .card .ImageDiv {
+    width: 100px;
+    height: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .associations .card .ImageDiv img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .associations .card h2 {
+    color: #000000;
+    font-family: "Jaldi", sans-serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+  }
+
+  .faqContainer {
+    background-color: #f3f3f6;
+    padding: 50px 70px 50px 0px;
+  }
+  
+  .faqContainer h2 {
+    color: #000000;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  
+  .faqContainer .faqImageDiv {
+    width: 100% !important;
+    height: 250px;
+  }
+  
+  .faqContainer .faqImageDiv img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  #main img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  #main #faq .card {
+    margin-bottom: 10px;
+    border: 0;
+  }
+  
+  #main #faq .card .card-header {
+    border: 0;
+    border-radius: 2px;
+    padding: 0;
+  }
+  
+  #main #faq .card .card-header .btn-header-link {
+    color: #ff4935;
+    display: block;
+    background-color: #f3f3f6;
+    text-align: left;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 1.3em;
+    font-weight: 400;
+    line-height: 1.2em;
+  }
+  
+  #main #faq .card .card-header .btn-header-link:after {
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    float: right;
+    color: #ff4935;
+  }
+  
+  #main #faq .card .card-header .btn-header-link.collapsed {
+    color: #141824;
+    background-color: #f3f3f6;
+  }
+  
+  #main #faq .card .card-header .btn-header-link.collapsed:after {
+    content: "\f106";
+    color: #ff4935;
+  }
+  
+  #main #faq .card .collapsing {
+    background: #f3f3f6;
+    line-height: 1.667em;
+  }
+  
+  #main #faq .card .collapse {
+    border: 0;
+    background-color: #f3f3f6;
+    color: #5e6067;
+    font-family: 'jaldi', Sans-serif;
+    font-size: 1.125em;
+    font-weight: 300;
+    line-height: 1.667em;
+    letter-spacing: 0px;
+  }
+  
+  #main #faq .card .collapse.show {
+    background-color: #f3f3f6;
+    color: #5e6067;
+    font-family: 'jaldi', Sans-serif;
+    font-size: 1.125em;
+    font-weight: 300;
+    line-height: 1.667em;
+    letter-spacing: 0px;
+  }
+  .homeVideos {
+    padding: 50px 70px 50px 70px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .homeVideos .videoFrame {
+    width: 350px;
+    height: 197px;
+  }
+  
+  .homeVideos .card {
+    width: 350px;
+    height: 197px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+    border: none;
+  }
+  
+  .homeVideos .scrollToTopBtn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10000;
+  }
+  
+  .headerContent{
+    padding-left: 40px !important;
+  }
+  /* #footer{
+    margin-left: -160px !important;
+  } */
+  

@@ -1,0 +1,131 @@
+<div class="disply-container">
+  <div *ngIf="abcd" class="makePaper container">
+    <div class="row" *ngIf="chooseSubjectsFlag">
+      <div class="col-md-12">
+        <div class=" chooseChapterCard">
+          <div class="row" id="row">
+            <div class="col-md-12">
+              <div class="">
+                <h2 class="text-center">
+                  Make My <span>PRACTICE</span>
+                </h2>
+                <div class="totalUser">
+                  <div>
+                    <span class="font-weight-bold">
+                      <button class="btn btnLeaderboard" href="javascript:void(0)" routerLink="/subjects"><i
+                          class="fas fa-angle-double-left mr-1"></i> Chapters</button>
+                    </span>
+                  </div>
+                  <div>
+                  <div>
+                    <span>Total Users : {{totalusers}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <hr>
+            </div>
+            <hr style="background-color: black;">
+            <div class="col-md-12 d-flex chapterCheckbox" *ngIf="!showLoader">
+              <div class="subjects">
+                <div class="d-flex justify-content-center">
+                  <a id="slideLeft" class="mr-2 d-flex align-items-center" href="javascript:void(0)"
+                    (click)="slideLeft()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                  <ul class="nav nav-tabs" id="myTab" role="tablist" #widgetsContent>
+                    <li class="nav-item" *ngFor="let part of all_parts; let i = index">
+                      <a class="nav-link active" (click)="getPartsID(part?.id, part?.name)" id="home-{{i}}-tab"
+                        data-toggle="tab" aria-selected="true">{{part?.name}}</a>
+                    </li>
+                  </ul>
+                  <a id="slideRight" class="ml-2 d-flex align-items-center" href="javascript:void(0)"
+                    (click)="slideRight()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                </div>
+                <br>
+                <hr style="background-color: black;">
+                <div class="panel-body mt-4" *ngIf="subjectPartsVailable">
+                  <div class="card newChapterCard" *ngFor="let chapter of chaptersData; let i = index" [ngClass]="{
+                                  'belowTwenty': chapter?.percentage <= 30,
+                                  'belowFifty': chapter?.percentage > 30 && chapter?.percentage <= 70 ,
+                                  'aboveFifty': chapter?.percentage > 70 && chapter?.percentage <= 100,
+                                  'notAttempted' :  !chapter?.attempted
+                                  }">
+                    <div class="row">
+                      <div class="col-xl-1">
+                        <div class="numbering"> {{i + 1}} </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="chapterTitle">
+                          <h2>{{chapter?.name}}</h2>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-6">
+                        <button type="button" data-toggle="modal" data-target=".bd-example-modal"
+                          (click)="saveChapterId(chapter?.id)" class="btn btnStartNewCard">Start</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center" >
+              <div class="loader" *ngIf="showLoader">
+                <div class="justify-content-center jimu-primary-loading"></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="unSelectPart" *ngIf="unSelectPart">
+      <span class="font-weight-bold ml-5">
+        <h3>Please select the Part</h3>
+      </span>
+    </div>
+  </div>
+
+  <div class="modal reportModal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog   modal-dialog-centered">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h5 class="modal-title">Difficulty <span>Level</span></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModald>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <div class="selectDiiffTitle">
+              <label class="diffTitle" for="exampleInputPassword1">Select Difficulty</label>
+            </div>
+            <div class="btn-group">
+              <div>
+                <button type="button" (click)="selectDifficultyLevel(1, 1)"
+                  class="active reportReasonEasy btn btn-default" id="regi1">Easy</button>
+              </div>
+              <div>
+                <button type="button" (click)="selectDifficultyLevel(2, 5)" class="btn reportReasonMedium btn-default"
+                  id="regi2">Medium</button>
+              </div>
+              <div>
+                <button type="button" (click)="selectDifficultyLevel(3, 9)" class="btn reportReasonHard btn-default"
+                  id="regi3">Hard</button>
+              </div>
+              <div>
+                <button type="button" (click)="selectAnyRange()" class="btn reportReasonAny btn-default"
+                  id="allrange">Any</button>
+              </div>
+            </div>
+          </div>
+          <div class="btnChooseDiff">
+            <button type="button" (click)="submitFilterForm()" class="btn btnReport mt-1" data-dismiss="modal">START
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

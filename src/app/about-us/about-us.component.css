@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@200;300;400;600;700&display=swap");
+
+.aboutUS h2 {
+  color: #000000;
+  font-family: "Source Serif Pro", serif;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.aboutUS .aboutUsSection {
+  min-height: calc(100vh - 85px);
+  /* margin-top: 85px; */
+}
+
+.aboutUS .aboutUsSection .aboutBg {
+  height: 65vh;
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+}
+  .aboutBg {
+  width: 590px;
+}
+
+.aboutUS .whoWeAre h3 {
+  color: rgba(44, 46, 53, 0.81);
+  font-family: "jaldi", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.2;
+  width: 500px;
+  font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 55px;
+}
+.whoWeAre{
+  padding-left: 40px !important;
+}
+.aboutUS .whoWeAre h3 span {
+  float: right;
+  font-size: 15px;
+  padding-right: 20px;
+}
+
+.aboutUS .whoWeAre p {
+  letter-spacing: 0.04em;
+  color: #2c2e35;
+  font-family: "jaldi", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0;
+  margin-top: 25px;
+}
+
+.aboutUS .whoWeAre p span {
+  color: #0781B1;
+  font-weight: bold;
+}
+
+.aboutUS .chairmansDesk {
+  /* padding: 50px 70px 50px 70px; */
+  min-height: calc(100vh - 85px);
+}
+
+.aboutUS .chairmansDesk .chairmansNameDesktop {
+  display: block;
+}
+
+.aboutUS .chairmansDesk .chairmansNameMobile {
+  display: none;
+}
+
+.aboutUS .chairmansDesk .chairmansBg {
+  position: absolute;
+  height: 100%;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  /* height: fill-available; */
+  top: 0;
+  right: 0;
+}
+
+.aboutUS .chairmansDesk .card {
+  background: #f8f9fa;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  width: 325px;
+}
+
+.aboutUS .chairmansDesk .card .imageDivP {
+  background: #e6e7e6;
+  border-radius: 7px;
+  padding: 30px 15px 60px 15px;
+  width: 295;
+}
+
+.aboutUS .chairmansDesk .card .imageDivP .doubleSquare {
+  position: absolute;
+  width: 45px;
+  height: 20px;
+  right: -5px;
+  top: -5px;
+}
+
+.aboutUS .chairmansDesk .card .imageDivP .linkedPuneetSir {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 15px;
+  bottom: 35px;
+}
+
+.aboutUS .chairmansDesk .card .imageDivP .linkedPuneetSir:hover {
+  transform: scale(1.1);
+  width: 51px;
+  height: 51px;
+}
+
+.aboutUS .chairmansDesk .card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.aboutUS .chairmansDesk .welcomeMmp {
+  letter-spacing: 0.04em;
+  color: #0781b1;
+  font-family: "jaldi", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.aboutUS .chairmansDesk .ourPurpose {
+  letter-spacing: 0.04em;
+  color: #000000;
+  font-family: "jaldi", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.aboutUS .chairmansDesk h3 {
+  color: #0781b1;
+  font-family: "jaldi", sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  width: 186px;
+  margin-top: 12px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.aboutUS .chairmansDesk h3 span {
+  font-size: 20px;
+  color: #000000;
+}
+
+.aboutUS .ourTeam {
+  /* padding: 50px 70px 50px 70px; */
+  min-height: 90vh;
+}
+
+/* .aboutUS .ourTeam .ourValuesBgSecond {
+  top: 45vh;
+} */
+
+/* .aboutUS .ourTeam .ourValuesBg {
+  position: absolute;
+  height: 55vh;
+  right: 0;
+  bottom: 0;
+} */
+
+.aboutUS .ourTeam p {
+  letter-spacing: 0.04em;
+  color: #434141;
+  font-family: "jaldi", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: -2px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.aboutUS .ourTeam .teamColumn {
+  display: flex;
+  justify-content: center;
+}
+
+.aboutUS .ourTeam .card {
+  border: 2px solid #e1e6e8;
+  border-radius: 0px;
+  width: 250px;
+  padding: 6px;
+  margin-top: 20px;
+}
+
+.aboutUS .ourTeam .card .teamImage {
+  position: relative;
+}
+
+.aboutUS .ourTeam .card img {
+  width: 100%;
+  height: 100%;
+}
+
+.aboutUS .ourTeam .card .linkedinIcon {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  right: 18px;
+  bottom: -22px;
+}
+
+.aboutUS .ourTeam .card .linkedinIcon:hover {
+  transform: scale(1.1);
+  width: 46px;
+  height: 46px;
+}
+
+.aboutUS .ourTeam .card .namePosition {
+  width: 165px;
+  text-align: center;
+}
+
+.aboutUS .ourTeam .card p {
+  color: #373435;
+  font-family: "jaldi", sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 1;
+  margin-top: 7px;
+  margin-bottom: 0;
+}
+
+.aboutUS .ourTeam .card p span {
+  font-size: 16px;
+}
+
+.aboutUS .ourValues {
+  /* padding: 50px 70px 50px 70px; */
+  position: relative;
+}
+
+.aboutUS .ourValues .ourValuesBgSecond {
+  top: 10vh;
+}
+
+.aboutUS .ourValues .ourValuesBg {
+  position: absolute;
+  height: 40vh;
+  right: 15px;
+  bottom: 10px;
+}
+
+.aboutUS .ourValues p {
+  letter-spacing: 0.04em;
+  color: #434141;
+  font-family: "jaldi", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: -2px;
+  margin-bottom: 30px;
+  line-height: 1;
+}
+
+.aboutUS .ourValues .teamColumn {
+  display: flex;
+  justify-content: center;
+}
+
+.aboutUS .ourValues .card {
+  border: none;
+  margin-bottom: 10px;
+  background: transparent;
+}
+
+.aboutUS .ourValues .card img {
+  width: 100px;
+  height: 73px;
+  margin: auto;
+}
+
+.aboutUS .ourValues .card p {
+  text-align: center;
+  color: #373435;
+  font-family: "jaldi", sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 1;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .aboutUS .chairmansDesk {
+    padding: 15px;
+  }
+  .aboutUS .chairmansDesk p {
+    margin-top: 20px;
+  }
+  .aboutUS .chairmansDesk h3 {
+    margin-top: 11px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .aboutUS .chairmansDesk .chairmansBg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .aboutUS .ourValuesBgSecond {
+    left: 0px;
+  }
+  .aboutUS .aboutUsSection {
+    min-height: calc(90vh - 85px);
+    padding: 15px;
+  }
+  .aboutUS .aboutUsSection .aboutBg {
+    height: 65vh;
+  }
+  .aboutUS .ourValues .ourValuesBg {
+    height: 60vh;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .aboutUS .ourTeam .card .namePosition {
+    width: 130px;
+  }
+  .aboutUS .ourTeam .card p {
+    font-size: 18px;
+  }
+  .aboutUS .ourTeam .card p span {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aboutUS h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+  .aboutUS .aboutUsSection {
+    min-height: calc(70vh - 85px);
+  }
+  .aboutUS .aboutUsSection .aboutBg {
+    display: none;
+  }
+  .aboutUS .ourValues {
+    padding: 15px;
+    .card {
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 17px;
+    }
+    .ourValuesBg {
+      display: none;
+    }
+  }
+  .aboutUS .ourTeam {
+    padding: 15px;
+    p {
+      font-size: 17px;
+    }
+  }
+  .aboutUS .chairmansDesk .chairmansNameMobile {
+    display: block;
+    text-align: center;
+    span {
+      float: none;
+    }
+  }
+  .aboutUS .chairmansDesk .chairmansNameDesktop {
+    display: none;
+  }
+  .aboutUS .chairmansDesk p {
+    font-size: 22px;
+  }
+}
+/* .footer{
+  width: 150% !important;
+} */
+
+@media screen and (max-width: 620px) {
+  .aboutUS .whoWeAre h3 {
+    width: 100%;
+    span {
+      float: none;
+    }
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .aboutUS .chairmansDesk h2 {
+    font-size: 35px;
+  }
+}

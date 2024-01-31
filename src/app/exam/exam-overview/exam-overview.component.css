@@ -1,0 +1,192 @@
+:host ::ng-deep caption {
+    text-align: center;
+    caption-side: top;
+  }
+  
+  :host ::ng-deep ul li {
+    list-style-type: disc;
+  }
+  
+  .mypath {
+    min-height: 88vh;
+    padding-top: 15px;
+  }
+  
+  .mypath .buttonsGroup {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 25px 0px;
+  }
+  
+  .mypath .buttonsGroup .btn {
+    font-size: 0.60em;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    fill: #ffffff;
+    color: #ffffff;
+    background-color: #007BBA;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 0px 2px 0px 0px #ff7005;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0px;
+    width: 230px;
+    margin-right: 35px;
+    position: relative;
+  }
+  
+  .mypath .buttonsGroup .btn:hover {
+    background-color: #ff4935;
+  }
+  
+  .mypath .btnLeaderboard {
+    padding: 0;
+    font-family: "jaldi", Sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #007bba;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  .mypath .totalUser {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: #18181b;
+    font-family: "jaldi", Sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.545em;
+    letter-spacing: 0px;
+  }
+  
+  .mypath .totalUser a {
+    color: #1B50A3;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 7px;
+    font-family: "jaldi", Sans-serif;
+  }
+
+  .mypath h2 {
+    color: #000000;
+    font-size: 3em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-family: 'Jaldi';
+    text-align: center;
+    margin-top: -15px;
+  }
+  
+  .mypath h2 span {
+    color: #007bba;
+    font-weight: 700;
+  }
+  
+  .mypath h3 {
+    font-family: GOTHICB;
+    float: right;
+    color: #666766;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .mypath hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #989696;
+    margin: 0 0 1em 0;
+    padding: 0;
+  }
+
+  .mypath .optionDiv {
+    height: 60vh;
+    overflow-y: scroll;
+  }
+  
+  .mypath .contentDiv {
+    color: #000000;
+    background-color: #ffffff;
+    padding: 10px 15px 20px 25px;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #000000;
+    border-radius: 5px 5px 5px 5px;
+    font-family: "jaldi", sans-serif;
+    list-style-type: none;
+    height: 49vh;
+    overflow-y: scroll;
+  }
+  
+  @media only screen and (min-width: 762px) and (max-width: 1200px) {
+    .mypath {
+      min-height: 100vh;
+    }
+    .mypath .buttonsGroup .btn {
+      margin-bottom: 20px !important;
+      font-size: 0.5em;
+      width: 213px;
+      margin-right: 25px;
+    }
+  }
+  
+  @media screen and (max-width: 760px) {
+    .mypath {
+      padding: 10px;
+    }
+    .mypath .optionDiv {
+      height: 50vh;
+    }
+    .mypath .totalUser {
+      flex-wrap: wrap;
+      font-size: 20px;
+    }
+    .mypath .buttonsGroup {
+      padding: 10px !important;
+    }
+    .mypath .buttonsGroup .btn {
+      margin-bottom: 20px;
+      margin-right: 10px !important;
+    }
+    .mypath .contentDiv {
+      margin: 14px 0px 5px 0px;
+    }
+    .mypath h2 {
+      font-size: 26px;
+      margin-top: 5px;
+    }
+    .mypath .notification {
+      width: 50px;
+      top: 40vh;
+    }
+    .mypath .updatedOn {
+      text-align: center;
+    }
+  }
+  
+  .nav-pills .nav-link{
+    border-radius: 5px;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 1.275em;
+    font-weight: 500;
+    padding: 10px 15px;
+    color: #007cbb;
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #007cbb;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #2575FC;
+    color: #FFFFFF;
+  }

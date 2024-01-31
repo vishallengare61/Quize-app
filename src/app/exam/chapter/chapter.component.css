@@ -1,0 +1,685 @@
+  .card {
+    margin: 25px;
+    box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
+  }
+  .btnLeaderboard {
+    padding: 0;
+    font-family: "jaldi", Sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #007bba;
+    background-color: rgba(0,0,0,0);
+  }
+  .totalUser {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: #18181b;
+    font-family: "jaldi", Sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.545em;
+    letter-spacing: 0px;
+  }
+  .totalUser a {
+    color: #1B50A3;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 7px;
+    font-family: "jaldi", Sans-serif;
+  }
+  .modalCheckbox {
+    display: flex;
+    justify-content: space-around;
+  }
+  .modalCheckbox label {
+    font-weight: bold;
+    font-family: 'jaldi', sans-serif;
+  }
+  .modalCheckbox .custom-control .custom-checkbox {
+    padding-left: 0;
+  }
+  .modalCheckbox label .custom-control-label {
+    position: relative;
+    padding-right: 1.5rem;
+  }
+  .modalCheckbox label.custom-control-label::before,
+  .modalCheckbox label.custom-control-label::after {
+    right: 0;
+    left: auto;
+  }
+  .nextButtonDesktop {
+    display: block;
+    position: fixed;
+    right: 8vw;
+    bottom: 15px;
+  }
+  .mockButton {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    fill: #ffffff;
+    color: #ffffff;
+    background-color: #ff4935;
+    border-radius: 50px 50px 50px 50px;
+    padding: 12px 24px;
+    box-shadow: 0px 2px 0px 0px #ffffff;
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+  }
+  .mockButton:hover {
+    background-color: #007bba;
+  }
+  .mockAndNext {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .mockAndNext .mockButtonMobile {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    fill: #ffffff;
+    color: #ffffff;
+    background-color: #ff4935;
+    border-radius: 50px 50px 50px 50px;
+    padding: 12px 24px;
+    box-shadow: 0px 2px 0px 0px #ffffff;
+  }
+  .mockAndNext .mockButtonMobile:hover {
+    background-color: #007bba;
+  }
+  .mockAndNext .nextButton {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    letter-spacing: 3.2px;
+    fill: #ffffff;
+    color: #ffffff;
+    background-color: #007bba;
+    border-radius: 50px 50px 50px 50px;
+    padding: 12px 24px;
+    box-shadow: 0px 2px 0px 0px #ffffff;
+  }
+  .mockAndNext .nextButton:hover {
+    background-color: #ff4935;
+  }
+  .makePaper {
+    min-height: 100vh;
+    padding-top: 18px;
+  }
+  .makePaper .subjects .nav-tabs .nav-link {
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 112px;
+    font-size: 20px;
+    height: 50px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #e9e5e5;
+    box-shadow: inset 0px -11px 8px -10px #adabab;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333333;
+    font-family: "jaldi", sans-serif;
+    white-space: nowrap;
+  }
+  .makePaper .subjects .nav-tabs .nav-link.active {
+    background-color: #f5f4f4;
+    color: #007CBB;
+    box-shadow: 0px 4px 5px 0px rgb(0 0 0 / 15%);
+    font-weight: bold;
+    font-family: "jaldi", sans-serif;
+    border-color: #dee2e6 #dee2e6 #f5f4f5;
+  }
+  .makePaper .subjects .nav-tabs {
+    box-shadow: inset 0px -11px 8px -10px #adabab;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    border-bottom: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  .makePaper .subjects .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .makePaper .subjects .nav-tabs {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .makePaper .subjects .panel-body {
+    margin-bottom: 20px;
+  }
+  .makePaper .subjects .newChapterCard {
+    margin: 15px 0px 0px 0px;
+    border-radius: 10px;
+    box-shadow: 29px 0px 60px 0px rgb(0 0 0 / 20%);
+    padding: 10px;
+  }
+  .makePaper .subjects .newChapterCard .row {
+    justify-content: center;
+    align-items: center;
+  }
+  .makePaper .subjects .newChapterCard .numbering {
+    font-family: "Jaldi", Sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    background-color: #eaeaece0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 30px;
+  }
+  .makePaper .subjects .newChapterCard .chapterTitle h2 {
+    font-family: "Jaldi", Sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-left: 20px;
+  }
+  .makePaper .subjects .newChapterCard .btnStartNewCard {
+    padding: 11px 36px 11px 36px;
+    font-family: 'jaldi', Sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #007bba;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffcc03;
+    border-radius: 50px;
+    box-shadow: 19px 19px 40px 0px rgb(0 0 0 / 10%);
+  }
+  .makePaper .subjects .newChapterCard .btnStartNewCard:hover {
+    background-color: #ff4935;
+  }
+  .makePaper .subjects .belowTwenty {
+    border: 5px solid red;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+  }
+  .makePaper .subjects .belowFifty {
+    border: 5px solid orange;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+  }
+  .makePaper .subjects .aboveFifty {
+    border: 5px solid green ;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+  }
+  .makePaper .subjects .notAttempted {
+    border: 5px solid #d9d7d7;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+  }
+  .makePaper hr {
+    width: 100%;
+  }
+  .makePaper .custom-control .custom-checkbox {
+    padding-left: 0;
+    display: flex;
+  }
+  .makePaper input[type="text"],
+  .makePaper input[type="number"] {
+    background: transparent;
+    border: none;
+  }
+  .makePaper input::-webkit-outer-spin-button,
+  .makePaper input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .makePaper input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .makePaper label.custom-control-label {
+    position: relative;
+    padding-right: 1.5rem;
+  }
+  .makePaper label.custom-control-label::before,
+  .makePaper label.custom-control-label::after {
+    right: 0;
+    left: auto;
+  }
+  @media screen and (max-width: 760px) {
+    .makePaper {
+      padding: 10px;
+    }
+    .paperCard {
+      margin: 0px;
+    }
+    .nextButtonDesktop {
+      display: none;
+    }
+    .nextButtonMobile {
+      display: block;
+    }
+    .totalUser {
+      flex-wrap: wrap;
+      font-size: 20px;
+    }
+    .totalUser a {
+      margin-right: 10px;
+    }
+    .icon .tooltip:before {
+      left: 18%;
+    }
+    .icon span {
+      text-align: left;
+    }
+    .icon:hover .tooltip {
+      left: -18px;
+    }
+  }
+  .chooseChapterCard h2 {
+    color: #000000;
+    font-size: 3em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-family: "Jaldi";
+    text-align: center;
+  }
+  .chooseChapterCard h2 span {
+    color: #007bba;
+    font-weight: 700;
+  }
+  .chooseChapterCard h6 {
+    margin: -10px 0px 5px 0px;
+    text-align: center;
+    color: #5e6067;
+    font-family: "jaldi", Sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.545em;
+    letter-spacing: 0px;
+  }
+  .chooseChapterCard h4 {
+    font-family: "jaldi";
+    float: right;
+    color: #666766;
+    font-size: 20px;
+  }
+  .chooseChapterCard hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #ffffff;
+    margin: 0 0 1em 0;
+    padding: 0;
+  }
+  .chapterCheckbox {
+    display: flex;
+    flex-direction: column;
+  }
+  .chapterCheckbox label {
+    font-family: "Jaldi", Sans-serif;
+    font-size: 1.3em;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 1.273em;
+    letter-spacing: 0px;
+    color: #727272;
+    padding-left: 18px;
+  }
+  @media screen and (max-width: 767px) {
+    .slidecontainer {
+      margin-left: 0px;
+      width: 240px;
+    }
+    .resetRow {
+      display: none;
+    }
+    .btnResetCopy {
+      background-color: #fefefe;
+      border: 2px solid #d6d6d6;
+      font-family: "jaldi";
+      font-size: 23px;
+      width: 125px;
+      font-weight: bold;
+      display: block;
+      position: absolute;
+      left: 10px;
+      bottom: 5px;
+    }
+    .lastRow {
+      margin-bottom: 20px;
+    }
+   
+    .makePaper .paperCard .formLabels {
+      font-size: 18px;
+    }
+    .makePaper .paperCard .formLabels .subjects {
+      font-size: 14px;
+    }
+    .makePaper ol {
+      padding-left: 22px;
+    }
+  }
+  
+  @media screen and (max-width: 760px) {
+    .mockButton,
+    .nextButton {
+      margin-top: 20px;
+    }
+    .makePaper .subjects .nav-tabs {
+      box-shadow: inset 0px -11px 8px -10px #adabab;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .makePaper .subjects .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .startPaperButton .resetAndProceed {
+      margin-top: 15px;
+    }
+    .startPaperButton .resetAndProceed .btnResets {
+      margin-top: 15px;
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .makePaper .nav-tabs {
+      justify-content: center;
+    }
+    .topDiv .firstDiv {
+      width: 40%;
+    }
+    .topDiv .secondDiv {
+      width: 100px !important;
+    }
+    .topDiv .thirdDiv {
+      width: 40%;
+    }
+    .topDiv .thirdDiv .custom-control-label::before,
+    .topDiv .thirdDiv .custom-control-label::after {
+      width: 17px;
+      height: 17px;
+    }
+    .topDiv .thirdDiv label.custom-control-label {
+      padding-right: 2.5rem !important;
+    }
+    .topDiv .thirdDiv #showTime {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  @media screen and (max-width: 760px) {
+    .mockButtonMobile {
+      display: block;
+    }
+    .mockButton {
+      display: none;
+    }
+    .topDiv {
+      .firstDiv,
+      .secondDiv {
+        label {
+          font-size: 1.2em !important;
+        }
+      }
+      .thirdDiv {
+        label {
+          font-size: 0.9em !important;
+        }
+        p {
+          font-size: 0.9em !important;
+        }
+        .noOfProblems {
+          font-size: 0.9em !important;
+        }
+        .fa-caret-down {
+          font-size: 24px;
+          margin-right: 8px;
+        }
+        .fa-caret-up {
+          font-size: 24px;
+          margin-left: 8px;
+        }
+        .yesSpan {
+          font-size: 0.9em;
+        }
+      }
+    }
+    .progress-barContainer {
+      .loading-bar {
+        max-width: 320px !important;
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .mockButtonMobile {
+      display: none;
+    }
+    .mockButton {
+      display: block;
+    }
+  }
+  @keyframes lds-spinner {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .reportModal .selectDiiffTitle {
+    display: flex;
+    justify-content: center;
+  }
+  .reportModal .modal-content {
+    border-radius: 15px;
+  }
+  .reportModal label {
+    color: #000000;
+    font-family: 'jaldi', sans-serif;
+  }
+  .reportModal .diffTitle {
+    font-size: 25px;
+  }
+  .reportModal .modal-header {
+    background-color: rgb(250, 244, 244);
+    border-radius: 15px 15px 0 0;
+  }
+  .reportModal .modal-title {
+    font-family: "jaldi", sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  .reportModal .modal-title span {
+    color: #007bba;
+  }
+  .reportModal .btn-group {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+  }
+  .reportModal .btn-group .btn {
+    padding: 7px 0px;
+    font-family: "jaldi", Sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 19px 19px 40px 0px rgb(0 0 0 / 10%);
+    width: 100px;
+  }
+  .reportModal .btn-group .reportReasonEasy {
+    color: #04c604;
+    border-color: #04c604;
+  }
+  .reportModal .btn-group .reportReasonEasy:hover {
+    color: #ffffff;
+    background-color: #07ac1e;
+    border-color: #eaac02;
+  }
+  .reportModal .btn-group .reportReasonMedium {
+    color: #ffcc03;
+    border-color: #ffcc03;
+  }
+  .reportModal .btn-group .reportReasonMedium:hover {
+    color: #ffffff;
+    background-color: #ffcc03;
+    border-color: #eaac02;
+  }
+  .reportModal .btn-group .reportReasonHard {
+    color: #ff1900;
+    border-color: #ff1900;
+  }
+  .reportModal .btn-group .reportReasonHard:hover {
+    color: #ffffff;
+    background-color: #ff1900;
+    border-color: #eaac02;
+  }
+  .reportModal .btn-group .reportReasonAny {
+    color: #007bba;
+    border-color: #007bba;
+  }
+  .reportModal .btn-group .reportReasonAny:hover {
+    color: #ffffff;
+    background-color: #007bba;
+    border-color: #eaac02;
+  }
+  .reportModal .btnChooseDiff {
+    display: flex;
+    justify-content: center;
+  }
+  .reportModal .btnReport {
+    padding: 8px 0px;
+    font-family: 'jaldi', Sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #ff4935;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #ffcc03;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 19px 19px 40px 0px rgb(0 0 0 / 10%);
+    width: 125px;
+  }
+  .reportModal .btnReport:hover {
+    background-color: #007bba;
+  }
+  .unSelectPart{
+    text-align: center;
+    height: 200px;
+  }
+  .unSelectPart span h3{
+    margin-top: 20px;
+    color: #007bba;
+  }
+  @media screen and (max-width: 1200px) {
+    .newChapterCard .chapterTitle h2 {
+      margin: 10px 0px !important;
+    }
+    .newChapterCard .row > div {
+      display: flex;
+      justify-content: center !important;
+    }
+    .newChapterCard .attemptedAccuracy {
+      margin-bottom: 10px !important;
+    }
+    .reportModal .btn-group .btn {
+      margin: 10px;
+    }
+  }
+  #row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(0.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.jimu-primary-loading:before,
+.jimu-primary-loading:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.jimu-primary-loading:before {
+  left: -19.992px;
+}
+.jimu-primary-loading:after {
+  left: 19.992px;
+  -webkit-animation-delay: 0.32s !important;
+  animation-delay: 0.32s !important;
+}
+.jimu-primary-loading:before,
+.jimu-primary-loading:after,
+.jimu-primary-loading {
+  background: #076fe5;
+  -webkit-animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+  animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+  width: 13.6px;
+  height: 32px;
+}
+.jimu-primary-loading {
+  text-indent: -9999em;
+  margin: auto;
+  position: absolute;
+  right: calc(50% - 6.8px);
+  top: calc(50% - 16px);
+  -webkit-animation-delay: 0.16s !important;
+  animation-delay: 0.16s !important;
+}
+@-webkit-keyframes loading-keys-app-loading {
+  0%,
+  80%,
+  100% {
+    opacity: .75;
+    box-shadow: 0 0 #076fe5;
+    height: 32px;
+  }
+  40% {
+    opacity: 1;
+    box-shadow: 0 -8px #076fe5;
+    height: 40px;
+  }
+}
+@keyframes loading-keys-app-loading {
+  0%,
+  80%,
+  100% {
+    opacity: .75;
+    box-shadow: 0 0 #076fe5;
+    height: 32px;
+  }
+  40% {
+    opacity: 1;
+    box-shadow: 0 -8px #076fe5;
+    height: 40px;
+  }
+}
