@@ -1,3 +1,4 @@
+
 .time {
   display: flex;
   justify-content: flex-end;
@@ -504,4 +505,17 @@
     box-shadow: 0 -8px #076fe5;
     height: 40px;
   }
+}
+
+.progress {
+  width: 100%;
+  height: 15px;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  background-color: #47748b;
+  height: 100%;
+  border-radius: 10px;
 }

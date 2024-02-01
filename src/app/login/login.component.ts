@@ -85,13 +85,8 @@ export class LoginComponent implements OnInit{
     //getBoards
     this._registerService.getBoard().subscribe((board:any) => {
       this.boardData = board.boardData;
-      // console.log('getting board Data----', this.boardData);
     })
-    localStorage.removeItem('userGroup');
-    localStorage.removeItem('userMessage');
-    localStorage.removeItem('userToken');
     localStorage.removeItem('user');
-    localStorage.removeItem('id');
 
     //IMPORTANT-->
     this.routerSubscription = this._router.events.subscribe(event => {
@@ -111,6 +106,10 @@ export class LoginComponent implements OnInit{
       }
     });
 
+  }
+
+  getBoards(){
+    
   }
 
   onBoardSelectionChange(event: any) {
@@ -177,15 +176,11 @@ onClassSelectionChange(event: any){
       console.log('getting data of logged in user-----',result);
       if (result) {
         this._toastr.success(result.user.message);
-        const userMessage = result.user.message;
-        const userToken = result.user.token;
-        const userGroup = result.user.group
-        localStorage.setItem('userGroup', userGroup);
-        localStorage.setItem('userMessage', userMessage);
-        localStorage.setItem('userToken', userToken);
+        // const userToken = result.user.token;
+        // localStorage.setItem('userToken', userToken);
         localStorage.setItem('user', JSON.stringify(result));
-        this.class_id = result.user.class_id[0]
-        localStorage.setItem('id',this.class_id);
+        // this.class_id = result.user.class_id[0]
+        // localStorage.setItem('id',this.class_id);
         this._router.navigate(['/dashboard']);
       }
     })  

@@ -20,7 +20,7 @@ export class StartExamComponent implements OnInit {
   selectedOptionsMap: { [questionId: string]: number } = {};
   currentTime: Date = new Date();
   // Add a variable to store the total time in seconds (30 minutes)
-totalTimeInSeconds: number = 30 * 60;
+totalTimeInSeconds: number = 0;
 private timerInterval: any;
 showLoader:boolean = true;
 
@@ -29,7 +29,10 @@ showLoader:boolean = true;
   testObj: any;
   subjectName:any;
   chapter_id:any;
-  answeredQuestions: { questionId: string; answer: string; selectedOptionId?: any }[] = [];
+
+  answeredQuestions: { questionId: string; answer: string; selectedOptionId?: any; timestamp: number }[] = [];
+
+  setIntervalRef: number | any | null = null;
 
   ngOnInit() {
   this.findCurrentQuestion();
@@ -64,40 +67,46 @@ showLoader:boolean = true;
   for (const answeredQuestion of this.answeredQuestions) {
     this.selectedOptionsMap[answeredQuestion.questionId] = answeredQuestion.selectedOptionId;
   }
-  const remainingTimeInSeconds = this.calculateRemainingTime();
-  if (remainingTimeInSeconds !== undefined) {
-    this.totalTimeInSeconds = remainingTimeInSeconds;
+  this.calculateRemainingTime();
   }
 
-    setInterval(() => {
-    this.updateTimer();
-  }, 1000);
-  }
+
   ngOnDestroy() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
   }
-  calculateRemainingTime(): number | undefined {
+  calculateRemainingTime(): void {
     // Calculate the remaining time by subtracting the current time from the end time
-    const endTime = new Date();
-    endTime.setMinutes(endTime.getMinutes() + 30);
-    const remainingTimeInSeconds = Math.floor((endTime.getTime() - this.currentTime.getTime()) / 1000);
-    return remainingTimeInSeconds >= 0 ? remainingTimeInSeconds : undefined;
+    
+    // const endTime = new Date();
+    // endTime.setMinutes(endTime.getMinutes() + 30);
+    // const remainingTimeInSeconds = Math.floor((endTime.getTime() - this.currentTime.getTime()) / 1000);
+    // return remainingTimeInSeconds >= 0 ? remainingTimeInSeconds : undefined;
+    this.setIntervalRef = setInterval(() => {
+      this.updateTimer();
+    }, 1000);
   }
 
   updateTimer() {
-    if (this.totalTimeInSeconds > 0) {
-      this.totalTimeInSeconds -= 1;
-      if(this.totalTimeInSeconds === 10 * 60){
-        this._toastr.warning('WARNING! , Only 10 min left!')
+    // if (this.totalTimeInSeconds > 0) {
+      // this.totalTimeInSeconds -= 1;
+     
+      if (this.totalTimeInSeconds < 60 * 60) {
+        this.totalTimeInSeconds += 1;
+      if(this.totalTimeInSeconds === 30 * 60){
+        this._toastr.warning('WARNING! , You have complete 30 minutes, hurry up!')
       }
-      if(this.totalTimeInSeconds === 5 * 60){
-        this._toastr.error('hurry up , Only 5 min left!, EXAM WILL AUTO-SUBMIT AFTER TIME END');
+      if(this.totalTimeInSeconds === 50 * 60){
+        this._toastr.error('hurry up , 50 min done!, EXAM WILL AUTO-SUBMIT AFTER TIME END');
       }
     } else {
       // Timer reached zero, handle the event (e.g., display a message, complete the test)
-      this.completeTest();
+      if (this.setIntervalRef) {
+        clearInterval(this.setIntervalRef);
+        this.completeTest();
+      }
+      
     }
   }
   formatTime(seconds: number): string {
@@ -166,6 +175,7 @@ findVisitedNotAnsweredQuestions() {
   selectMCQ(event: any, optionIndex: any) {
     const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
     const questionId = this.questions[this.currentQuestion].id;
+    const timestamp = Date.now(); // Record current timestamp
     this.selectedOptionsMap[questionId] = optionIndex;
     const existingAnswerIndex = this.answeredQuestions.findIndex(
       (q) => q.questionId === questionId
@@ -173,10 +183,11 @@ findVisitedNotAnsweredQuestions() {
     if (existingAnswerIndex !== -1) {
       this.answeredQuestions[existingAnswerIndex].answer = selectedAnswer;
       this.answeredQuestions[existingAnswerIndex].selectedOptionId = optionIndex; // Store the selected option ID
+      this.answeredQuestions[existingAnswerIndex].timestamp = timestamp; // Store timestamp
     } else {
-      this.answeredQuestions.push({ questionId, answer: selectedAnswer, selectedOptionId: optionIndex });
+      this.answeredQuestions.push({ questionId, answer: selectedAnswer, selectedOptionId: optionIndex, timestamp  });
     }
-    // console.log('question and answer', this.answeredQuestions);
+    console.log('question and answer------', this.answeredQuestions);
   }
 
   nextQuestion() {
@@ -211,6 +222,17 @@ findVisitedNotAnsweredQuestions() {
   }
 
   completeTest() {
+    if (this.setIntervalRef) {
+      clearInterval(this.setIntervalRef);
+    }
+
+    const endTime = new Date(); // Get the current time when the test is completed
+    const totalTimeInSeconds = Math.floor((endTime.getTime() - this.currentTime.getTime()) / 1000);
+    const formattedTime = this.formatTime(totalTimeInSeconds); // Format total time as per your requirement
+    console.log('Total Time Spent for exam--:', formattedTime);
+
+    
+
     const score: any= 5;
     document.getElementById("dimissModal")?.click();
     const selected_by_user: any[] = [];
@@ -239,8 +261,18 @@ findVisitedNotAnsweredQuestions() {
     this._router.navigate([`/report`]);
     });
   }
+
   getOptionLetter(index: number | undefined): string {
     const optionLetters = ['a', 'b', 'c', 'd'];
     return index !== undefined ? optionLetters[index] : '';
   }
+
+
+  get progressPercentage() {
+    const cQuestion = this.currentQuestion + 1;
+    const percentage = (cQuestion / this.questions.length) * 100;
+    return percentage.toFixed(1);
+  }
+
+
 }

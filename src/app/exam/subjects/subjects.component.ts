@@ -10,14 +10,19 @@ import { LoginService } from 'src/Services/login.service';
 export class SubjectsComponent {
 
   id:any;
+  parseUserData:any;
   subjects: any[] = [];
   showLoader:boolean = true;
   constructor(private _route: ActivatedRoute, private _router: Router, private _loginService: LoginService){
 
   }
   ngOnInit(): void {
-    this.id = localStorage.getItem('id');
-    console.log('getting localstorage id', this.id);
+    // this.id = localStorage.getItem('id');
+    this.parseUserData = localStorage.getItem('user');
+    if (this.parseUserData!=  null) {
+      const parseData = JSON.parse(this.parseUserData);
+      this.id = parseData.user.class_id[0];
+    }
     this._loginService.getSubject(this.id).subscribe((subject: any) => {
       console.log('getting subjects', subject);
       if (subject) {

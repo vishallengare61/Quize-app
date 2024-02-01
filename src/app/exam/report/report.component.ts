@@ -36,6 +36,8 @@ export class ReportComponent implements OnInit {
   unattempts:any = undefined;
   wrongAnswer:any = undefined;
   
+  resultPrediction: any;
+
   constructor(private _router: Router, private _route : ActivatedRoute, private _loginService:LoginService, private _tryService: TryReportService){
   }
   ngOnInit(): void {
@@ -57,7 +59,8 @@ export class ReportComponent implements OnInit {
     // this.initGrapha();
     this.initGraphb();
     this.initGraphc();
-  }
+    this.resultPrediction = this.percentValue.toFixed( 2 );
+}
   onPrint() {
     window.print();
   }
