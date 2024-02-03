@@ -1,0 +1,105 @@
+
+<div class="disply-container">
+    <div class="card">
+        <div class="card-header">
+            <h4>Add Question</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-body">
+                <form [formGroup]="addQuestionsFrom">
+                    <div class="row">
+                        <div class="controller col-md-6">
+                            <label for="boardName">Select Board</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="boardName" (change)="selectedBoard($event)">
+                                <option selected>Select Board</option>
+                                <option [value]="boards.id" *ngFor="let boards of boardsData">{{ boards.name }}</option>
+                              </select>
+                        </div>
+                        <div class="controller col-md-6">
+                            <label for="className">Select Class</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="className" (change)="selectedClass($event)">
+                                <option selected>Select Class</option>
+                                <option [value]="classes.id" *ngFor="let classes of classData">{{classes.name}}</option>
+                              </select>
+                        </div>
+                        <div class="controller col-md-6">
+                            <label for="subjectName">Select Subject</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="subjectName" (change)="selectedSubject($event)">
+                                <option selected>Select Subject</option>
+                                <option [value]="subject.id" *ngFor="let subject of subjectsData">{{subject.name}}</option>
+                              </select>
+                        </div>
+                        <div class="controller col-md-6">
+                            <label for="partName">Select Subject part</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="partName" (change)="selectedSubjectPart($event)">
+                                <option selected>Select part</option>
+                                <option [value]="sParts.id" *ngFor="let sParts of subjectPartsData">{{sParts.name}}</option>
+                              </select>
+                        </div>
+                        <div class="controller col-md-6">
+                            <label for="chapterName">Select Chapters</label>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="chapterName" (change)="selectedChapters($event)">
+                                <option selected>Select Chapters</option>
+                                <option [value]="chapters.id" *ngFor="let chapters of chaptersData">{{chapters.name}}</option>
+                              </select>
+                        </div>
+                        <!-- <div class="buttonSection row">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary form-control">Reset Form</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary form-control">Open Question Form</button>
+                            </div>
+                        </div> -->
+                    </div>
+                        <div class="hr-section">
+                            <hr>
+                            <label>Enter the Details of the question-</label>
+                            <hr>
+                        </div>
+                        <div class="row">
+
+                        
+                      <div class="controller">
+                        <label for="enterQuestion">Enter Question-</label>
+                        <textarea name="question" id=""  style="display: block;" class="form-control" formControlName="enterQuestion">
+                        </textarea>
+                      </div>
+                      <div class="controller  col-md-6">
+                        <label for="optiona">Option A-</label>
+                        <input type="text" name="optiona" id="" class="form-control" formControlName="optiona" (input)="updateOptions()">
+                      </div>
+                      <div class="controller col-md-6">
+                        <label for="optionb">Option B-</label>
+                        <input type="text" name="optionb" id="" class="form-control" formControlName="optionb" (input)="updateOptions()">
+                      </div>
+                      <div class="controller col-md-6">
+                        <label for="optionc">Option C-</label>
+                        <input type="text" name="optionc" id="" class="form-control" formControlName="optionc" (input)="updateOptions()">
+                      </div>
+                      <div class="controller col-md-6">
+                        <label for="optiond">Option D-</label>
+                        <input type="text" name="optiond" id="" class="form-control" formControlName="optiond" (input)="updateOptions()">
+                      </div>
+                      <div class="controller col-md-6">
+                        <label for="correctAns">Select Correct Answer</label>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="correctAns">
+                            <option selected>Select Answer</option>
+                            <option *ngFor="let option of options; let i = index;" [value]="option">{{ option }}</option>
+                          </select>
+                    </div>
+                    <div class="buttonSection row">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary form-control" (click)="resetAddQuestionForm()">Reset Form</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button [disabled]="!addQuestionsFrom.valid" class="btn btn-primary form-control" (click)="addQuestion()">Add Question</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

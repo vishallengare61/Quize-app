@@ -19,6 +19,7 @@ import { HomeContentComponent } from './home-content/home-content.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

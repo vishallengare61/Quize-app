@@ -15,6 +15,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { authGuard } from '../auth.guard';
+import { AddQuestionsComponent } from './Admin/add-questions/add-questions.component';
 
 // Define routes for the Exam Module
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'start-Exam/:s_name/:chapter_id', component: StartExamComponent},
     { path: 'report', component: ReportComponent},
     { path: 'subjects', component: SubjectsComponent},
+    { path: 'add-questions', component: AddQuestionsComponent},
   ]
 }, 
 { path: '**', component: PageNotFoundComponent },
@@ -39,6 +41,7 @@ const routes: Routes = [
    StartExamComponent,
    ReportComponent,
    SubjectsComponent,
+   AddQuestionsComponent,
 
   ],
   imports: [
