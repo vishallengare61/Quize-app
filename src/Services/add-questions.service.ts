@@ -26,4 +26,7 @@ export class AddQuestionsService {
   getChapters(part_id:any, name:any){
     return this._http.get<Response>(this.baseUrl + `getQuestion/?name=${name}&part_id=${part_id}`);
   }
+  createQuestion(question:any){
+    return this._http.post<Response>(this.baseUrl + `createQuestion`, question);
+  }
 }

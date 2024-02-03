@@ -56,6 +56,6 @@ const routes: Routes = [
 })
 export class ExamModule {
   constructor(){
-    console.log("ExamModule")
+    // console.log("ExamModule")
   }
 }

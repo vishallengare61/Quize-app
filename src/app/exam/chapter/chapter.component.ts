@@ -69,7 +69,7 @@ showLoader:boolean = true;
   }
   saveChapterId(id:any){
     this.selectedChapterid = id;
-    console.log('selected chapter ID',this.selectedChapterid);
+    // console.log('selected chapter ID',this.selectedChapterid);
     this.selectDifficultyLevel(2, 5);
   }
 

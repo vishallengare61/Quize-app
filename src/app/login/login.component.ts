@@ -87,6 +87,7 @@ export class LoginComponent implements OnInit{
       this.boardData = board.boardData;
     })
     localStorage.removeItem('user');
+    localStorage.clear();
 
     //IMPORTANT-->
     this.routerSubscription = this._router.events.subscribe(event => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AddQuestionsService } from 'src/Services/add-questions.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class AddQuestionsComponent implements OnInit {
 
   changedAnsKey : any;
 
-  constructor(private _formBuilder: FormBuilder, private _addQuestionsService: AddQuestionsService){}
+  constructor(private _formBuilder: FormBuilder, private _addQuestionsService: AddQuestionsService, private _toastr: ToastrService){}
 
   ngOnInit(): void {
    this.addQuestionsFrom =  this._formBuilder.group({
@@ -56,6 +57,8 @@ if (board_id) {
 
 selectedClass(classId:any){
   const class_id = classId.target.value;
+  console.log('you have selected class id---', class_id);
+  
   if(class_id){
     this._addQuestionsService.getSubjects(class_id).subscribe((subjects:any)=>{
       this.subjectsData = subjects.Subjects;
@@ -80,7 +83,7 @@ this._addQuestionsService.getChapters(subjectId, subjectName).subscribe((chapter
 })
 }
 selectedChapters(chapters:any){
-  console.log('getting the chapters Data-----', chapters.target.value);
+  // console.log('getting the chapters Data-----', chapters.target.value);
   
 }
 
@@ -110,11 +113,19 @@ updateOptions() {
       optionb: this.addQuestionsFrom.value.optionb,
       optionc: this.addQuestionsFrom.value.optionc,
       optiond: this.addQuestionsFrom.value.optiond,
+      subject_id: this.addQuestionsFrom.value.subjectName,
+      chapter_id: this.addQuestionsFrom.value.chapterName,
+      part_id: this.addQuestionsFrom.value.partName,
       answerkey: this.changedAnsKey,
       hint: this.changedAnsKey, // You can modify this based on your requirements
       diff_level: "0" // You can modify this based on your requirements
     };
     console.log('getting froms value----', questionData);
+
+    this._addQuestionsService.createQuestion(questionData).subscribe((result:any) => {
+      console.log('question is created successfully----', result);
+      this._toastr.success(result.message)
+    });
     
     // Reset specific form controls
   this.addQuestionsFrom.patchValue({

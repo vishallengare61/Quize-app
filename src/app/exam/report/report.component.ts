@@ -35,18 +35,24 @@ export class ReportComponent implements OnInit {
   totalQuestion:any = undefined;
   unattempts:any = undefined;
   wrongAnswer:any = undefined;
-  
+  allResultData:any = undefined;
+  totalTimeSpentForExam: any;
   resultPrediction: any;
 
   constructor(private _router: Router, private _route : ActivatedRoute, private _loginService:LoginService, private _tryService: TryReportService){
   }
   ngOnInit(): void {
-    this.correctAnswer = this._tryService.correctAnswer;
-    this.totalMarks =   this._tryService.totalMarks;
-    this.totalQuestion  = this._tryService.totalQuestions; 
-    this.unattempts = this._tryService.unattempts;
-    this.wrongAnswer = this._tryService.wrongAnswer;
 
+    this.totalTimeSpentForExam = localStorage.getItem('totalTimeSpentForExam');
+    this.allResultData = localStorage.getItem('result');
+    if (this.allResultData!=null) {
+      const paresedData = JSON.parse(this.allResultData);
+      this.correctAnswer = paresedData.correctAnswer;
+      this.totalMarks = paresedData.totalMarks;
+      this.totalQuestion = paresedData.totalQuestions;
+      this.unattempts = paresedData.unattempts;
+      this.wrongAnswer = paresedData.wrongAnswer;
+    }
      // Set correct values for the charts
      this.UserScore = this.correctAnswer; 
      this.skippedScore = this.unattempts; 

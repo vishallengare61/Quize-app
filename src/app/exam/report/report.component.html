@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6">
+            <div class="col-xl-4 col-lg-4 col-md-4">
                 <div class="card topCard">
                     <div class="row">
                         <div class="col-md-6">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6">
+            <div class="col-xl-4 col-lg-4 col-md-4">
                 <div class="card topCard">
                     <div class="row">
                         <div class="col-md-6">
@@ -67,6 +67,29 @@
                                 <highcharts-chart [Highcharts]="highcharts" [options]="chartOptionsc"
                                     class="highchartsStyleSecond">
                                 </highcharts-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4">
+                <div class="card topCard">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                you have take the 
+                                <h5>{{totalTimeSpentForExam}} Min</h5>
+                            </div>
+                            <div>
+                                <h6>time to solve test</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div *ngIf="showGraph" class="clockImg">
+                                <!-- <highcharts-chart [Highcharts]="highcharts" [options]="chartOptionsc"
+                                    class="highchartsStyleSecond">
+                                </highcharts-chart> -->
+                                <img src="assets/img/timeClock.png" alt="">
                             </div>
                         </div>
                     </div>
