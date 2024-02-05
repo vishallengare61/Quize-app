@@ -90,10 +90,10 @@
                     </div>
                     <div class="buttonSection row">
                         <div class="col-md-6">
-                            <button class="btn btn-primary form-control" (click)="resetAddQuestionForm()">Reset Form</button>
+                            <button class="btn btn-danger form-control" (click)="resetAddQuestionForm()">Reset Question details</button>
                         </div>
                         <div class="col-md-6">
-                            <button [disabled]="!addQuestionsFrom.valid" class="btn btn-primary form-control" (click)="addQuestion()">Add Question</button>
+                            <button [disabled]="!addQuestionsFrom.valid" class="btn btn-success form-control" (click)="addQuestion()">Add Question</button>
                         </div>
                     </div>
                 </div>

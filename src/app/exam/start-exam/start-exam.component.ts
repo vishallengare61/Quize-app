@@ -64,6 +64,7 @@ export class StartExamComponent implements OnInit {
     this.findVisitedNotAnsweredQuestions();
     this.subjectName = this._route.snapshot.paramMap.get('s_name');
     this.chapter_id = this._route.snapshot.paramMap.get('chapter_id');
+
     this._loginService
       .getQuestions(this.subjectName, this.chapter_id)
       .subscribe(
@@ -96,6 +97,7 @@ export class StartExamComponent implements OnInit {
         (error) => {},
         () => {}
       );
+
     for (const answeredQuestion of this.answeredQuestions) {
       this.selectedOptionsMap[answeredQuestion.questionId] =
         answeredQuestion.selectedOptionId;
@@ -109,21 +111,12 @@ export class StartExamComponent implements OnInit {
     }
   }
   calculateRemainingTime(): void {
-    // Calculate the remaining time by subtracting the current time from the end time
-
-    // const endTime = new Date();
-    // endTime.setMinutes(endTime.getMinutes() + 30);
-    // const remainingTimeInSeconds = Math.floor((endTime.getTime() - this.currentTime.getTime()) / 1000);
-    // return remainingTimeInSeconds >= 0 ? remainingTimeInSeconds : undefined;
     this.setIntervalRef = setInterval(() => {
       this.updateTimer();
     }, 1000);
   }
 
   updateTimer() {
-    // if (this.totalTimeInSeconds > 0) {
-    // this.totalTimeInSeconds -= 1;
-
     if (this.totalTimeInSeconds < 60 * 60) {
       this.totalTimeInSeconds += 1;
       if (this.totalTimeInSeconds === 30 * 60) {
@@ -230,8 +223,8 @@ export class StartExamComponent implements OnInit {
     if (existingAnswerIndex !== -1) {
       this.answeredQuestions[existingAnswerIndex].answer = selectedAnswer;
       this.answeredQuestions[existingAnswerIndex].selectedOptionId =
-        optionIndex; // Store the selected option ID
-      this.answeredQuestions[existingAnswerIndex].timestamp = timestamp; // Store timestamp
+        optionIndex;
+      this.answeredQuestions[existingAnswerIndex].timestamp = timestamp;
     } else {
       this.answeredQuestions.push({
         questionId,
@@ -279,11 +272,11 @@ export class StartExamComponent implements OnInit {
       clearInterval(this.setIntervalRef);
     }
 
-    const endTime = new Date(); 
+    const endTime = new Date();
     const totalTimeInSeconds = Math.floor(
       (endTime.getTime() - this.currentTime.getTime()) / 1000
     );
-    const formattedTime = this.formatTime(totalTimeInSeconds); 
+    const formattedTime = this.formatTime(totalTimeInSeconds);
     localStorage.setItem('totalTimeSpentForExam', formattedTime);
 
     const score: any = 5;
