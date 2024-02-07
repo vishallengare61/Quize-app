@@ -4,6 +4,9 @@
 body {
     /* background: rgb(232, 230, 230); */
     font-family: 'Roboto', sans-serif;
+    /* If want then add the image on cursor as well */
+    /* cursor: url('assets/img/LTS_company logo white bg.png')10 10, auto; */
+    
 }
 
 /* .disply-container1{

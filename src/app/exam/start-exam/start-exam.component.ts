@@ -32,6 +32,8 @@ export class StartExamComponent implements OnInit {
   totalTimeInSeconds: number = 0;
   private timerInterval: any;
   showLoader: boolean = true;
+  questionStartTime: Date | null = null;
+
 
   constructor(
     private renderer: Renderer2,
@@ -52,9 +54,10 @@ export class StartExamComponent implements OnInit {
     answer: string;
     selectedOptionId?: any;
     timestamp: number;
+    timeTaken: any
   }[] = [];
 
-  setIntervalRef: number | any | null = null;
+  setIntervalRef: any;
 
   ngOnInit() {
     this.findCurrentQuestion();
@@ -64,7 +67,6 @@ export class StartExamComponent implements OnInit {
     this.findVisitedNotAnsweredQuestions();
     this.subjectName = this._route.snapshot.paramMap.get('s_name');
     this.chapter_id = this._route.snapshot.paramMap.get('chapter_id');
-
     this._loginService
       .getQuestions(this.subjectName, this.chapter_id)
       .subscribe(
@@ -97,7 +99,6 @@ export class StartExamComponent implements OnInit {
         (error) => {},
         () => {}
       );
-
     for (const answeredQuestion of this.answeredQuestions) {
       this.selectedOptionsMap[answeredQuestion.questionId] =
         answeredQuestion.selectedOptionId;
@@ -111,12 +112,21 @@ export class StartExamComponent implements OnInit {
     }
   }
   calculateRemainingTime(): void {
+    // Calculate the remaining time by subtracting the current time from the end time
+
+    // const endTime = new Date();
+    // endTime.setMinutes(endTime.getMinutes() + 30);
+    // const remainingTimeInSeconds = Math.floor((endTime.getTime() - this.currentTime.getTime()) / 1000);
+    // return remainingTimeInSeconds >= 0 ? remainingTimeInSeconds : undefined;
     this.setIntervalRef = setInterval(() => {
       this.updateTimer();
     }, 1000);
   }
 
   updateTimer() {
+    // if (this.totalTimeInSeconds > 0) {
+    // this.totalTimeInSeconds -= 1;
+
     if (this.totalTimeInSeconds < 60 * 60) {
       this.totalTimeInSeconds += 1;
       if (this.totalTimeInSeconds === 30 * 60) {
@@ -159,9 +169,11 @@ export class StartExamComponent implements OnInit {
   visitedNotAnsweredQuestions: any;
 
   findCurrentQuestion() {
+    this.questionStartTime = new Date();
     const currentQuestion = this.currentQuestion;
     const question = this.questions[currentQuestion];
   }
+  
 
   // Find Answered Questions
   findAnsweredQuestions() {
@@ -212,29 +224,49 @@ export class StartExamComponent implements OnInit {
   }
 
   selectMCQ(event: any, optionIndex: any) {
-    const selectedAnswer =
-      this.questions[this.currentQuestion].options[optionIndex];
+    const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
     const questionId = this.questions[this.currentQuestion].id;
     const timestamp = Date.now(); // Record current timestamp
+  
+    // Calculate time taken for the current question
+    const startTime = this.questionStartTime ? this.questionStartTime.getTime() : 0;
+    const timeTakenInSeconds = Math.floor((timestamp - startTime) / 1000);
+  
+    // Calculate minutes and seconds
+    const timeTakenMinutes = Math.floor(timeTakenInSeconds / 60);
+    const timeTakenSeconds = timeTakenInSeconds % 60;
+  
+    // Store time taken along with other answer details
     this.selectedOptionsMap[questionId] = optionIndex;
     const existingAnswerIndex = this.answeredQuestions.findIndex(
       (q) => q.questionId === questionId
     );
+  
     if (existingAnswerIndex !== -1) {
       this.answeredQuestions[existingAnswerIndex].answer = selectedAnswer;
-      this.answeredQuestions[existingAnswerIndex].selectedOptionId =
-        optionIndex;
+      this.answeredQuestions[existingAnswerIndex].selectedOptionId = optionIndex;
       this.answeredQuestions[existingAnswerIndex].timestamp = timestamp;
+      this.answeredQuestions[existingAnswerIndex].timeTaken = {
+        minutes: timeTakenMinutes,
+        seconds: timeTakenSeconds,
+      };
     } else {
       this.answeredQuestions.push({
         questionId,
         answer: selectedAnswer,
         selectedOptionId: optionIndex,
         timestamp,
+        timeTaken: {
+          minutes: timeTakenMinutes,
+          seconds: timeTakenSeconds,
+        },
       });
     }
+  
     console.log('question and answer------', this.answeredQuestions);
   }
+  
+  
 
   nextQuestion() {
     if (this.currentQuestion < this.questions.length - 1) {
@@ -246,7 +278,7 @@ export class StartExamComponent implements OnInit {
     );
     if (attemptedAnswer) {
       // console.log(
-      //   `Question ID: ${currentQuestionId}, Attempted Answer: ${attemptedAnswer.answer}`
+      //   Question ID: ${currentQuestionId}, Attempted Answer: ${attemptedAnswer.answer}
       // );
     } else {
     }
@@ -272,11 +304,11 @@ export class StartExamComponent implements OnInit {
       clearInterval(this.setIntervalRef);
     }
 
-    const endTime = new Date();
+    const endTime = new Date(); 
     const totalTimeInSeconds = Math.floor(
       (endTime.getTime() - this.currentTime.getTime()) / 1000
     );
-    const formattedTime = this.formatTime(totalTimeInSeconds);
+    const formattedTime = this.formatTime(totalTimeInSeconds); 
     localStorage.setItem('totalTimeSpentForExam', formattedTime);
 
     const score: any = 5;
@@ -316,7 +348,7 @@ export class StartExamComponent implements OnInit {
   }
 
   get progressPercentage() {
-    const cQuestion = this.currentQuestion + 1;
+    const cQuestion = this.answeredQuestionValues.length;
     const percentage = (cQuestion / this.questions.length) * 100;
     return percentage.toFixed(1);
   }

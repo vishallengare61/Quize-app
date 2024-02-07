@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit{
       password: ['', [Validators.required, Validators.minLength(6)]],
       selectedBoard: ['', Validators.required],
       class_register_id: ['', Validators.required],
-      user_type: ['', Validators.required]
+      user_type: ['Student']
     }, {
       // validators: this.passwordMatchValidator.bind(this)
     });
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit{
       fullname: ['', Validators.required],
       phonenumber: ['', [Validators.required, Validators.pattern("^[0-9]{10}$")]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      user_type: ['', Validators.required]
+      user_type: ['Mentor']
     });
 
     //getBoards
@@ -244,6 +244,9 @@ onClassSelectionChange(event: any){
         class_register_id: [formValues.class_register_id],
         password: formValues.password
       };
+
+      console.log('getting student register value--', user);
+      
       this._registerService.registerUser({user}).subscribe((result:any)=>{
         console.log('Student Registered-----',result);
         this._toastr.success('registration Success!');
@@ -264,15 +267,16 @@ onClassSelectionChange(event: any){
         fullname: formValues.fullname,
         phonenumber: formValues.phonenumber,
         password: formValues.password,
-        class_register_id: [" "]
+        class_register_id: [" "],
       };
+      console.log('register as mentor form--', user);
+      
       this._registerService.registerUser({user}).subscribe((result:any)=>{
         console.log('Mentor Registered-----',result);
         this._toastr.success('registration Success!');
       })
       this.registerStudentForm.reset();
     }else {
-      // Handle form validation errors if needed
       this._toastr.error('registration failed!')
     }
   }
