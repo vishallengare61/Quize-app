@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { catchError, throwError } from 'rxjs';
 import { LoginService } from 'src/Services/login.service';
 
 @Component({
@@ -36,7 +38,7 @@ chaptersData: any[] = [];
 subjectPartsVailable:boolean = false;
 showLoader:boolean = true;
 
-  constructor(private _router: Router, private _loginService: LoginService, private _route: ActivatedRoute){ }
+  constructor(private _router: Router, private _loginService: LoginService, private _route: ActivatedRoute, private _toastr: ToastrService){ }
 
   ngOnInit(): void {
     this.id = localStorage.getItem('id');
@@ -52,15 +54,46 @@ showLoader:boolean = true;
   selectOption(index: number) {
     this.selectedOption = index;
   }
-  getPartsID(id:number, name:any){
-    this.unSelectPart = false;
-    this._loginService.getChapters(id, name).subscribe((chapters:any) =>{
-      this.chaptersData = chapters.all_chapters;
+  // getPartsID(id:number, name:any){
+  //   this.unSelectPart = false;
+  //   this._loginService.getChapters(id, name).subscribe((chapters:any) =>{
+  //     if (chapters.status === false) {
+  //       this._toastr.error(chapters.message);
+  //     }
+  //     this.chaptersData = chapters.all_chapters;
+  //     console.log('error masg', chapters.status);
+  //     console.log('all chaptetsrs', chapters);
+      
+  //     if(this.chaptersData){
+  //       this.subjectPartsVailable = true;
+  //     }
+  //   });
+  // }
+
+
+getPartsID(id:number, name:any){
+
+  this._loginService.getChapters(id, name).pipe(
+      catchError(error => {
+        // Handle the error here
+        const errorMessage = error?.error?.message || 'An error occurred';
+        this._toastr.error(errorMessage);
+        return throwError(error); // Rethrow the error after handling
+      })
+    )
+    .subscribe((chapters:any) =>{
+      if (chapters.status === false) {
+        this.unSelectPart = true;
+        this._toastr.error(chapters.message);
+      }
+      this.chaptersData = chapters.all_chapters;   
+      this.unSelectPart = false;   
       if(this.chaptersData){
         this.subjectPartsVailable = true;
       }
     });
-  }
+}
+
   slideRight(){
     this.widgetsContent.nativeElement.scrollLeft += 150;
   }

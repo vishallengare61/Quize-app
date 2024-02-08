@@ -1,0 +1,43 @@
+<div class="disply-container">
+  <div class="card">
+    <div class="card-header">
+      <h4>Add Class</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="addClassFrom">
+        <div class="form-body">
+          <div class="row">
+            <div class="controller col-md-6">
+              <label for="boardName">Select Board</label>
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                formControlName="boardName" (change)="selectedBoard($event)">
+                <option selected>Select Board</option>
+                <option [value]="boards.id" *ngFor="let boards of boardsData">
+                  {{ boards.name }}
+                </option>
+              </select>
+            </div>
+            <div class="controller col-md-6">
+              <label for="className">Enter Class</label>
+              <input type="text" class="form-control" name="" id="" placeholder="Enter the Class" formControlName="className" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <div class="buttonSection row">
+        <div class="col-md-6">
+          <button class="btn btn-danger form-control" (click)="resetClassForm()">
+            Reset Class details
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button [disabled]="!addClassFrom.valid" class="btn btn-success form-control" (click)="addClass()">
+            Add Class
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

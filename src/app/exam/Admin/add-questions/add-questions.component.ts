@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { error } from 'highcharts';
 import { ToastrService } from 'ngx-toastr';
+import { catchError, throwError } from 'rxjs';
 import { AddQuestionsService } from 'src/Services/add-questions.service';
 
 @Component({
@@ -46,26 +48,53 @@ export class AddQuestionsComponent implements OnInit {
     })
   }
 
+// selectedBoard(board:any){
+// const board_id = board.target.value;
+// if (board_id) {
+//   this._addQuestionsService.getClasses(board_id).subscribe((classeData:any)=>{
+//     this.classData = classeData.allClasses;
+//   })
+// }
+// }
 selectedBoard(board:any){
 const board_id = board.target.value;
 if (board_id) {
-  this._addQuestionsService.getClasses(board_id).subscribe((classeData:any)=>{
+  this._addQuestionsService.getClasses(board_id).pipe(catchError(error=>{
+    const errorMessage = error?.error?.message || 'An error occurred';
+    this._toastr.error(errorMessage);
+    return throwError(error);
+  })).subscribe((classeData:any)=>{
+    if (classeData.status === false) {
+      this._toastr.error(classeData.message);
+    }
     this.classData = classeData.allClasses;
   })
 }
 }
 
 selectedClass(classId:any){
-  const class_id = classId.target.value;
-  console.log('you have selected class id---', class_id);
-  
+  const class_id = classId.target.value;  
+  const selectedOption = classId.target.options[classId.target.selectedIndex];
+  const classID = selectedOption.value;  //here getting ID
+  const className = selectedOption.text; //here getting name
   if(class_id){
-    this._addQuestionsService.getSubjects(class_id).subscribe((subjects:any)=>{
-      this.subjectsData = subjects.Subjects;
-
-    })
+    this._addQuestionsService.getSubjects(class_id)
+      .pipe(
+        catchError(error => {
+          // Handle the error here
+          const errorMessage = error?.error?.message || 'An error occurred';
+          this._toastr.error(`under ${className} subjects not found!`);
+          // this._toastr.error(errorMessage,'under these class subjects not found!');
+          return throwError(error); // Rethrow the error after handling
+        })
+      )
+      .subscribe((subjects:any)=>{
+        this.subjectsData = subjects.Subjects;
+      });
   }
 }
+
+
 selectedSubject(subject:any){
   const selectedOption = subject.target.options[subject.target.selectedIndex];
   const subjectId = selectedOption.value;  //here getting ID

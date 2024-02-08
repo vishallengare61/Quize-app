@@ -16,6 +16,11 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 import { SubjectsComponent } from './subjects/subjects.component';
 import { authGuard } from '../auth.guard';
 import { AddQuestionsComponent } from './Admin/add-questions/add-questions.component';
+import { AddClassComponent } from './Admin/add-class/add-class.component';
+import { AddSubjectsComponent } from './Admin/add-subjects/add-subjects.component';
+import { AddSubjectsPartComponent } from './Admin/add-subjects-part/add-subjects-part.component';
+import { AddChaptersComponent } from './Admin/add-chapters/add-chapters.component';
+import { StudentDetailsComponent } from './Admin/student-details/student-details.component';
 
 // Define routes for the Exam Module
 const routes: Routes = [
@@ -28,6 +33,11 @@ const routes: Routes = [
     { path: 'report', component: ReportComponent},
     { path: 'subjects', component: SubjectsComponent},
     { path: 'add-questions', component: AddQuestionsComponent},
+    { path: 'add-class', component: AddClassComponent},
+    { path: 'add-subject', component: AddSubjectsComponent},
+    { path: 'add-subject-part', component: AddSubjectsPartComponent},
+    { path: 'add-chapter', component: AddChaptersComponent},
+    { path: 'student-details', component: StudentDetailsComponent},
   ]
 }, 
 { path: '**', component: PageNotFoundComponent },
@@ -42,7 +52,11 @@ const routes: Routes = [
    ReportComponent,
    SubjectsComponent,
    AddQuestionsComponent,
-
+   AddClassComponent,
+   AddSubjectsComponent,
+   AddSubjectsPartComponent,
+    AddChaptersComponent,
+    StudentDetailsComponent
   ],
   imports: [
     CommonModule,

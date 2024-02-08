@@ -1,0 +1,63 @@
+<div class="disply-container">
+    <div class="card">
+      <div class="card-header">
+        <h4>Add Subject Part</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="addSubject_PartForm">
+          <div class="form-body">
+            <div class="row">
+              <div class="controller col-md-6">
+                <label for="boardName">Select Board</label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                  formControlName="boardName" (change)="selectedBoard($event)">
+                  <option selected>Select Board</option>
+                  <option [value]="boards.id" *ngFor="let boards of boardsData">
+                    {{ boards.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="controller col-md-6">
+                <label for="boardName">Select Class</label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                  formControlName="className" (change)="selectedClass($event)">
+                  <option selected>Select Class</option>
+                  <option [value]="classData.id" *ngFor="let classData of classData">
+                    {{ classData.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="controller col-md-6">
+                <label for="boardName">Select Subject</label>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                  formControlName="SubjectName" (change)="selectedSubject($event)">
+                  <option selected>Select Subject</option>
+                  <option [value]="subjectData.id" *ngFor="let subjectData of SubjectData">
+                    {{ subjectData.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="controller col-md-6">
+                <label for="className">Enter Subject_part</label>
+                <input type="text" class="form-control" name="" id="" placeholder="Enter the Class" formControlName="SubjectPartName" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="buttonSection row">
+          <div class="col-md-6">
+            <button class="btn btn-danger form-control" (click)="resetClassForm()">
+              Reset Subject_part details
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button [disabled]="!addSubject_PartForm.valid" class="btn btn-success form-control" (click)="addSubjectPart()">
+              Add Subject_part
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
