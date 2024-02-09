@@ -1,0 +1,26 @@
+label h5{
+    display: inline-block;
+    padding: 5px;
+}
+
+.fixTableHead { 
+    overflow-y: auto; 
+    height: 400px; 
+  } 
+  .fixTableHead thead th { 
+    position: sticky; 
+    top: 0; 
+    border: 2px solid #529432; ;
+  } 
+  table { 
+    border-collapse: collapse;         
+    width: 100%; 
+  } 
+  th, 
+  td { 
+    padding: 8px 15px; 
+    border: 2px solid #529432; 
+  } 
+  th { 
+    background: #ABDD93; 
+  } 
