@@ -35,14 +35,7 @@ export class StartExamComponent implements OnInit {
   questionStartTime: Date | null = null;
 
 
-  constructor(
-    private renderer: Renderer2,
-    private _router: Router,
-    private _tryReportService: TryReportService,
-    private _loginService: LoginService,
-    private _route: ActivatedRoute,
-    private _toastr: ToastrService,
-    private sanitizer: DomSanitizer
+  constructor( private renderer: Renderer2, private _router: Router, private _tryReportService: TryReportService, private _loginService: LoginService, private _route: ActivatedRoute, private _toastr: ToastrService, private sanitizer: DomSanitizer
   ) {}
 
   testObj: any;
@@ -58,8 +51,22 @@ export class StartExamComponent implements OnInit {
   }[] = [];
 
   setIntervalRef: any;
+  localStorageClassID:any;
+  class_id: any;
+
+   start_time: any;
+   end_time: any;
+   quizPoolId: any;
 
   ngOnInit() {
+    this.start_time = Math.floor(Date.now() / 1000);
+    const localStorageUser = localStorage.getItem('user');
+    if (localStorageUser !== null) {
+      this.localStorageClassID = JSON.parse(localStorageUser);
+      this.class_id = this.localStorageClassID.user.class_id[0];
+      // console.log('User data in localStorage user data.----', this.localStorageClassID.user.class_id[0]);
+    }
+
     this.findCurrentQuestion();
     this.findAnsweredQuestions();
     this.findNotAttemptedQuestions();
@@ -67,21 +74,14 @@ export class StartExamComponent implements OnInit {
     this.findVisitedNotAnsweredQuestions();
     this.subjectName = this._route.snapshot.paramMap.get('s_name');
     this.chapter_id = this._route.snapshot.paramMap.get('chapter_id');
-    this._loginService
-      .getQuestions(this.subjectName, this.chapter_id)
-      .subscribe(
-        (apiResponse: any) => {
+    this._loginService .getQuestions(this.subjectName, this.chapter_id, this.class_id) .subscribe( (apiResponse: any) => {
           this.showLoader = false;
-          if (
-            apiResponse.status &&
-            apiResponse.all_question &&
-            Array.isArray(apiResponse.all_question)
-          ) {
+          this.quizPoolId = apiResponse.quizPoolId;
+          // console.log('getting the quizPoolId ------------', apiResponse.quizPoolId);
+          if ( apiResponse.status && apiResponse.all_question && Array.isArray(apiResponse.all_question) ) {
             this.questions = apiResponse.all_question.map(
               (apiQuestion: any) => {
-                return {
-                  id: apiQuestion.id,
-                  question: apiQuestion.question,
+                return { id: apiQuestion.id, question: apiQuestion.question,
                   options: [
                     apiQuestion.optiona,
                     apiQuestion.optionb,
@@ -105,19 +105,13 @@ export class StartExamComponent implements OnInit {
     }
     this.calculateRemainingTime();
   }
-
+  
   ngOnDestroy() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
   }
   calculateRemainingTime(): void {
-    // Calculate the remaining time by subtracting the current time from the end time
-
-    // const endTime = new Date();
-    // endTime.setMinutes(endTime.getMinutes() + 30);
-    // const remainingTimeInSeconds = Math.floor((endTime.getTime() - this.currentTime.getTime()) / 1000);
-    // return remainingTimeInSeconds >= 0 ? remainingTimeInSeconds : undefined;
     this.setIntervalRef = setInterval(() => {
       this.updateTimer();
     }, 1000);
@@ -223,18 +217,57 @@ export class StartExamComponent implements OnInit {
     // console.log('Visited but not Answered Questions:', this.visitedNotAnsweredQuestions);
   }
 
+  // selectMCQ(event: any, optionIndex: any) {
+  //   const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
+  //   const questionId = this.questions[this.currentQuestion].id;
+  //   const timestamp = Date.now(); 
+  
+    
+  //   const startTime = this.questionStartTime ? this.questionStartTime.getTime() : 0;
+  //   const timeTakenInSeconds = Math.floor((timestamp - startTime) / 1000);
+  
+   
+  //   const timeTakenMinutes = Math.floor(timeTakenInSeconds / 60);
+  //   const timeTakenSeconds = timeTakenInSeconds % 60;
+  
+    
+  //   this.selectedOptionsMap[questionId] = optionIndex;
+  //   const existingAnswerIndex = this.answeredQuestions.findIndex(
+  //     (q) => q.questionId === questionId
+  //   );
+  
+  //   if (existingAnswerIndex !== -1) {
+  //     this.answeredQuestions[existingAnswerIndex].answer = selectedAnswer;
+  //     this.answeredQuestions[existingAnswerIndex].selectedOptionId = optionIndex;
+  //     this.answeredQuestions[existingAnswerIndex].timestamp = timestamp;
+  //     this.answeredQuestions[existingAnswerIndex].timeTaken = {
+  //       minutes: timeTakenMinutes,
+  //       seconds: timeTakenSeconds,
+  //     };
+  //   } else {
+  //     this.answeredQuestions.push({
+  //       questionId,
+  //       answer: selectedAnswer,
+  //       selectedOptionId: optionIndex,
+  //       timestamp,
+  //       timeTaken: {
+  //         minutes: timeTakenMinutes,
+  //         seconds: timeTakenSeconds,
+  //       },
+  //     });
+  //   }
+  
+  //   console.log('question and answer------', this.answeredQuestions);
+  // }
+  
   selectMCQ(event: any, optionIndex: any) {
     const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
     const questionId = this.questions[this.currentQuestion].id;
     const timestamp = Date.now(); // Record current timestamp
   
-    // Calculate time taken for the current question
+    // Calculate time taken for the current question in seconds
     const startTime = this.questionStartTime ? this.questionStartTime.getTime() : 0;
     const timeTakenInSeconds = Math.floor((timestamp - startTime) / 1000);
-  
-    // Calculate minutes and seconds
-    const timeTakenMinutes = Math.floor(timeTakenInSeconds / 60);
-    const timeTakenSeconds = timeTakenInSeconds % 60;
   
     // Store time taken along with other answer details
     this.selectedOptionsMap[questionId] = optionIndex;
@@ -246,26 +279,19 @@ export class StartExamComponent implements OnInit {
       this.answeredQuestions[existingAnswerIndex].answer = selectedAnswer;
       this.answeredQuestions[existingAnswerIndex].selectedOptionId = optionIndex;
       this.answeredQuestions[existingAnswerIndex].timestamp = timestamp;
-      this.answeredQuestions[existingAnswerIndex].timeTaken = {
-        minutes: timeTakenMinutes,
-        seconds: timeTakenSeconds,
-      };
+      this.answeredQuestions[existingAnswerIndex].timeTaken = timeTakenInSeconds;
     } else {
       this.answeredQuestions.push({
         questionId,
         answer: selectedAnswer,
         selectedOptionId: optionIndex,
         timestamp,
-        timeTaken: {
-          minutes: timeTakenMinutes,
-          seconds: timeTakenSeconds,
-        },
+        timeTaken: timeTakenInSeconds,
       });
     }
   
     console.log('question and answer------', this.answeredQuestions);
   }
-  
   
 
   nextQuestion() {
@@ -277,9 +303,7 @@ export class StartExamComponent implements OnInit {
       (q) => q.questionId === currentQuestionId
     );
     if (attemptedAnswer) {
-      // console.log(
-      //   Question ID: ${currentQuestionId}, Attempted Answer: ${attemptedAnswer.answer}
-      // );
+      // console.log(Question ID: ${currentQuestionId}, Attempted Answer: ${attemptedAnswer.answer});
     } else {
     }
     this.findCurrentQuestion();
@@ -300,10 +324,10 @@ export class StartExamComponent implements OnInit {
   }
 
   completeTest() {
+    this.end_time = Math.floor(Date.now() / 1000);
     if (this.setIntervalRef) {
       clearInterval(this.setIntervalRef);
     }
-
     const endTime = new Date(); 
     const totalTimeInSeconds = Math.floor(
       (endTime.getTime() - this.currentTime.getTime()) / 1000
@@ -331,9 +355,7 @@ export class StartExamComponent implements OnInit {
         selected_answer: selectedOption,
       };
     });
-    this._loginService
-      .getResult({ selected_by_user })
-      .subscribe((response: any) => {
+    this._loginService.getResult({ selected_by_user, start_time: this.start_time, end_time:this.end_time, quizPoolId:this.quizPoolId }) .subscribe((response: any) => {
         console.log('getting result', response.data);
         this.UserResultData = response.data;
         localStorage.setItem('result', JSON.stringify(this.UserResultData));

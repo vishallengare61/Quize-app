@@ -57,46 +57,69 @@
                             <label>Enter the Details of the question-</label>
                             <hr>
                         </div>
+                        <div class="planeQuestionSection">
                         <div class="row">
-
-                        
-                      <div class="controller">
-                        <label for="enterQuestion">Enter Question-</label>
-                        <textarea name="question" id=""  style="display: block;" class="form-control" formControlName="enterQuestion">
-                        </textarea>
-                      </div>
-                      <div class="controller  col-md-6">
-                        <label for="optiona">Option A-</label>
-                        <input type="text" name="optiona" id="" class="form-control" formControlName="optiona" (input)="updateOptions()">
-                      </div>
-                      <div class="controller col-md-6">
-                        <label for="optionb">Option B-</label>
-                        <input type="text" name="optionb" id="" class="form-control" formControlName="optionb" (input)="updateOptions()">
-                      </div>
-                      <div class="controller col-md-6">
-                        <label for="optionc">Option C-</label>
-                        <input type="text" name="optionc" id="" class="form-control" formControlName="optionc" (input)="updateOptions()">
-                      </div>
-                      <div class="controller col-md-6">
-                        <label for="optiond">Option D-</label>
-                        <input type="text" name="optiond" id="" class="form-control" formControlName="optiond" (input)="updateOptions()">
-                      </div>
-                      <div class="controller col-md-6">
-                        <label for="correctAns">Select Correct Answer</label>
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="correctAns">
-                            <option selected>Select Answer</option>
-                            <option *ngFor="let option of options; let i = index;" [value]="option">{{ option }}</option>
-                          </select>
-                    </div>
-                    <!-- <div class="buttonSection row">
-                        <div class="col-md-6">
-                            <button class="btn btn-danger form-control" (click)="resetAddQuestionForm()">Reset Question details</button>
+                          <div class="controller">
+                                <label for="enterQuestion"><h6>Enter Question-</h6></label>
+                                <textarea name="question" id="enterQuestion"  style="display: block;" class="form-control" formControlName="enterQuestion" placeholder="Enter the question here!">
+                                </textarea>
+                            </div>
+                            <div class="controller  col-md-6">
+                                <label for="optiona"><h6>Option A-</h6></label>
+                                <input type="text" name="optiona" id="" class="form-control" formControlName="optiona" (input)="updateOptions()">
+                            </div>
+                            <div class="controller col-md-6">
+                                <label for="optionb"><h6>Option B-</h6></label>
+                                <input type="text" name="optionb" id="" class="form-control" formControlName="optionb" (input)="updateOptions()">
+                            </div>
+                            <div class="controller col-md-6">
+                                <label for="optionc"><h6>Option C-</h6></label>
+                                <input type="text" name="optionc" id="" class="form-control" formControlName="optionc" (input)="updateOptions()">
+                            </div>
+                            <div class="controller col-md-6">
+                                <label for="optiond"><h6>Option D-</h6></label>
+                                <input type="text" name="optiond" id="" class="form-control" formControlName="optiond" (input)="updateOptions()">
+                            </div>
+                            <div class="controller col-md-6">
+                                <label for="correctAns">Select Correct Answer</label>
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="correctAns">
+                                    <option selected>Select Answer</option>
+                                    <option *ngFor="let option of options; let i = index;" [value]="option">{{ option }}</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <button [disabled]="!addQuestionsFrom.valid" class="btn btn-success form-control" (click)="addQuestion()">Add Question</button>
                         </div>
-                    </div> -->
-                </div>
+                        <!-- <div class="imageQuestionSection">
+                            <div class="row">
+                                <div class="controller">
+                                          <label for="enterQuestion"><h6>Add Question Image-</h6></label>
+                                          <input class="form-control m-2" type="file" name="questionImage" accept="image/*" (change)="onQuestionImageChange($event)" formControlName="questionImage">
+                                      </div>
+                                      <div class="controller  col-md-6">
+                                          <label for="optiona"><h6>Image A-</h6></label>
+                                          <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChange('optiona', $event)" formControlName="imagea" (input)="updateOptions()">
+                                      </div>
+                                      <div class="controller col-md-6">
+                                          <label for="optionb"><h6>Image B-</h6></label>
+                                          <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChange('optionb', $event)" formControlName="imageb" (input)="updateOptions()">
+                                      </div>
+                                      <div class="controller col-md-6">
+                                          <label for="optionc"><h6>Image C-</h6></label>
+                                          <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChange('optionc', $event)" formControlName="imagec" (input)="updateOptions()">
+                                      </div>
+                                      <div class="controller col-md-6">
+                                          <label for="optiond"><h6>Image D-</h6></label>
+                                          <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChange('optiond', $event)" formControlName="imaged" (input)="updateOptions()">
+                                      </div>
+                                      <div class="controller col-md-6">
+                                          <label for="correctAns">Select Correct Answer</label>
+                                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="correctAns">
+                                              <option selected>Select Answer</option>
+                                              <option *ngFor="let option of imageOptions; let i = index;" [value]="option">{{ option }}</option>
+                                          </select>
+                                      </div>
+                              </div>
+                        </div> -->
                 </form>
             </div>
         </div>

@@ -19,8 +19,14 @@ export class AddQuestionsComponent implements OnInit {
   subjectPartsData:any;
   chaptersData:any;
   options: string[] = ['A', 'B', 'C', 'D']; // Array to hold options dynamically
+  imageOptions: string[] = ['A', 'B', 'C', 'D']; // Array to hold options images dynamically
 
   changedAnsKey : any;
+
+
+  questionImage: File | null = null;
+  optionImages: { [key: string]: File | null } = {};
+
 
   constructor(private _formBuilder: FormBuilder, private _addQuestionsService: AddQuestionsService, private _toastr: ToastrService){}
 
@@ -32,10 +38,15 @@ export class AddQuestionsComponent implements OnInit {
     partName: ['', Validators.required],
     chapterName: ['', Validators.required],
     enterQuestion: ['', Validators.required],
+    questionImage: [''],
     optiona: ['', Validators.required],
+    imagea: [''],
     optionb: ['', Validators.required],
+    imageb: [''],
     optionc: ['', Validators.required],
+    imagec: [''],
     optiond: ['', Validators.required],
+    imaged: [''],
     correctAns: ['', Validators.required],
     })
 
@@ -48,14 +59,6 @@ export class AddQuestionsComponent implements OnInit {
     })
   }
 
-// selectedBoard(board:any){
-// const board_id = board.target.value;
-// if (board_id) {
-//   this._addQuestionsService.getClasses(board_id).subscribe((classeData:any)=>{
-//     this.classData = classeData.allClasses;
-//   })
-// }
-// }
 selectedBoard(board:any){
 const board_id = board.target.value;
 if (board_id) {
@@ -123,9 +126,17 @@ updateOptions() {
     this.addQuestionsFrom.value.optionc,
     this.addQuestionsFrom.value.optiond
   ];
+  const optionValues = [
+    { value: this.addQuestionsFrom.value.imagea, label: 'Image A' },
+    { value: this.addQuestionsFrom.value.imageb, label: 'Image B' },
+    { value: this.addQuestionsFrom.value.imagec, label: 'Image C' },
+    { value: this.addQuestionsFrom.value.imaged, label: 'Image D' }
+  ];
+  this.imageOptions = optionValues.map(option => option.value ? option.label + ' (' + (option.value ? option.value.name : 'No file selected') + ')' : '');
 }
 
   addQuestion(){
+    
     this.changedAnsKey =this.options.indexOf(this.addQuestionsFrom.value.correctAns.toLowerCase()) + 1;
     if (this.changedAnsKey == 1) {
       this.changedAnsKey  = 'a'
@@ -138,10 +149,15 @@ updateOptions() {
     }
     const questionData = {
       question: this.addQuestionsFrom.value.enterQuestion,
+      questionImage: this.addQuestionsFrom.value.questionImage,
       optiona: this.addQuestionsFrom.value.optiona,
+      imagea: this.addQuestionsFrom.value.imagea,
       optionb: this.addQuestionsFrom.value.optionb,
+      imageb: this.addQuestionsFrom.value.imageb,
       optionc: this.addQuestionsFrom.value.optionc,
+      imagec: this.addQuestionsFrom.value.imagec,
       optiond: this.addQuestionsFrom.value.optiond,
+      imaged: this.addQuestionsFrom.value.imaged,
       subject_id: this.addQuestionsFrom.value.subjectName,
       chapter_id: this.addQuestionsFrom.value.chapterName,
       part_id: this.addQuestionsFrom.value.partName,
@@ -165,9 +181,26 @@ updateOptions() {
     optiond: '',
     correctAns: ''
   });
-
-
   }
+
+  onQuestionImageChange(event: any) {
+    this.questionImage = event.target.files[0];
+    console.log('onQuestionImageChanged----', this.questionImage);
+    
+  }
+
+  onOptionImageChange(option: string, event: any) {
+    const file = event.target.files[0];
+    console.log('Received file:', file);
+    if (file) {
+      this.optionImages[option] = file;
+      console.log('onOptionImageChange----', this.optionImages[option]);
+      this.updateOptions(); // Update options after selecting a file
+    }
+  }
+  
+  
+
 
   resetAddQuestionForm(){
     this.addQuestionsFrom.reset();
