@@ -18,11 +18,11 @@ export class RegisterService {
   }
  
   getBoard(){
-    return this._http.get<Response>(this.baseUrl + `getQuestion`);
+    return this._http.get<Response>(this.baseUrl + `getboards`);
   }
 
   getclassData(board_id:any){
-    return this._http.get<Response>(this.baseUrl + `getQuestion/?board_id=${board_id}`);
+    return this._http.get<Response>(this.baseUrl + `getboards/?board_id=${board_id}`);
   }
 
   registerUser(user:any){
