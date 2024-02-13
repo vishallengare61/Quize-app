@@ -21,6 +21,9 @@ import { AddSubjectsComponent } from './Admin/add-subjects/add-subjects.componen
 import { AddSubjectsPartComponent } from './Admin/add-subjects-part/add-subjects-part.component';
 import { AddChaptersComponent } from './Admin/add-chapters/add-chapters.component';
 import { StudentDetailsComponent } from './Admin/student-details/student-details.component';
+import { QuizeReportComponent } from './quize-report/quize-report.component';
+import { ExamDetailsComponent } from './exam-details/exam-details.component';
+
 
 // Define routes for the Exam Module
 const routes: Routes = [
@@ -38,6 +41,8 @@ const routes: Routes = [
     { path: 'add-subject-part', component: AddSubjectsPartComponent},
     { path: 'add-chapter', component: AddChaptersComponent},
     { path: 'student-details', component: StudentDetailsComponent},
+    { path: 'quize_report/:quizeId', component: QuizeReportComponent},
+    { path: 'examDetails/:quizeId', component: ExamDetailsComponent},
   ]
 }, 
 { path: '**', component: PageNotFoundComponent },
@@ -56,7 +61,9 @@ const routes: Routes = [
    AddSubjectsComponent,
    AddSubjectsPartComponent,
     AddChaptersComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    QuizeReportComponent,
+    ExamDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +71,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     AppRoutingModule,
-    HighchartsChartModule
+    HighchartsChartModule,
   
   ],
 })

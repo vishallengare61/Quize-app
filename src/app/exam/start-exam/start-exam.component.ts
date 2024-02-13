@@ -217,48 +217,7 @@ export class StartExamComponent implements OnInit {
     // console.log('Visited but not Answered Questions:', this.visitedNotAnsweredQuestions);
   }
 
-  // selectMCQ(event: any, optionIndex: any) {
-  //   const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
-  //   const questionId = this.questions[this.currentQuestion].id;
-  //   const timestamp = Date.now(); 
-  
-    
-  //   const startTime = this.questionStartTime ? this.questionStartTime.getTime() : 0;
-  //   const timeTakenInSeconds = Math.floor((timestamp - startTime) / 1000);
-  
-   
-  //   const timeTakenMinutes = Math.floor(timeTakenInSeconds / 60);
-  //   const timeTakenSeconds = timeTakenInSeconds % 60;
-  
-    
-  //   this.selectedOptionsMap[questionId] = optionIndex;
-  //   const existingAnswerIndex = this.answeredQuestions.findIndex(
-  //     (q) => q.questionId === questionId
-  //   );
-  
-  //   if (existingAnswerIndex !== -1) {
-  //     this.answeredQuestions[existingAnswerIndex].answer = selectedAnswer;
-  //     this.answeredQuestions[existingAnswerIndex].selectedOptionId = optionIndex;
-  //     this.answeredQuestions[existingAnswerIndex].timestamp = timestamp;
-  //     this.answeredQuestions[existingAnswerIndex].timeTaken = {
-  //       minutes: timeTakenMinutes,
-  //       seconds: timeTakenSeconds,
-  //     };
-  //   } else {
-  //     this.answeredQuestions.push({
-  //       questionId,
-  //       answer: selectedAnswer,
-  //       selectedOptionId: optionIndex,
-  //       timestamp,
-  //       timeTaken: {
-  //         minutes: timeTakenMinutes,
-  //         seconds: timeTakenSeconds,
-  //       },
-  //     });
-  //   }
-  
-  //   console.log('question and answer------', this.answeredQuestions);
-  // }
+
   
   selectMCQ(event: any, optionIndex: any) {
     const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
@@ -346,9 +305,11 @@ export class StartExamComponent implements OnInit {
       const selectedOption = answer
         ? this.getOptionLetter(answer.selectedOptionId)
         : '';
+        const timeTaken = answer ? answer.timeTaken : 0;
       selected_by_user.push({
         id: question.id,
         selected_answer: selectedOption,
+        timeTaken: timeTaken, 
       });
       return {
         id: question.id,
