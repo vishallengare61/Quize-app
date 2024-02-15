@@ -128,6 +128,13 @@ export class LoginService {
   getQuestions(name: any, chapter_id: any, class_id: any) {
     return this.getTokenAndCallApi(`${this.baseUrl}getQuestion/?name=${name}&chapter_id=${chapter_id}&class_ki_id=${class_id}`, 'GET');
   }
+  // getMixQuestions(part_id: any, q_count: any) {
+  //   return this.getTokenAndCallApi(`${this.baseUrl}getQuestion/?name=${part_id}&chapter_id=${q_count}`, 'GET');
+  // }
+
+  getMixQuestions(model:any) {
+    return this.getTokenAndCallApi(`${this.baseUrl}createstagequiz`, 'POST',model);
+  }
 
   getResult(model: any) {
     return this.getTokenAndCallApi(`${this.baseUrl}result`, 'POST', model);

@@ -37,6 +37,10 @@
                       <a class="nav-link active" (click)="getPartsID(part?.id, part?.name)" id="home-{{i}}-tab"
                         data-toggle="tab" aria-selected="true">{{part?.name}}</a>
                     </li>
+                    <li class="nav-item" *ngIf="partsLength">
+                      <a class="nav-link active" (click)="getMixPartsTest()" id="home" data-toggle="modal"
+                         aria-selected="true" data-target=".subjectMixTest-modal">Take Mix Test</a>
+                    </li>
                   </ul>
                   <a id="slideRight" class="ml-2 d-flex align-items-center" href="javascript:void(0)"
                     (click)="slideRight()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
@@ -44,6 +48,22 @@
                 <br>
                 <hr style="background-color: black;">
                 <div class="panel-body mt-4" *ngIf="subjectPartsVailable">
+                  <div class="card newChapterCard" id="newChapterCard">
+                    <div class="row">
+                      <div class="col-xl-1">
+                        <div class="numbering"> 0 </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="chapterTitle">
+                          <h2>Take Mix Test of {{parts_name | uppercase}}</h2>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-6">
+                        <button type="button" data-toggle="modal" data-target=".selectNumberOfQuestions-modal"
+                          (click)="TakeMixChapterTest()" class="btn btnStartNewCard">Start</button>
+                      </div>
+                    </div>
+                  </div>
                   <div class="card newChapterCard" *ngFor="let chapter of chaptersData; let i = index" [ngClass]="{
                                   'belowTwenty': chapter?.percentage <= 30,
                                   'belowFifty': chapter?.percentage > 30 && chapter?.percentage <= 70 ,
@@ -127,5 +147,74 @@
       </div>
     </div>
   </div>
+
+  <div class="modal reportModal fade selectNumberOfQuestions-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog   modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title">Number of <span>Questions</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="selectDiiffTitle">
+            <label class="diffTitle" for="exampleInputPassword1">Select Number Of Questions</label>
+          </div>
+          <div class="btn-groupp">
+            <input type="radio" id="option1" name="questionCount1" class="btn-select" value="25" [(ngModel)]="selectedCount" #option1>
+            <label for="option1" class="buttonLabel">25</label>
+            <input type="radio" id="option2" name="questionCount1" class="btn-select" value="40" [(ngModel)]="selectedCount" #option2>
+            <label for="option2" class="buttonLabel">40</label>
+            <input type="radio" id="option3" name="questionCount1" class="btn-select" value="50" [(ngModel)]="selectedCount" #option3>
+            <label for="option3" class="buttonLabel">50</label>
+            <input type="radio" id="option4" name="questionCount1" class="btn-select" value="80" [(ngModel)]="selectedCount" #option4>
+            <label for="option4" class="buttonLabel">80</label>
+          </div>
+        </div>
+        <div class="btnChooseDiff">
+          <button type="button" (click)="TakeMixTest()" class="btn btnReport mt-1" data-dismiss="modal">START</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="modal reportModal fade subjectMixTest-modal" tabindex="-1" role="dialog" aria-labelledby="myMixModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog   modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title">Select Count Of<span>Questions</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="selectDiiffTitle">
+            <label class="diffTitle" for="exampleInputPassword1">Select Number Of Questions</label>
+          </div>
+          <div class="btn-groupp">
+            <input type="radio" id="option11" name="questionCount" class="btn-select" value="25" [(ngModel)]="selectedCount2" #option11>
+            <label for="option11" class="buttonLabel">25</label>
+            <input type="radio" id="option21" name="questionCount" class="btn-select" value="50" [(ngModel)]="selectedCount2" #option21>
+            <label for="option21" class="buttonLabel">50</label>
+            <input type="radio" id="option31" name="questionCount" class="btn-select" value="75" [(ngModel)]="selectedCount2" #option31>
+            <label for="option31" class="buttonLabel">75</label>
+            <input type="radio" id="option41" name="questionCount" class="btn-select" value="100" [(ngModel)]="selectedCount2" #option41>
+            <label for="option41" class="buttonLabel">100</label>
+          </div>
+        </div>
+        <div class="btnChooseDiff">
+          <button type="button" (click)="TakeSubjectMixTest()" class="btn btnReport mt-1" data-dismiss="modal">START</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
 
 </div>

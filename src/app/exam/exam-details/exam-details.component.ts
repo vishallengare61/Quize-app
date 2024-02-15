@@ -53,8 +53,6 @@ export class ExamDetailsComponent implements OnInit {
     this._historyService.getQuizeHistory(this.quizePoolId).subscribe( (apiResponse: any) => {
       this.showLoader = false;
       this.quizPoolId = apiResponse.quizPoolId;
-      
-      console.log('getting the quizPoolId ------------', apiResponse);
       this.questions = apiResponse.questionDetails || [];
       this.totalAnswersCount = this.questions.filter(q => q.selected_answer !== "#").length;
       this.totalSkipped = this.questions.filter(q => q.selected_answer == "#").length;

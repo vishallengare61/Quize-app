@@ -8,7 +8,7 @@
             <div class="row">
                 <ng-container *ngFor="let subject of subjects">
                 <div class="col-lg-3 col-md-4 col-sm-6" style="width: 300px;">
-                    <div class="card" (click)="selectCourse(subject.id,subject.name)">
+                    <div class="card" (click)="selectCourse(subject.id, subject.name)">
                         <h5 class="text-center">{{subject.name | uppercase}}</h5>
                     </div>
                 </div>

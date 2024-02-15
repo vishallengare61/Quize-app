@@ -53,7 +53,8 @@ export class StartExamComponent implements OnInit {
   setIntervalRef: any;
   localStorageClassID:any;
   class_id: any;
-
+  part_id: any;
+  q_count: any;
    start_time: any;
    end_time: any;
    quizPoolId: any;
@@ -61,51 +62,146 @@ export class StartExamComponent implements OnInit {
   ngOnInit() {
     this.start_time = Math.floor(Date.now() / 1000);
     const localStorageUser = localStorage.getItem('user');
+    this.part_id = localStorage.getItem('parts_id');
     if (localStorageUser !== null) {
       this.localStorageClassID = JSON.parse(localStorageUser);
       this.class_id = this.localStorageClassID.user.class_id[0];
       // console.log('User data in localStorage user data.----', this.localStorageClassID.user.class_id[0]);
     }
-
     this.findCurrentQuestion();
     this.findAnsweredQuestions();
     this.findNotAttemptedQuestions();
     this.findAnsweredQuestionValues();
     this.findVisitedNotAnsweredQuestions();
     this.subjectName = this._route.snapshot.paramMap.get('s_name');
+    console.log('getting the subject ID--------------------------------', this.subjectName);
     this.chapter_id = this._route.snapshot.paramMap.get('chapter_id');
-    this._loginService .getQuestions(this.subjectName, this.chapter_id, this.class_id) .subscribe( (apiResponse: any) => {
-          this.showLoader = false;
-          this.quizPoolId = apiResponse.quizPoolId;
-          // console.log('getting the quizPoolId ------------', apiResponse.quizPoolId);
-          if ( apiResponse.status && apiResponse.all_question && Array.isArray(apiResponse.all_question) ) {
-            this.questions = apiResponse.all_question.map(
-              (apiQuestion: any) => {
-                return { id: apiQuestion.id, question: apiQuestion.question,
-                  options: [
-                    apiQuestion.optiona,
-                    apiQuestion.optionb,
-                    apiQuestion.optionc,
-                    apiQuestion.optiond,
-                  ],
-                  // correctAnswer: // Your logic to map the correct answer based on the API response,
-                };
-              }
-            );
-          } else {
-            console.error('API response is not as expected:', apiResponse);
-          }
-        },
-        (error) => {},
-        () => {}
-      );
-    for (const answeredQuestion of this.answeredQuestions) {
-      this.selectedOptionsMap[answeredQuestion.questionId] =
-        answeredQuestion.selectedOptionId;
+    this.q_count = this._route.snapshot.paramMap.get('q_count');
+ 
+    if (this.chapter_id === 'chapterMixTest') {
+      this.partsMixTest();
+    }else if(this.chapter_id === 'SubjectMixTest'){
+      this.subjectMixTest();
+    }else{
+      this.regularChapterTest();
     }
-    this.calculateRemainingTime();
+
+    // this.chapterWiseTest();
+    // this.partsMixtTest();
   }
   
+  regularChapterTest(){
+    console.log('RegularchapterTest is colling');
+    this._loginService.getQuestions(this.subjectName, this.chapter_id, this.class_id) .subscribe( (apiResponse: any) => {
+      this.showLoader = false;
+      this.quizPoolId = apiResponse.quizPoolId;
+      // console.log('getting the quizPoolId ------------', apiResponse.quizPoolId);
+      console.log('chapterwise  question.s ------------', apiResponse);
+      if ( apiResponse.status && apiResponse.all_question && Array.isArray(apiResponse.all_question) ) {
+        this.questions = apiResponse.all_question.map(
+          (apiQuestion: any) => {
+            return { id: apiQuestion.id, question: apiQuestion.question,
+              options: [
+                apiQuestion.optiona,
+                apiQuestion.optionb,
+                apiQuestion.optionc,
+                apiQuestion.optiond,
+              ],
+              // correctAnswer: // Your logic to map the correct answer based on the API response,
+            };
+          }
+        );
+      } else {
+        console.error('API response is not as expected:', apiResponse);
+      }
+    },
+    (error) => {},
+    () => {}
+  );
+
+for (const answeredQuestion of this.answeredQuestions) {
+  this.selectedOptionsMap[answeredQuestion.questionId] =
+    answeredQuestion.selectedOptionId;
+}
+this.calculateRemainingTime();
+
+ }
+
+ partsMixTest(){
+  console.log('partsMixtTest is colling');
+  
+  const modal = {part_id: parseInt(this.part_id), no_of_question: parseInt(this.q_count)};
+
+  this._loginService.getMixQuestions(modal).subscribe( (apiResponse: any) => {
+    this.showLoader = false;
+    this.quizPoolId = apiResponse.quizPoolId;
+    console.log('Mix question.s ------------', apiResponse);
+
+    if (apiResponse.all_question && Array.isArray(apiResponse.all_question) ) {
+      this.questions = apiResponse.all_question.map(
+        (apiQuestion: any) => {
+          return { id: apiQuestion.id, question: apiQuestion.question,
+            options: [
+              apiQuestion.optiona,
+              apiQuestion.optionb,
+              apiQuestion.optionc,
+              apiQuestion.optiond,
+            ],
+            // correctAnswer: // Your logic to map the correct answer based on the API response,
+          };
+        }
+      );
+    } else {
+      console.error('API response is not as expected:', apiResponse);
+    }
+  },
+  (error) => {},
+  () => {}
+);
+
+for (const answeredQuestion of this.answeredQuestions) {
+this.selectedOptionsMap[answeredQuestion.questionId] =
+  answeredQuestion.selectedOptionId;
+}
+this.calculateRemainingTime();
+ }
+
+ subjectMixTest(){  
+  //here in subject Name for these method only we are getting the subject ID.
+  const modal = {subject_id: parseInt(this.subjectName), no_of_question: parseInt(this.q_count)};
+
+  this._loginService.getMixQuestions(modal).subscribe( (apiResponse: any) => {
+    this.showLoader = false;
+    this.quizPoolId = apiResponse.quizPoolId;
+    if (apiResponse.all_question && Array.isArray(apiResponse.all_question) ) {
+      this.questions = apiResponse.all_question.map(
+        (apiQuestion: any) => {
+          return { id: apiQuestion.id, question: apiQuestion.question,
+            options: [
+              apiQuestion.optiona,
+              apiQuestion.optionb,
+              apiQuestion.optionc,
+              apiQuestion.optiond,
+            ],
+            // correctAnswer: // Your logic to map the correct answer based on the API response,
+          };
+        }
+      );
+    } else {
+      console.error('API response is not as expected:', apiResponse);
+    }
+  },
+  (error) => {},
+  () => {}
+);
+
+for (const answeredQuestion of this.answeredQuestions) {
+this.selectedOptionsMap[answeredQuestion.questionId] =
+  answeredQuestion.selectedOptionId;
+}
+this.calculateRemainingTime();
+ }
+
   ngOnDestroy() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
@@ -157,7 +253,6 @@ export class StartExamComponent implements OnInit {
     );
   }
   currentQuestion = 0;
-
   notAttemptedQuestions: any;
   answeredQuestionValues: any;
   visitedNotAnsweredQuestions: any;
@@ -168,7 +263,6 @@ export class StartExamComponent implements OnInit {
     const question = this.questions[currentQuestion];
   }
   
-
   // Find Answered Questions
   findAnsweredQuestions() {
     const answeredQuestions = this.answeredQuestions.map((answer) => {
@@ -179,7 +273,6 @@ export class StartExamComponent implements OnInit {
     });
     // console.log('Answered Questions:', answeredQuestions);
   }
-
   findAnsweredQuestionValues() {
     this.answeredQuestionValues = this.answeredQuestions.map((answer) => {
       return {
@@ -190,7 +283,6 @@ export class StartExamComponent implements OnInit {
     });
     // console.log('Answered Questions Values:', this.answeredQuestionValues);
   }
-
   // Find Not Attempted Questions
   findNotAttemptedQuestions() {
     this.notAttemptedQuestions = this.questions.filter((question: any) => {
@@ -200,7 +292,6 @@ export class StartExamComponent implements OnInit {
     });
     // console.log('not attempted questions --',this.notAttemptedQuestions);
   }
-
   findVisitedNotAnsweredQuestions() {
     this.visitedNotAnsweredQuestions = this.questions.filter(
       (question: any) => {
@@ -216,9 +307,6 @@ export class StartExamComponent implements OnInit {
     );
     // console.log('Visited but not Answered Questions:', this.visitedNotAnsweredQuestions);
   }
-
-
-  
   selectMCQ(event: any, optionIndex: any) {
     const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
     const questionId = this.questions[this.currentQuestion].id;
@@ -251,8 +339,6 @@ export class StartExamComponent implements OnInit {
   
     console.log('question and answer------', this.answeredQuestions);
   }
-  
-
   nextQuestion() {
     if (this.currentQuestion < this.questions.length - 1) {
       this.currentQuestion++;
@@ -271,17 +357,14 @@ export class StartExamComponent implements OnInit {
     this.findAnsweredQuestionValues();
     this.findVisitedNotAnsweredQuestions();
   }
-
   previousQuestion() {
     if (this.currentQuestion > 0) {
       this.currentQuestion--;
     }
   }
-
   jumpToQuestion(questionIndex: any) {
     this.currentQuestion = questionIndex;
   }
-
   completeTest() {
     this.end_time = Math.floor(Date.now() / 1000);
     if (this.setIntervalRef) {
@@ -324,12 +407,10 @@ export class StartExamComponent implements OnInit {
         this._router.navigate([`/report`]);
       });
   }
-
   getOptionLetter(index: number | undefined): string {
     const optionLetters = ['a', 'b', 'c', 'd'];
     return index !== undefined ? optionLetters[index] : '';
   }
-
   get progressPercentage() {
     const cQuestion = this.answeredQuestionValues.length;
     const percentage = (cQuestion / this.questions.length) * 100;

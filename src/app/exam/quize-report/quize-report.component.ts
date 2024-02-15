@@ -82,41 +82,8 @@ export class QuizeReportComponent implements OnInit  {
     this.initGraphb();
     this.initGraphc();
     this.resultPrediction = this.percentValue.toFixed( 2 );
-
-    // this.highchartsInitialize();
 }
 
-
-// highchartsInitialize() {
-//   this._historyService.getQuizeResult(this.quizePoolId).subscribe((result: any) => {
-//     this.allResultData = result.data;
-
-//     if (this.allResultData) {
-//       this.correctAnswer = this.allResultData.correctAnswers;
-//       this.totalMarks = this.allResultData.totalMarks;
-//       this.totalQuestion = this.allResultData.totalQuestions;
-//       this.unattempts = this.allResultData.unattempts;
-//       this.wrongAnswer = this.allResultData.wrongAnswer;
-//       this.totalTimeSpentForExam = this.allResultData.timeConsumed;
-//     }
-
-//     this.UserScore = this.correctAnswer;
-//     this.skippedScore = this.unattempts;
-//     this.wrongScore = this.wrongAnswer;
-//     this.percentValue = (this.correctAnswer / this.totalQuestion) * 100;
-//     this.skippedPerc = (this.unattempts / this.totalQuestion) * 100;
-//     this.incorrectPerc = (this.wrongAnswer / this.totalQuestion) * 100;
-
-//     this.graphInitilize(); // Move chart initialization here
-//   });
-// }
-
-// graphInitilize(){
-//   this.initGraph();
-//   this.initGraphb();
-//   this.initGraphc();
-//   this.resultPrediction = this.percentValue.toFixed( 2 );
-// }
 initGraph() {
   this.chartOptions = {
     chart: {
