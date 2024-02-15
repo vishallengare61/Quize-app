@@ -102,6 +102,16 @@ export class ExamDetailsComponent implements OnInit {
       }
     });
   }
+
+  
+  isCorrect(questionIndex:any){
+    return this.questions[questionIndex].answerkey === this.questions[questionIndex].selected_answer;
+  }
+  isInCorrect(questionIndex:any){
+    return this.questions[questionIndex].answerkey !== this.questions[questionIndex].selected_answer;
+  }
+
+
   isQuestionAnswered(questionIndex: number): boolean {
     return this.answeredQuestions.some(
       (answer) => answer.questionId === this.questions[questionIndex].id
@@ -146,23 +156,14 @@ export class ExamDetailsComponent implements OnInit {
     return index !== undefined ? optionLetters[index] : '';
   }
 
+
   isCorrectAnswer(optionIndex: number): boolean {
-    const currentQuestion = this.questions[this.currentQuestion];
-    if (currentQuestion.selected_answer === "#") {
-      return false; // Return false if the question is skipped
-    }
-    return currentQuestion.answerkey === String.fromCharCode(97 + optionIndex);
+    return this.questions[this.currentQuestion].answerkey === String.fromCharCode(97 + optionIndex);
   }
-  
-  isQuestionSkipped(): boolean {
-    return this.questions[this.currentQuestion].selected_answer === "#";
-  }
-  
   
   getSelectedAnswer(): string {
     return this.questions[this.currentQuestion].selected_answer;
   }
-
   indexToLetter(index: number): string {
     return String.fromCharCode(97 + index);
   }

@@ -317,7 +317,7 @@ export class StartExamComponent implements OnInit {
       };
     });
     this._loginService.getResult({ selected_by_user, start_time: this.start_time, end_time:this.end_time, quizPoolId:this.quizPoolId }) .subscribe((response: any) => {
-        console.log('getting result', response.data);
+        console.log('getting result-------', response.data);
         this.UserResultData = response.data;
         localStorage.setItem('result', JSON.stringify(this.UserResultData));
         this._loginService.resultData = this.UserResultData;

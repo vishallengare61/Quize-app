@@ -503,6 +503,9 @@
 }
 
 .selected-answer {
+  background-color: orange !important;
+}
+.selected-answer2 {
   background-color: rgb(238, 53, 53) !important;
 }
 .skipped-question{
