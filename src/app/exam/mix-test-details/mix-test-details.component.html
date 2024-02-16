@@ -1,0 +1,120 @@
+<div class="disply-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-2">
+        <h2 class="text-center heading">Overall History</h2>
+        <p class="text-center headingPara">
+          Get your overall performance here with detailed reports.
+        </p>
+        <button routerLink="/dashboard" class="btn btnLeaderboard btn-sm">
+          <i class="fas fa-angle-double-left mr-1"></i>Dashboard
+        </button>
+      </div>
+      <div class="col-md-12">
+        <hr />
+      </div>
+    </div>
+
+    <div class="containerOverAllHistory" *ngIf="!spinner">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="paperPractice text-center font-weight-bold">
+            My Previous <span>Paper</span> / <span>Practice</span>
+          </h2>
+        </div>
+        <div class="col-md-12 allHistory">
+          <div class="row" *ngIf="!showLoader">
+            <div class="col-xl-4 col-lg-6" *ngFor="let item of paginatedItems; let i = index" >
+              <div class="card">
+                <div class="card-body">
+                  <div class="paperFirstRow">
+                    <div class="d-flex">
+                      <h2 style="color: rgb(251, 182, 35)">
+                        Practice {{ (currentPage - 1) * itemsPerPage + i + 1 }}
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="paperFirstRow">
+                    <div>
+                      <h3 class="examTitle">
+                        Chapter-{{ item.quiz_pool_name }}
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="paperSecondRow">
+                    <div>
+                      <h4 class="allSubjects">
+                        Subject(s) : <span>{{ item.subject }}</span>
+                      </h4>
+                    </div>
+                  </div>
+                  <div class="paperSecondRow">
+                    <div>
+                      <h4>
+                        Date : <span>{{ item.created_date }}</span>
+                      </h4>
+                    </div>
+                    <div>
+                      <h4>No of Questions : {{ item.no_of_question }}</h4>
+                    </div>
+                    <div>
+                      <h4>
+                        Time Spent :
+                        <span id="startTime">{{ item.timeTaken }} MIN</span>
+                      </h4>
+                    </div>
+                  </div>
+                  <div class="paperThirdRow">
+                    <div>
+                      <button class="btn attemptNow" (click)="examDetails(item.quizpool_id)" >
+                        Exam Details
+                      </button>
+                    </div>
+                    <div>
+                      <button class="btn reportCard" tabindex="0" (click)="reportCard(item.quizpool_id, item.quiz_pool_name)">
+                        Report Card
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="loader" *ngIf="showLoader">
+            <div class="justify-content-center jimu-primary-loading"></div>
+          </div>
+
+          <!-- Pagination -->
+          <section class="blogPageFold3 pb-3 mt-4 pt-2" *ngIf="!showLoader">
+            <div class="text-center">
+              <nav aria-label="navigation">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item" [class.disabled]="currentPage === 1">
+                    <button class="page-link btn btn-link" (click)="goToPage(1)">
+                      First
+                    </button>
+                  </li>
+                  <li class="page-item previous-item" [class.disabled]="currentPage === 1" >
+                    <button class="page-link btn btn-link" (click)="slideLeft()" >
+                      &lt;&lt;
+                    </button>
+                  </li>
+                  <li class="page-item next-item" [class.disabled]="currentPage === totalPages" >
+                    <button class="page-link btn" (click)="slideRight()">
+                      &gt;&gt;
+                    </button>
+                  </li>
+                  <li class="page-item" [class.disabled]="currentPage === totalPages" >
+                    <button class="page-link btn btn-link" (click)="goToPage(totalPages)" >
+                      Last
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

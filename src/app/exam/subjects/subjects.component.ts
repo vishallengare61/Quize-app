@@ -22,17 +22,18 @@ export class SubjectsComponent {
     if (this.parseUserData!=  null) {
       const parseData = JSON.parse(this.parseUserData);
       this.id = parseData.user.class_id[0];
-    }
-    this._loginService.getSubject(this.id).subscribe((subject: any) => {
-      console.log('getting subjects', subject);
-      if (subject) {
-        this.showLoader = false;
-        this.subjects = subject.Subjects;
-        for (let i = 0; i < this.subjects.length; i++) {
-          const subjectData = this.subjects[i];
+      this._loginService.getSubject(this.id).subscribe((subject: any) => {
+        console.log('getting subjects', subject);
+        if (subject) {
+          this.showLoader = false;
+          this.subjects = subject.Subjects;
+          for (let i = 0; i < this.subjects.length; i++) {
+            const subjectData = this.subjects[i];
+          }
         }
-      }
-    });
+      });
+    }
+   
   }
 
   selectCourse(id:any,s_name:AnalyserNode) {

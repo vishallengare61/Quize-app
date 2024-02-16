@@ -23,6 +23,7 @@ import { AddChaptersComponent } from './Admin/add-chapters/add-chapters.componen
 import { StudentDetailsComponent } from './Admin/student-details/student-details.component';
 import { QuizeReportComponent } from './quize-report/quize-report.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
+import { MixTestDetailsComponent } from './mix-test-details/mix-test-details.component';
 
 
 // Define routes for the Exam Module
@@ -43,6 +44,7 @@ const routes: Routes = [
     { path: 'student-details', component: StudentDetailsComponent},
     { path: 'quize_report/:quizeId', component: QuizeReportComponent},
     { path: 'examDetails/:quizeId', component: ExamDetailsComponent},
+    { path: 'mixTestDetails/:test_type', component: MixTestDetailsComponent},
   ]
 }, 
 { path: '**', component: PageNotFoundComponent },
@@ -64,6 +66,7 @@ const routes: Routes = [
     StudentDetailsComponent,
     QuizeReportComponent,
     ExamDetailsComponent,
+    MixTestDetailsComponent,
   ],
   imports: [
     CommonModule,

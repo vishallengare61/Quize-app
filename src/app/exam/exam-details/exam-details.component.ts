@@ -52,6 +52,7 @@ export class ExamDetailsComponent implements OnInit {
 
     this._historyService.getQuizeHistory(this.quizePoolId).subscribe( (apiResponse: any) => {
       this.showLoader = false;
+      console.log('getting quize details API respones-----', apiResponse);
       this.quizPoolId = apiResponse.quizPoolId;
       this.questions = apiResponse.questionDetails || [];
       this.totalAnswersCount = this.questions.filter(q => q.selected_answer !== "#").length;

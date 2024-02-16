@@ -1,0 +1,397 @@
+.container {
+  min-height: 100vh;
+}
+.containerOverAllHistory {
+  padding-bottom: 20px;
+}
+
+
+  .paperPractice {
+    color: #141824;
+    font-family: "Jaldi", Sans-serif;
+    font-size: 2.25em;
+    font-weight: 400;
+    line-height: 1.278em;
+    letter-spacing: 0px;
+    padding: 36px 0px 10px 0px;
+  }
+  .paperPractice span {
+    color: #007bba;
+    text-transform: uppercase;
+  }
+  
+  .subjects {
+    padding-top: 50px;
+  }
+  .subjects #slideLeft,
+  .subjects #slideRight {
+    color: #7A7B7B !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+  }
+
+  .allHistory .card {
+    border: none;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: -3px -12px 27px -13px rgb(0 0 0 / 22%);
+    min-height: 250px;
+  }
+  
+  .allHistory .card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .allHistory .card .paperFirstRow {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .allHistory .card .paperFirstRow small {
+    font-weight: bold;
+    color: #434141;
+    position: absolute;
+    right: 20px;
+  }
+  
+  .allHistory .card .paperFirstRow h2 {
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+    font-family: "jaldi", sans-serif;
+  }
+  
+  .allHistory .card .paperFirstRow h3 {
+    color: #000000;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "jaldi", sans-serif;
+    margin: 6px 0;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .allHistory .card .paperFirstRow h4 {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "jaldi", sans-serif;
+    margin: 4px 0;
+  }
+  
+  .allHistory .card .paperFirstRow h4 span {
+    color: #5a5a5a;
+    font-weight: normal;
+  }
+  
+  .allHistory .card .paperSecondRow {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .allHistory .card .paperSecondRow h4 {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "jaldi", sans-serif;
+    margin: 4px 0;
+  }
+  
+  .allHistory .card .paperSecondRow h4 span {
+    color: #5a5a5a;
+    font-weight: normal;
+  }
+  
+  .allHistory .card .paperSecondRow .allSubjects {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }  
+  .allHistory .card .paperThirdRow {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .allHistory .card .paperThirdRow .btn {
+    margin-top: 7px;
+  }
+  
+  .allHistory .card .paperThirdRow .attemptNow {
+    background: #ffffff;
+    border: 1px solid #fe9600;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.32);
+    border-radius: 5px;
+    color: #fe9600;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: "jaldi", sans-serif;
+    width: 88px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .allHistory .card .paperThirdRow .attemptNow:hover {
+    background-color: #fe9600;
+    color: #ffffff;
+  }
+  
+  .allHistory .card .paperThirdRow .reportCard {
+    background: #ffffff;
+    border: 1px solid #00c6ff;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.32);
+    border-radius: 5px;
+    color: #00c6ff;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: "jaldi", sans-serif;
+    width: 88px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .allHistory .card .paperThirdRow .reportCard:hover {
+    background-color: #00c6ff;
+    color: #ffffff;
+  }
+  
+  .btnLeaderboard {
+    padding: 0;
+    font-family: "jaldi", Sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #007bba;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  .heading {
+    color: #000000;
+    font-size: 3em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-family: "jaldi", sans-serif;
+    text-align: center;
+    padding-top: 17px;
+  }
+  
+  .heading span {
+    color: #007bba;
+    font-weight: 700;
+  }
+  
+  .headingPara {
+    text-align: center;
+    color: #5e6067;
+    font-family: "jaldi", Sans-serif;
+    font-size: 1.375em;
+    font-weight: 300;
+    line-height: 1.545em;
+    letter-spacing: 0px;
+    margin-bottom: 0;
+    margin-top: -6px;
+  }
+  
+  
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #ffffff;
+    margin: 0em 0 1em 0;
+    padding: 0;
+  }
+  
+
+  
+  @media screen and (min-width: 800px) {
+    .nav-tabs {
+      justify-content: center;
+    }
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .containerOverAllHistory .allHistory .card {
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .containerOverAllHistory .generateSpent .card h3 {
+      font-size: 21px;
+    }
+  }
+  
+  @media screen and (max-width: 760px) {
+    .containerOverAllHistory {
+      padding: 0px 10px;
+    }
+  
+    .reportSubHeading {
+      font-size: 29px;
+    }
+  
+    .paperPractice {
+      text-align: center;
+    }
+  
+    .allHistory .paperFirstRow {
+      flex-wrap: wrap;
+    }
+  
+    .allHistory .paperThirdRow {
+      flex-wrap: wrap;
+    }
+  
+    .allHistory .card {
+      margin-bottom: 20px;
+    }
+  }
+    
+  @media (min-width: 768px)
+  {
+    .col-md-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  .col-md-12 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.containerOverAllHistory .allHistory .card {
+  border: none;
+  background-color: #fff;
+   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  min-height: 250px;
+}
+.containerOverAllHistory .allHistory #card {
+  border: none;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  min-height: 250px;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: initial;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+}
+.containerOverAllHistory .allHistory .card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+.containerOverAllHistory .allHistory .card .paperFirstRow {
+  display: flex;
+  justify-content: center;
+}
+
+.containerOverAllHistory .allHistory .card .paperSecondRow {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.containerOverAllHistory .allHistory .card .paperThirdRow {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.recentsTab{
+  text-align: center;
+  margin-top: 10px;
+}
+hr{
+  border: 2px solid black;
+  margin-top: 50px !important;
+}
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.jimu-primary-loading:before,
+.jimu-primary-loading:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.jimu-primary-loading:before {
+  left: -19.992px;
+}
+.jimu-primary-loading:after {
+  left: 19.992px;
+  -webkit-animation-delay: 0.32s !important;
+  animation-delay: 0.32s !important;
+}
+.jimu-primary-loading:before,
+.jimu-primary-loading:after,
+.jimu-primary-loading {
+  background: #076fe5;
+  -webkit-animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+  animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+  width: 13.6px;
+  height: 32px;
+}
+.jimu-primary-loading {
+  text-indent: -9999em;
+  margin: auto;
+  position: absolute;
+  right: calc(50% - 6.8px);
+  top: calc(50% - 16px);
+  -webkit-animation-delay: 0.16s !important;
+  animation-delay: 0.16s !important;
+}
+@keyframes loading-keys-app-loading {
+  0%,
+  80%,
+  100% {
+    opacity: .75;
+    box-shadow: 0 0 #076fe5;
+    height: 32px;
+  }
+  40% {
+    opacity: 1;
+    box-shadow: 0 -8px #076fe5;
+    height: 40px;
+  }
+}
+/* .text-center{
+  margin-top: 150px !important;
+} */
