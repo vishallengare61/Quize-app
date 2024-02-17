@@ -17,7 +17,6 @@ export class SubjectsComponent {
 
   }
   ngOnInit(): void {
-    // this.id = localStorage.getItem('id');
     this.parseUserData = localStorage.getItem('user');
     if (this.parseUserData!=  null) {
       const parseData = JSON.parse(this.parseUserData);
@@ -33,9 +32,9 @@ export class SubjectsComponent {
         }
       });
     }
-   
   }
 
+  
   selectCourse(id:any,s_name:AnalyserNode) {
     // localStorage.setItem('subject_id', id)
     console.log('gettingChapterID', id);
