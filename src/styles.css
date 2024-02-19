@@ -17,7 +17,24 @@ margin-left: -10%;
 
 .disply-container{
     padding-left: 18%;
-    margin-top: 100px;
+    margin-top: 80px;
+    transition: all 0.4s;
+}
+
+.sub-container{
+    margin-top: 80px;
+    transition: all 0.4s;
+}
+.display-container{
+    padding-left: 18%;
+    margin-top: 80px;
+    transition: all 0.4s;
+}
+
+.sub-containerr{
+   padding-left: -18%;
+   margin-top: 80px;
+   transition: all 0.4s;
 }
 
 .errorMsg{
@@ -34,6 +51,9 @@ margin-left: -10%;
 		display: none;
 	}
     .disply-container{                           
-        padding-left: 30px !important;
+        padding-left: 0 !important;
     }
+    .display-container{
+        padding-left: 0;
+      }
 }

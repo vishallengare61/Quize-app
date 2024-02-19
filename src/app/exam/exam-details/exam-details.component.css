@@ -509,7 +509,7 @@
   background-color: rgb(238, 53, 53) !important;
 }
 .skipped-question{
-  background-color: yellow !important;
+  background-color: gray !important;
 }
 /* .incorrect-answer{
   background-color: red !important;

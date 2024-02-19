@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 import { LoginService } from 'src/Services/login.service';
 import { TryReportService } from 'src/Services/try-report.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { SideBarService } from 'src/Services/side-bar.service';
 @Component({
   selector: 'app-start-exam',
   templateUrl: './start-exam.component.html',
@@ -35,8 +36,7 @@ export class StartExamComponent implements OnInit {
   questionStartTime: Date | null = null;
 
 
-  constructor( private renderer: Renderer2, private _router: Router, private _tryReportService: TryReportService, private _loginService: LoginService, private _route: ActivatedRoute, private _toastr: ToastrService, private sanitizer: DomSanitizer
-  ) {}
+  constructor( private renderer: Renderer2, private _router: Router, private _tryReportService: TryReportService, private _loginService: LoginService, private _route: ActivatedRoute, private _toastr: ToastrService, private sanitizer: DomSanitizer, private _sideBar: SideBarService  ) {}
 
   testObj: any;
   subjectName: any;
@@ -60,6 +60,8 @@ export class StartExamComponent implements OnInit {
    quizPoolId: any;
 
   ngOnInit() {
+    this._sideBar.startExam();
+    this._sideBar.toggleSidebar();
     this.start_time = Math.floor(Date.now() / 1000);
     const localStorageUser = localStorage.getItem('user');
     this.part_id = localStorage.getItem('parts_id');

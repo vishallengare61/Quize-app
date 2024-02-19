@@ -110,6 +110,13 @@ export class ExamDetailsComponent implements OnInit {
     return this.questions[questionIndex].answerkey !== this.questions[questionIndex].selected_answer;
   }
 
+  isSkipped(questionIndex:any){
+    return this.questions[questionIndex].selected_answer === "#" && this.questions[questionIndex].answerkey !== this.questions[questionIndex].selected_answer;
+  }
+  timeSkipped(questionIndex: number){
+    const question = this.questions[questionIndex];
+    return this.questions[questionIndex].selected_answer === "#" && this.questions[questionIndex].answerkey !== this.questions[questionIndex].selected_answer;
+  }
 
   isQuestionAnswered(questionIndex: number): boolean {
     return this.answeredQuestions.some(

@@ -1,4 +1,4 @@
-<div class="disply-container">
+<div class="displyy-container">
     <div class="practicePaperSecondSection mathjax" #mathjax>
       <div class="container">
         <div class="row practiceExamScreen">
@@ -19,7 +19,12 @@
                     <div class="text-black">
                       <div class="mt-2">
                         <ng-container *ngFor="let item of questions; let i = index">
-                          <div class="timeConsumed" *ngIf="i === currentQuestion" style="float: right;"><p>Time Consumed- {{questions[currentQuestion]?.timeConsumed}} Sec</p></div> 
+                          <div class="timeConsumed" *ngIf="i === currentQuestion && !timeSkipped(i)" style="float: right;">
+                            <p>Time Consumed- {{questions[currentQuestion]?.timeConsumed}} Sec</p>
+                          </div> 
+                          <div class="timeConsumed" *ngIf="i === currentQuestion && timeSkipped(i)" style="float: right;">
+                            <p style="color: red; font-weight: 600;">These Question was Skipped</p>
+                          </div> 
                           <div style="display: inline-block;" *ngIf="i === currentQuestion" class="font-sm-1 mb-1 comprehension-question"
                             [innerHtml]="questions[currentQuestion]?.question"></div>
                         </ng-container>
@@ -34,7 +39,7 @@
                             <div class="d-flex">
                               <label class="labl">
                                 <input type="radio" name="option" id="{{ option['id'] }}"  disabled/>
-                               <div [ngClass]="(getSelectedAnswer() === indexToLetter(optionIndex) ? 'selected-answer' : '') + ' ' + (isCorrectAnswer(optionIndex) ? 'correct-answer' : '') + ' ' + (isInCorrect(optionIndex) ? 'incorrect-answer' : '')">
+                               <div [ngClass]="(getSelectedAnswer() === indexToLetter(optionIndex) ? 'selected-answer' : '') + ' ' + (isCorrectAnswer(optionIndex) ? 'correct-answer' : '') + ' ' + (timeSkipped(optionIndex) ? 'incorrect-answer' : '')">
                                   <span class="font-weight-bold font-sm-1 optionNumbering">{{ indexToLetter(optionIndex) }}</span>
                                   <span class="ml-3 option-text font-sm-1" [innerHtml]="option"></span>
                                 </div>
@@ -87,9 +92,12 @@
                     <!-- <div class="circle" [ngClass]="{'answeredQuestion': isCorrect(i),'selected-answer: isInCorrect(i)}">
                       {{ i + 1 }}'
                     </div> -->
-                    <div class="circle"  [ngClass]="(isCorrect(i) ? 'answeredQuestion' : '') + ' ' + (isInCorrect(i) ? 'selected-answer2' : '')">
-                      {{ i + 1 }}
+                    <div class="circle" [ngClass]="(isCorrect(i) ? 'answeredQuestion' : '') + ' ' + 
+                       (isInCorrect(i) ? 'selected-answer2' : '') + ' ' +
+                       (isSkipped(i) ? 'skipped-question' : '')">
+                         {{ i + 1 }}
                     </div>
+
                   </div>
                 </div>
               </div>
