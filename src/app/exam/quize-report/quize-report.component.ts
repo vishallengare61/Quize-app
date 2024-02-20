@@ -57,7 +57,7 @@ export class QuizeReportComponent implements OnInit  {
 
     // this.totalTimeSpentForExam = localStorage.getItem('totalTimeSpentForExam');
     this.allResultData = localStorage.getItem('result');
-    console.log('getting the localstorage data', this.allResultData);
+    // console.log('getting the localstorage data', this.allResultData);
     
     if (this.allResultData!=null) {
       const paresedData = JSON.parse(this.allResultData);
