@@ -27,7 +27,7 @@ export class LoginService {
     // this.initializeToken();
   }
 
-  private createHeaders(): HttpHeaders {
+   createHeaders(): HttpHeaders {
     if (!this.token) {
       throw new Error('Token is not available');
     }

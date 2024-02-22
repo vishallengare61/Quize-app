@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as Highcharts from 'highcharts';
+// import * as Highcharts from 'highcharts';
+import * as Highcharts from 'highcharts/highcharts.src';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { LoginService } from 'src/Services/login.service';
@@ -42,23 +43,14 @@ export class QuizeReportComponent implements OnInit  {
   quize_date: any;
   resultPrediction: any;
   quizePoolId: any;
+  attemptNumber: boolean = false;
+  
   constructor(private _router: Router, private _route : ActivatedRoute, private _loginService:LoginService, private _tryService: TryReportService, private _historyService: StudentHistoryService){
 
   }
   ngOnInit(): void {
     this.quizePoolId = this._route.snapshot.paramMap.get('quizeId');  
-    
-//     this._historyService.getQuizeResult(this.quizePoolId).subscribe((result: any) => {
-//           this.allResultData = result.data;
-//           console.log('getting the API response',this.allResultData);
-          
-  
-// });
-
-    // this.totalTimeSpentForExam = localStorage.getItem('totalTimeSpentForExam');
     this.allResultData = localStorage.getItem('result');
-    // console.log('getting the localstorage data', this.allResultData);
-    
     if (this.allResultData!=null) {
       const paresedData = JSON.parse(this.allResultData);
       this.correctAnswer = paresedData.correctAnswers;
@@ -124,6 +116,7 @@ initGraph() {
       }]
     }],
   };
+
 }
 
 initGraphb() {
@@ -169,6 +162,7 @@ initGraphb() {
     }],
   };
 }
+
 initGraphc() {
 this.chartOptionsc = {   
    chart: {

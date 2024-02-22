@@ -33,6 +33,7 @@
                       <ng-container *ngFor="let item of questions; let i = index">
                         <p *ngIf="i === currentQuestion" class="font-sm-1 mb-1 comprehension-question"
                           [innerHtml]="questions[currentQuestion]?.question"></p>
+                          <!-- <img *ngIf="questions[currentQuestion]?.questionImageUrl" [src]="questions[currentQuestion]?.questionImageUrl" alt="Question Image"> -->
                       </ng-container>
                     </div>
                   </div>
@@ -47,8 +48,11 @@
                             <label class="labl">
                               <input type="radio" name="option" id="{{ option['id'] }}" [checked]="optionIndex === selectedOptionIndex" (click)="selectMCQ($event, optionIndex)"/>
                               <div [ngClass]="{'selected-option':optionIndex===selectedOptionsMap[questions[currentQuestion]?.id]}">
-                                <span class="font-weight-bold font-sm-1 optionNumbering">{{ optionIndex + 1 }}</span>
+                                <span class="font-weight-bold font
+                                -sm-1 optionNumbering">{{ optionIndex + 1 }}</span>
+
                                 <span class="ml-3 option-text font-sm-1" [innerHtml]="option"></span>
+                                <!-- <img *ngIf="option.optionImageUrl" [src]="option.optionImageUrl" alt="Option Image"> -->
                               </div>
                             </label>
                           </div>

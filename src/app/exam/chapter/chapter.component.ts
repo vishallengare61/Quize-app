@@ -19,7 +19,7 @@ currentQuestionIndex: number = 0;
 
 @ViewChild('closeModald') closeModald!: ElementRef;
 chooseSubjectsFlag: boolean = true;
-difficulty: number = 5;
+difficulty: number = 0;
 totalusers!:any;
 abcd:boolean = true;
 efgh:boolean = false;
@@ -28,6 +28,11 @@ ifanydifficulty: boolean = false;
 unSelectPart:boolean = true;
 selectedCount: number = 25;
 selectedCount2: number = 25;
+
+//try to set the deficulty level.
+
+// difficulty: number = 0;
+// difficulty: number = 1;
 
 @ViewChild("myckeditor", {static: false}) ckeditor: any;
 @ViewChild('widgetsContent') widgetsContent!: ElementRef;
@@ -51,8 +56,8 @@ parts_name:any;
     this.id = localStorage.getItem('id');
     this.name = this._route.snapshot.paramMap.get('s_name'); 
     this.subject_id = this._route.snapshot.paramMap.get('id');  // subject_id
-    console.log('geting subject name', this.name)
-    console.log('geting subject id', this.subject_id)
+    // console.log('geting subject name', this.name)
+    // console.log('geting subject id', this.subject_id)
     this._loginService.getSubjectParts(this.subject_id, this.name).subscribe((subjectPart:any)=>{
       if (subjectPart) {
         this.showLoader = false;
@@ -69,7 +74,7 @@ parts_name:any;
   }
 
 getPartsID(id:number, name:any){
-  console.log('getPartsID and Name', id, name);
+  // console.log('getPartsID and Name', id, name);
   this.parts_id = id;
   localStorage.setItem('parts_id', this.parts_id);
   this.parts_name = name;
@@ -138,20 +143,30 @@ saveChapterId(id:any){
   // @ViewChild('myModal') myModal!: ModalDirective;
 
   submitFilterForm(){
-    this._router.navigate([`/start-Exam/${this.name}/${this.selectedChapterid}/${this.selectedCount}`]);
+    this._router.navigate([`/start-Exam/${this.name}/${this.selectedChapterid}/${this.selectedCount}/${this.difficulty}`]);
   }
 
   TakeMixTest(){
     const mixTest = 'chapterMixTest'
-    console.log('Selected Value:', this.selectedCount);
-    this._router.navigate([`/start-Exam/${this.name}/${mixTest}/${this.selectedCount}`]);
+    console.log('Selected Value:', this.difficulty);
+    this._router.navigate([`/start-Exam/${this.name}/${mixTest}/${this.selectedCount}/${this.difficulty}`]);
   }
   TakeSubjectMixTest(){
     const mixTest = 'SubjectMixTest'
-    console.log('Selected Value:', this.selectedCount2);
-    this._router.navigate([`/start-Exam/${this.subject_id}/${mixTest}/${this.selectedCount2}`]);
+    const diff_level = this.difficulty;
+    // console.log('Selected Value:', this.selectedCount2);
+    this._router.navigate([`/start-Exam/${this.subject_id}/${mixTest}/${this.selectedCount2}/${this.difficulty}`]);
   }
 
+  //if you want to open the new page on blank page while navigatting via programmatically then use below approach.
+
+  // TakeSubjectMixTest(){
+  //   const mixTest = 'SubjectMixTest'
+  //   console.log('Selected Value:', this.selectedCount2);
+  //   const url = `/start-Exam/${this.subject_id}/${mixTest}/${this.selectedCount2}/start-Exam/`;
+  //   window.open(url, '_blank');
+  // }
+  
   getMixPartsTest(){
 
   }

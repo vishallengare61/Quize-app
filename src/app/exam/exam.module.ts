@@ -33,7 +33,7 @@ const routes: Routes = [
     { path: 'choose-p', component: ChoosePComponent},
     { path: 'exam-overview', component: ExamOverviewComponent},
     { path: 'chapters/:id/:s_name', component: ChapterComponent},
-    { path: 'start-Exam/:s_name/:chapter_id/:q_count', component: StartExamComponent},
+    { path: 'start-Exam/:s_name/:chapter_id/:q_count/:diff_level', component: StartExamComponent},
     { path: 'report', component: ReportComponent},
     { path: 'subjects', component: SubjectsComponent},
     { path: 'add-questions', component: AddQuestionsComponent},

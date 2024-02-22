@@ -115,8 +115,7 @@
           </button>
         </div>
         <div class="modal-body">
-
-          <div class="form-group">
+          <!-- <div class="form-group">
             <div class="selectDiiffTitle">
               <label class="diffTitle" for="exampleInputPassword1">Select Difficulty</label>
             </div>
@@ -137,6 +136,17 @@
                 <button type="button" (click)="selectAnyRange()" class="btn reportReasonAny btn-default"
                   id="allrange">Any</button>
               </div>
+            </div>
+          </div> -->
+          <div class="form-group">
+            <div class="selectDiiffTitle">
+              <label class="diffTitle" for="exampleInputPassword1">Select Difficulty Level</label>
+            </div>
+            <div class="btn-groupp">
+              <input type="radio" id="d_level11" name="d_level1" class="btn-select" value="0" [(ngModel)]="difficulty" #option111>
+              <label for="d_level11" class="buttonLabel">Easy</label>
+              <input type="radio" id="d_level21" name="d_level1" class="btn-select" value="1" [(ngModel)]="difficulty" #option222>
+              <label for="d_level21" class="buttonLabel">Hard</label>
             </div>
           </div>
           <div class="btnChooseDiff">
@@ -174,6 +184,18 @@
             <label for="option4" class="buttonLabel">80</label>
           </div>
         </div>
+        
+        <div class="form-group">
+          <div class="selectDiiffTitle">
+            <label class="diffTitle" for="exampleInputPassword1">Select Difficulty Level</label>
+          </div>
+          <div class="btn-groupp">
+            <input type="radio" id="d_level1" name="d_level" class="btn-select" value="0" [(ngModel)]="difficulty" #option111>
+            <label for="d_level1" class="buttonLabel">Easy</label>
+            <input type="radio" id="d_level2" name="d_level" class="btn-select" value="1" [(ngModel)]="difficulty" #option222>
+            <label for="d_level2" class="buttonLabel">Hard</label>
+          </div>
+        </div>
         <div class="btnChooseDiff">
           <button type="button" (click)="TakeMixTest()" class="btn btnReport mt-1" data-dismiss="modal">START</button>
         </div>
@@ -206,6 +228,18 @@
             <label for="option31" class="buttonLabel">75</label>
             <input type="radio" id="option41" name="questionCount" class="btn-select" value="100" [(ngModel)]="selectedCount2" #option41>
             <label for="option41" class="buttonLabel">100</label>
+          </div>
+        </div>
+        <hr>
+        <div class="form-group">
+          <div class="selectDiiffTitle">
+            <label class="diffTitle" for="exampleInputPassword1">Select Difficulty Level</label>
+          </div>
+          <div class="btn-groupp">
+            <input type="radio" id="d_level111" name="d_level111" class="btn-select" value="0" [(ngModel)]="difficulty" #option1111>
+            <label for="d_level111" class="buttonLabel">Easy</label>
+            <input type="radio" id="d_level211" name="d_level111" class="btn-select" value="1" [(ngModel)]="difficulty" #option2222>
+            <label for="d_level211" class="buttonLabel">Hard</label>
           </div>
         </div>
         <div class="btnChooseDiff">

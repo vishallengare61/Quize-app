@@ -6,21 +6,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SideBarService {
 
-  private _isSidebarOpen = new BehaviorSubject<boolean>(true);
-  isSidebarOpen$ = this._isSidebarOpen.asObservable();
-  isExamStarted: boolean = false;
+  private isSidebarOpenSubject = new BehaviorSubject<boolean>(true);
+  isSidebarOpen$ = this.isSidebarOpenSubject.asObservable();
+
   constructor() { }
 
-  toggleSidebar() {
-    this._isSidebarOpen.next(!this._isSidebarOpen.value);
-  }
-
-  startExam() {
-    this.isExamStarted = true;
-    this.toggleSidebar(); // Hide the sidebar when exam starts
-  }
-
-  endExam() {
-    this.isExamStarted = false;
+  toggleSidebar(isOpen: boolean) {
+    this.isSidebarOpenSubject.next(isOpen);
+    console.log('toggleSidebar---',this.isSidebarOpenSubject.next(isOpen));
   }
 }

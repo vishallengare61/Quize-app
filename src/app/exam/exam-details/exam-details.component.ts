@@ -1,10 +1,10 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/Services/login.service';
 import { StudentHistoryService } from 'src/Services/student-history.service';
-import { TryReportService } from 'src/Services/try-report.service';
+import * as ApexCharts from 'apexcharts';
 
 @Component({
   selector: 'app-exam-details',
@@ -14,6 +14,7 @@ import { TryReportService } from 'src/Services/try-report.service';
 export class ExamDetailsComponent implements OnInit {
 
   quizePoolId:any;
+  percentValue:any;
 
   selectedOptionIndex: number = -1;
   questions: any[] = [];
@@ -44,23 +45,24 @@ export class ExamDetailsComponent implements OnInit {
    incorrectAnswersCount: number = 0;
    totalAnswersCount:any;
    totalSkipped: any;
+  totalQuestions:any;
+
 
   ngOnInit(): void {
     this.quizePoolId = this._route.snapshot.paramMap.get('quizeId');
-
     this.findCurrentQuestion();
-
     this._historyService.getQuizeHistory(this.quizePoolId).subscribe( (apiResponse: any) => {
       this.showLoader = false;
-      // console.log('getting quize details API respones-----', apiResponse);
       this.quizPoolId = apiResponse.quizPoolId;
       this.questions = apiResponse.questionDetails || [];
       this.totalAnswersCount = this.questions.filter(q => q.selected_answer !== "#").length;
       this.totalSkipped = this.questions.filter(q => q.selected_answer == "#").length;
       this.skippedQuestionsCount = this.questions.filter(q => q.selected_answer === "#").length;
       this.calculateAnswerStatistics();
-
-
+      
+      this.appexGraph(this.totalAnswersCount, this.totalSkipped)
+    
+   
       if (apiResponse.status && apiResponse.questionDetails && Array.isArray(apiResponse.questionDetails)) {
         this.questions = apiResponse.questionDetails.map((apiQuestion: any) => {
           return {
@@ -88,8 +90,40 @@ export class ExamDetailsComponent implements OnInit {
       this.selectedOptionsMap[answeredQuestion.questionId] =
         answeredQuestion.selectedOptionId;
     }
+   
   }
 
+  appexGraph(answered: any, skipped: any) {
+    const answeredCount = answered;
+    const skippedCount = skipped;
+    const options = {
+      chart: {
+        height: 350,
+        width: 350,
+        type: 'donut', 
+      },
+      series: [answeredCount, skippedCount], 
+      labels: ['Answered', 'Skipped'], 
+      dataLabels: {
+        enabled: false,
+        formatter: function (val:any, opts:any) {
+          return opts.w.globals.labels[opts.seriesIndex] + ": " + val;
+        }
+      },
+      plotOptions: {
+        pie: {
+          donut: {
+            size: '70%' 
+          }
+        }
+      },
+      colors: ['#1FD115', '#FF1900'] // Green for Answered, Red for Skipped
+    };
+  
+    const chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+  }
+  
   calculateAnswerStatistics() {
     this.answeredQuestions.forEach((question:any) => {
       const correctAnswer = question.answerkey.toLowerCase().trim();
@@ -173,5 +207,9 @@ export class ExamDetailsComponent implements OnInit {
   indexToLetter(index: number): string {
     return String.fromCharCode(97 + index);
   }
+
+ 
+
+
   
 }

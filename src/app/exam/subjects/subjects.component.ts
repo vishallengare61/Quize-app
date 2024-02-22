@@ -22,7 +22,7 @@ export class SubjectsComponent {
       const parseData = JSON.parse(this.parseUserData);
       this.id = parseData.user.class_id[0];
       this._loginService.getSubject(this.id).subscribe((subject: any) => {
-        console.log('getting subjects', subject);
+        // console.log('getting subjects', subject);
         if (subject) {
           this.showLoader = false;
           this.subjects = subject.Subjects;
@@ -37,7 +37,7 @@ export class SubjectsComponent {
   
   selectCourse(id:any,s_name:AnalyserNode) {
     // localStorage.setItem('subject_id', id)
-    console.log('gettingChapterID', id);
+    // console.log('gettingChapterID', id);
     this._router.navigate([`/chapters/${id}/${s_name}`]);
 
   }

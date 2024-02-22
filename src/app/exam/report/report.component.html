@@ -8,13 +8,20 @@
             </div>
             <!-- <span><a >Practice agian</a></span> -->
         </div>
-        <h2 class="practiceReportHeading">Practice Report Card</h2>
+        <div class="practiceReportContainer">
+            <h2 class="practiceReportHeading">Practice Report Card</h2>
+            <div class="reportDetails">
+
+              <h5 class="reportCard">Attempt Number - <span class="spanContent">2</span> </h5>
+            </div>
+          </div>
         <div>
             <hr>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-center" style="height: 270px;" *ngIf="showGraph">
+                    
                     <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions" class="highchartsStyle">
                     </highcharts-chart>
 

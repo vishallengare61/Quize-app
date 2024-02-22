@@ -2,8 +2,9 @@
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
 body {
-    /* background: rgb(232, 230, 230); */
+    background: rgb(255, 247, 247) !important; 
     font-family: 'Roboto', sans-serif;
+
     /* If want then add the image on cursor as well */
     /* cursor: url('assets/img/LTS_company logo white bg.png')10 10, auto; */
     
@@ -28,13 +29,13 @@ margin-left: -10%;
 .display-container{
     padding-left: 18%;
     margin-top: 80px;
-    transition: all 0.4s;
+    transition: all 0.5s;
 }
 
 .sub-containerr{
    padding-left: -18%;
    margin-top: 80px;
-   transition: all 0.4s;
+   transition: all 0.5s;
 }
 
 .errorMsg{

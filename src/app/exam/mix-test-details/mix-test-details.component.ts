@@ -36,9 +36,8 @@ export class MixTestDetailsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
    this.testType = this._activateRoute.snapshot.paramMap.get('test_type');
-   console.log(this.testType);
+  //  console.log(this.testType);
    this.getAllHistory();
   }
 
@@ -48,13 +47,13 @@ export class MixTestDetailsComponent implements OnInit {
       this.showLoader = false;
       if (this.testType === 'subjectMixTest') {
         this.allItems = result.subjectTests;
-        console.log(this.allItems);
+        // console.log(this.allItems);
       } else if (this.testType === 'partsMixTest') {
         this.allItems = result.partTests;
-        console.log(this.allItems);
+        // console.log(this.allItems);
       } else if (this.testType === 'chaptersMixTest') {
         this.allItems = result.chapterTests;
-        console.log(this.allItems);
+        // console.log(this.allItems);
       }
       this.calculatePagination(); // Call calculatePagination after assigning allItems
     });
@@ -87,17 +86,13 @@ export class MixTestDetailsComponent implements OnInit {
     this._router.navigate([`examDetails/${quizeId}`]);
     
   }
-
-
   reportCard(quizeId:any, quizName: any){
     const reports = true;
     // console.log('getting quiz card ID--', quizeId);
     this._historyService.getQuizeResult(quizeId).subscribe((result: any) => {
-
-      console.log('getting the API response',result);
+      // console.log('getting the API response',result);
       this.UserResultData = result.data;
-      console.log('getting the API response',this.UserResultData);
-
+      // console.log('getting the API response',this.UserResultData);
       localStorage.setItem('result', JSON.stringify(this.UserResultData));
       this._router.navigate([`/quize_report/${quizeId}`]);
 });

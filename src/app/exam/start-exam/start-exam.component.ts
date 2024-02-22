@@ -58,10 +58,11 @@ export class StartExamComponent implements OnInit {
    start_time: any;
    end_time: any;
    quizPoolId: any;
+   diff_level: any;
+
 
   ngOnInit() {
-    this._sideBar.startExam();
-    this._sideBar.toggleSidebar();
+    this._sideBar.toggleSidebar(false);
     this.start_time = Math.floor(Date.now() / 1000);
     const localStorageUser = localStorage.getItem('user');
     this.part_id = localStorage.getItem('parts_id');
@@ -76,9 +77,13 @@ export class StartExamComponent implements OnInit {
     this.findAnsweredQuestionValues();
     this.findVisitedNotAnsweredQuestions();
     this.subjectName = this._route.snapshot.paramMap.get('s_name');
-    console.log('getting the subject ID--------------------------------', this.subjectName);
     this.chapter_id = this._route.snapshot.paramMap.get('chapter_id');
     this.q_count = this._route.snapshot.paramMap.get('q_count');
+    this.diff_level = this._route.snapshot.paramMap.get('diff_level');
+
+    //getting the difficulty level of selected Mixsubject/Mixparts/chapter
+    
+    console.log('getting difficulty level--------------------------------', this.diff_level);
  
     if (this.chapter_id === 'chapterMixTest') {
       this.partsMixTest();
