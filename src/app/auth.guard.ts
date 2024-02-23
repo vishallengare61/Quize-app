@@ -10,7 +10,7 @@ export class authGuard implements CanActivate {
   constructor(private router: Router, private httpClient: HttpClient) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const isAuthenticated = localStorage.getItem('userToken');
+    const isAuthenticated = localStorage.getItem('user');
 
     if (isAuthenticated) {
       console.log('Authentication is returning true');

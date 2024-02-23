@@ -1,5 +1,4 @@
 <div class="main-container">
-
   <div class="navbarWebsite" id="landingNav">
     <nav class="navbar fixed-top navbar-expand-xl navbar-light bg-light" id="spyNav">
         <a class="navbar-brand" href="#">
@@ -15,11 +14,11 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" [ngClass]="{'active': activeHome == true}"
-                    [routerLink]="['/']" [queryParams]="{ 'pageSec': 'about' }" (click)="toggleSection('home')">Home</a>
+                    [routerLink]="['/']"  (click)="toggleSection('home')">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" [ngClass]="{'active': activeAbout == true}"
-                    [routerLink]="['/']" [queryParams]="{ 'pageSec': 'about' }" (click)="toggleSection('about')">About-Us</a>
+                    [routerLink]="['/']"  (click)="toggleSection('about')">About-Us</a>
                 </li>
 
                 <!-- <li class="nav-item">
@@ -28,7 +27,7 @@
                 </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" [ngClass]="{'active': activeAssociation == true}"
-                        [routerLink]="['/']" [queryParams]="{ 'pageSec': 'institute'}" (click)="toggleSection('contactUs')">Contact-Us</a>
+                        [routerLink]="['/']"  (click)="toggleSection('contactUs')">Contact-Us</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link disabled" href="javascript:void(0)">Ed Talk <sup>"Coming Soon"</sup></a>
@@ -51,10 +50,6 @@
         </div>
     </nav>
 </div>
-
-
-
-
 
 <div class="modal fade loginModal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -297,7 +292,6 @@
 <app-home-content></app-home-content>
 </div>
 
-
 <div class="aboutSection" id="about-us" *ngIf="showAboutSection" style="margin-top: 100px;">
   <app-about-us></app-about-us>
 </div>
@@ -311,10 +305,6 @@
   <h3>FAQ Work</h3>
 </div>
 </div>
-
-
-
-
 
 <div class="content" role="main">
   <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">

@@ -26,21 +26,21 @@ export class AddQuestionsService {
   }
   
   getBoards(){
-    return this._http.get<Response>(this.baseUrl + `getQuestion`, { headers: this.createHeaders() });
+    return this._http.get<Response>(this.baseUrl + `getQuestion`);
   }
   getClasses(board_id:any){
-    return this._http.get<Response>(this.baseUrl + `getQuestion/?board_id=${board_id}`, { headers: this.createHeaders() });
+    return this._http.get<Response>(this.baseUrl + `getQuestion/?board_id=${board_id}`);
   }
   getSubjects(class_id:any){
-    return this._http.get<Response>(this.baseUrl + `getSubject/${class_id}`, { headers: this.createHeaders() });
+    return this._http.get<Response>(this.baseUrl + `getSubject/${class_id}`);
   }
   getSubjectParts(subject_id:any, name:any){
-    return this._http.get<Response>(this.baseUrl + `getQuestion/?name=${name}&subject_id=${subject_id}`, { headers: this.createHeaders() });
+    return this._http.get<Response>(this.baseUrl + `getQuestion/?name=${name}&subject_id=${subject_id}`);
   }
   getChapters(part_id:any, name:any){
-    return this._http.get<Response>(this.baseUrl + `getQuestion/?name=${name}&part_id=${part_id}`, { headers: this.createHeaders() });
+    return this._http.get<Response>(this.baseUrl + `getQuestion/?name=${name}&part_id=${part_id}`);
   }
   createQuestion(question:any){
-    return this._http.post<Response>(this.baseUrl + `createQuestion`, question, { headers: this.createHeaders() });
+    return this._http.post<Response>(this.baseUrl + `createQuestion`, question);
   }
 }

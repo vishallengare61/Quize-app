@@ -10,6 +10,7 @@ import { LoginService } from 'src/Services/login.service';
 export class SubjectsComponent {
 
   id:any;
+  token:any;
   parseUserData:any;
   subjects: any[] = [];
   showLoader:boolean = true;
@@ -21,6 +22,7 @@ export class SubjectsComponent {
     if (this.parseUserData!=  null) {
       const parseData = JSON.parse(this.parseUserData);
       this.id = parseData.user.class_id[0];
+      this.token = parseData.user.token;
       this._loginService.getSubject(this.id).subscribe((subject: any) => {
         // console.log('getting subjects', subject);
         if (subject) {

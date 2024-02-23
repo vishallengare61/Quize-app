@@ -64,35 +64,35 @@
                                 <label for="enterQuestion"><h6>Enter Question-</h6></label>
                                 <textarea name="question" id="enterQuestion"  style="display: block;" class="form-control" formControlName="enterQuestion" placeholder="Enter the question here!">
                                 </textarea>
-                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddQuetionImg()">Add Image ?</a>
+                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddQuetionImg()">Add Image?</a>
                                 <label class="indicator" for="questionImage" *ngIf="questionImg" >Select image Question</label>
                                 <input class="form-control m-2" type="file" name="questionImage" accept="image/*" (change)="onQuestionImageChange($event)" formControlName="questionImage" *ngIf="questionImg">
                             </div>
                             <div class="controller2  col-md-6">
                                 <label for="optiona"><h6>Option A-</h6></label>
                                 <input type="text" name="optiona" id="" class="form-control" formControlName="optiona" (input)="updateOptions()">
-                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionAImg()">Add Image ?</a>
+                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionAImg()">Add Image?</a>
                                 <label class="indicator" for="optionAImage" *ngIf="optionImgA">Select image for optionA</label>
                                 <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChangeA('optiona', $event)" formControlName="imagea" (input)="updateOptions()" *ngIf="optionImgA">
                             </div>
                             <div class="controller2 col-md-6">
                                 <label for="optionb"><h6>Option B-</h6></label>
                                 <input type="text" name="optionb" id="" class="form-control" formControlName="optionb" (input)="updateOptions()">
-                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionBImg()">Add Image ?</a>
+                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionBImg()">Add Image?</a>
                                 <label class="indicator" for="questionImage" *ngIf="optionImgB" >Select image for optionB</label>
                                 <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChangeB('optionb', $event)" formControlName="imageb" (input)="updateOptions()" *ngIf="optionImgB">
                             </div>
                             <div class="controller2 col-md-6">
                                 <label for="optionc"><h6>Option C-</h6></label>
                                 <input type="text" name="optionc" id="" class="form-control" formControlName="optionc" (input)="updateOptions()">
-                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionCImg()">Add Image ?</a>
+                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionCImg()">Add Image?</a>
                                 <label class="indicator" for="questionImage" *ngIf="optionImgC" >Select image for optionC</label>
                                 <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChangeC('optionc', $event)" formControlName="imagec" (input)="updateOptions()" *ngIf="optionImgC">
                             </div>
                             <div class="controller2 col-md-6">
                                 <label for="optiond"><h6>Option D-</h6></label>
                                 <input type="text" name="optiond" id="" class="form-control" formControlName="optiond" (input)="updateOptions()">
-                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionDImg()">Add Image ?</a>
+                                <a href="javascript:void(0)" style="float: right; cursor: pointer;" (click)="AddOptionDImg()">Add Image?</a>
                                 <label class="indicator" for="questionImage" *ngIf="optionImgD" >Select image for optionD</label>
                                 <input class="form-control m-2" type="file" name="optionAImage" accept="image/*" (change)="onOptionImageChangeD('optiond', $event)" formControlName="imaged" (input)="updateOptions()" *ngIf="optionImgD">
                             </div>

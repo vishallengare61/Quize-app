@@ -51,9 +51,6 @@ export class LoginComponent implements OnInit{
   private routerSubscription!: Subscription;
   ModelPopUp: boolean = false;
 
-
-
-
   isLogin: boolean = true;
   isRegister: boolean = false;
   registerStudentForm!: FormGroup;
@@ -162,10 +159,12 @@ onClassSelectionChange(event: any){
   //   }
 
   // }
+
   changeLoginForm(){
     this.isLogin =false;
     this.isRegister = true;
   }
+
   changeRegisterForm(){
     this.isLogin = true;
     this.isRegister = false;
@@ -194,6 +193,7 @@ onClassSelectionChange(event: any){
     this.showLogin = true;
     this.showOtp = false;
   }
+
   openRegister() {
     this.registrationPhoneNumber = '';
     this.name = '';
@@ -201,6 +201,7 @@ onClassSelectionChange(event: any){
     this.validLoginNo = false;
     this.showOtpRegister = false;
   }
+
   validateLoginNumber() {
     if (!this.phoneNumber.match(this.phonepattern)) {
       this.validLoginNo = false;
@@ -250,6 +251,7 @@ onClassSelectionChange(event: any){
       this._registerService.registerUser({user}).subscribe((result:any)=>{
         console.log('Student Registered-----',result);
         this._toastr.success('registration Success!');
+        this._bt.hideModal();
       })
       this.registerStudentForm.reset();
     } else {
@@ -261,7 +263,6 @@ onClassSelectionChange(event: any){
   registerMentor(){
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
-
       const user = {
         user_type: formValues.user_type,
         fullname: formValues.fullname,

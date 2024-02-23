@@ -27,17 +27,17 @@ export class StudentHistoryService {
   }
   
   getAllHistory(){
-    return this._httpClient.post(`${this.baseUrl}getquizdetails`,'', { headers: this.createHeaders() });
+    return this._httpClient.post(`${this.baseUrl}getquizdetails`,'');
   }
 
   getQuizeResult(quizeID:any ){
     const quizpool_id = { quizpool_id: quizeID, reports:true };
-    return this._httpClient.post(`${this.baseUrl}getquizdetails`,quizpool_id, { headers: this.createHeaders() });
+    return this._httpClient.post(`${this.baseUrl}getquizdetails`,quizpool_id);
   }
 
   getQuizeHistory(quizpool_id: any) {
     const body = { quizpool_id: quizpool_id }; // Construct the request body
-    return this._httpClient.post(`${this.baseUrl}getquizdetails`, body, { headers: this.createHeaders() });
+    return this._httpClient.post(`${this.baseUrl}getquizdetails`, body);
   }
   
 

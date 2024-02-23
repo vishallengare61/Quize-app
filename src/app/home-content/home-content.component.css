@@ -1,13 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@200;300;400;600;700&display=swap');
 
-/* .disply-container{
-  border: 1px solid black;
-  padding-left: 15%;
-} */
 .firstRow{
     margin-top: 85px;
-    /* width: 80%; */
-    /* margin-left: 15%; */
 }
 .firstRow.inactive{
 margin-left: -20% !important;
@@ -19,9 +13,6 @@ margin-left: -20% !important;
 .btnLogin {
     margin-top: 78px;
   }
-  /* .contentDiv {
-    padding: 50px 70px;
-} */
 .titleOne {
     color: #ff4935;
     font-family: "jaldi", Sans-serif;
@@ -39,25 +30,16 @@ margin-left: -20% !important;
     letter-spacing: 0px;
     padding: 20px 0px 0px 0px;
   }
-  .titleThree {
-    color: #141824;
-    font-family: "Jaldi", Sans-serif;
-    font-size: 2.1em;
-    font-weight: 400;
-    line-height: 1.278em;
-    letter-spacing: 0px;
-  }
-
 
   @media screen and (max-width: 768px) {
     #carouselExampleSlidesOnly {
       margin-top: 30px;
       height: 340px;
     }
-    .websiteMmp .mmpOffers .mmpOffersImage {
+    /* .websiteMmp .mmpOffers .mmpOffersImage {
       width: 100px;
       height: 90px;
-    }
+    } */
     .contentDiv {
       padding: 30px 15px !important;
     }
@@ -179,8 +161,6 @@ margin-left: -20% !important;
   }
   .mmpOffersBgSection {
     position: relative;
-    /* margin-top: 10px; */
-    /* padding-left: 15%; */
   }
   .mmpOffersBg {
     position: absolute;
@@ -313,7 +293,7 @@ margin-left: -20% !important;
   .whyMmpStudent {
     padding: 50px 70px;
   }
-  
+/*   
   .whyMmpStudent .gplay {
     width: 164px;
     height: 63px;
@@ -323,7 +303,7 @@ margin-left: -20% !important;
   
   .whyMmpStudent .gplay:hover {
     transform: scale(1.1);
-  }
+  } */
   
   .whyMmpStudent .imageSection {
     width: 300px;
@@ -400,98 +380,7 @@ margin-left: -20% !important;
   .whyMmpStudent .fa-angle-double-right {
     margin-left: 5px;
   }
-  .whyMmpTeacher {
-    padding: 50px 70px;
-  }
-  
-  .whyMmpTeacher .gplay {
-    width: 164px;
-    height: 63px;
-    transition-duration: 0.3s;
-    transition-property: transform;
-  }
-  
-  .whyMmpTeacher .gplay:hover {
-    transform: scale(1.1);
-  }
-  
-  .whyMmpTeacher .imageSection {
-    width: 300px;
-    height: 300px;
-    margin: auto;
-  }
-  
-  .whyMmpTeacher .imageSection img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  
-  .whyMmpTeacher .content h2 {
-    color: #000000;
-    font-family: "jaldi", sans-serif;
-    font-size: 26px;
-    font-weight: 200;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    word-spacing: 9px;
-    line-height: 1.3;
-    margin-bottom: 20px;
-  }
-  
-  .whyMmpTeacher .content p {
-    color: #141824;
-    font-family: "Jaldi", sans-serif;
-    font-size: 2.25em;
-    font-weight: 400;
-    line-height: 1.278em;
-    letter-spacing: 0px;
-    padding: 36px 0px 0px 0px;
-  }
-  
-  .whyMmpTeacher .content ul {
-    list-style-type: none;
-  }
-  
-  .whyMmpTeacher .content ul li {
-    margin: 0px 0px 10px 0px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .whyMmpTeacher .content ul li .fa,
-  .whyMmpTeacher .content ul li .fas {
-    color: #ff4935;
-    width: 1.25em;
-    font-size: 25px;
-  }
-  
-  .whyMmpTeacher .content ul li span {
-    color: #000000;
-    font-family: "Jaldi", sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    padding-left: 10px;
-    line-height: 1.3;
-  }
-  
-  .whyMmpTeacher a {
-    color: #ff4935;
-    font-family: 'jaldi', sans-serif;
-    font-size: 26px;
-  }
-  
-  .whyMmpTeacher a:hover {
-    text-decoration: underline;
-    font-weight: bold;
-  }
-  
-  .whyMmpTeacher a:hover .fa-angle-double-right {
-    font-weight: bold;
-  }
-  
-  .whyMmpTeacher .fa-angle-double-right {
-    margin-left: 5px;
-  }
+
   .testimonialBg {
     position: absolute;
     width: 100vw;
@@ -843,7 +732,6 @@ margin-left: -20% !important;
   .headerContent{
     padding-left: 40px !important;
   }
-  /* #footer{
-    margin-left: -160px !important;
-  } */
-  
+.anchorTag{
+  text-decoration: none;
+}

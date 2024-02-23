@@ -18,8 +18,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { HomeContentComponent } from './home-content/home-content.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
-
-
+import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,10 @@ import { FooterComponent } from './footer/footer.component';
       timeOut: 5000
     }),
   ],
-  providers: [ { provide: 'authGuard', useValue: authGuard } ],
+  providers: [
+     { provide: 'authGuard', useValue: authGuard },
+     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true }
+],
 
   bootstrap: [AppComponent]
 })
