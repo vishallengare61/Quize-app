@@ -39,6 +39,10 @@ export class QuizeReportComponent implements OnInit  {
   chart: any;
   chart2: any;
   chart3: any;
+
+  percentage: any;
+
+
   constructor(private _router: Router, private _route : ActivatedRoute, private _loginService:LoginService, private _tryService: TryReportService, private _historyService: StudentHistoryService){
 
   }
@@ -49,9 +53,10 @@ export class QuizeReportComponent implements OnInit  {
   getresultData(quizeID: any){
   return new Promise((resolve) => {
     this._historyService.getQuizeResult(quizeID).subscribe((result: any) => {
-      this.UserResultData = result.data;
-      this.totalQuestion = this.UserResultData.totalQuestions
-    this.correctAnswer = this.UserResultData.correctAnswers
+    this.UserResultData = result.data;
+    this.totalQuestion = this.UserResultData.totalQuestions
+    this.correctAnswer = this.UserResultData.correctAnswers;
+    // console.log('getting the percentage of correct answers-----', this.correctAnswer);
     this.unattempts = this.UserResultData.unattempts
     this.wrongAnswer = this.UserResultData.wrongAnswer
     this.quiz_pool_name = this.UserResultData.quiz_pool_name;
@@ -59,6 +64,11 @@ export class QuizeReportComponent implements OnInit  {
     this.quizeAttemptNumber = this.UserResultData.currentAttemptNo;    
     this.attempDropdown = this.UserResultData.allPositions;
     this.totalTimeSpentForExam = this.UserResultData.timeConsumed;
+    this.percentage = (this.correctAnswer / this.totalQuestion) * 100;
+    // console.log('getting the percentage of correct answers', this.totalQuestion);
+    // console.log('getting the percentage of correct answers', this.correctAnswer);
+    console.log('getting the percentage of correct answers', this.percentage);
+    
       this.updateGraphData();
       resolve(this.UserResultData);
     });

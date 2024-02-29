@@ -1,162 +1,171 @@
 <div class="displyy-container" id="disply-container">
-    <div class="container practiceReport" id="printinvoice">
-        <div class="row reportFirstRow">
-            <div class="backToChapter">
-                <a class="btn" target="_blank" (click)="generatePDF()" id="btnColor"><span><i class="fas fa-arrow-down"></i></span>
-                    Download Report</a>&nbsp;
-            </div>
+  <div class="container practiceReport" id="printinvoice">
+    <div class="row reportFirstRow">
+      <div class="backToChapter">
+        <a class="btn" target="_blank" (click)="generatePDF()" id="btnColor">
+          <span><i class="fas fa-arrow-down"></i></span> Download Report
+          </a>&nbsp;
+      </div>
+    </div>
+    <div class="practiceReportContainer">
+      <h2 class="practiceReportHeading">Practice Report Card</h2>
+      <div class="reportDetails">
+        <h5 class="reportCard">
+          Subject - <span class="spanContent">{{ quiz_pool_name }}</span>
+        </h5>
+        <h5 class="reportCard">
+          Date - <span class="spanContent">{{ quize_date }}</span>
+        </h5>
+      </div>
+      <div class="reportDetails2">
+        <h5 class="reportCard">
+          Attempt Number -
+          <span class="spanContent">{{ quizeAttemptNumber }}</span>
+        </h5>
+        <h5 class="reportCard">
+          Check Previous report -
+          <select name="" id="" (change)="data($event)">
+            Select Attempt Number
+            <!-- <option selected>select Attempt</option> -->
+            <option *ngFor="let attempts of attempDropdown" [value]="attempts.id" >
+              {{ attempts.position }}
+            </option>
+          </select>
+        </h5>
+      </div>
+    </div>
+    <div>
+      <hr />
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center">
+          <div id="chart"></div>
         </div>
-        <div class="practiceReportContainer">
-            <h2 class="practiceReportHeading">Practice Report Card</h2>
-            <div class="reportDetails">
-              <h5 class="reportCard">Subject - <span class="spanContent">{{quiz_pool_name}}</span> </h5>
-              <h5 class="reportCard">Date - <span class="spanContent">{{quize_date}}</span> </h5>
-              
+      </div>
+      <div class="col-md-12">
+        <div class="">
+          <h2 class="answer__heading">
+            <b>{{ correctAnswer }}/{{ totalQuestion }}</b>
+          </h2>
+        </div>
+        <div class="">
+          <h2 class="overallAccuracy">Correct</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-4 col-lg-4 col-md-4">
+        <div class="card topCard">
+          <div class="row">
+            <div class="col-md-6">
+              <div *ngIf="showGraph">
+                <div id="chart2"></div>
+              </div>
             </div>
-            <div class="reportDetails2">
-                <h5 class="reportCard">Attempt Number - <span class="spanContent">{{quizeAttemptNumber}}</span> </h5>
-                <h5 class="reportCard">Check Previous report - 
-                  <select name="" id="" (change)="data($event)">Select Attempt Number
-                      <!-- <option selected>select Attempt</option> -->
-                      <option *ngFor="let attempts of attempDropdown" [value]="attempts.id">{{attempts.position}}</option>
-                  </select>
-                </h5>
+            <div class="col-md-6">
+              <div>
+                <h5>{{ unattempts }}/{{ totalQuestion }}</h5>
+              </div>
+              <div>
+                <h6>Skipped</h6>
+              </div>
             </div>
           </div>
-        <div>
-            <hr>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="d-flex justify-content-center" >
-                    <div id="chart"></div>
-                </div>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-4">
+        <div class="card topCard">
+          <div class="row">
+            <div class="col-md-6">
+              <div *ngIf="showGraph">
+                <div id="chart3"></div>
+              </div>
             </div>
-            <div class="col-md-12">
-                <div class="">
-                    <h2 class="answer__heading"><b>{{correctAnswer}}/{{totalQuestion}}</b></h2>
-                </div>
-                <div class="">
-                    <h2 class="overallAccuracy">Correct</h2>
-                </div>
+            <div class="col-md-6">
+              <div>
+                <h5>{{ wrongAnswer }}/{{ totalQuestion }}</h5>
+              </div>
+              <div>
+                <h6>Incorrect</h6>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-md-12">
-                <div class="d-flex justify-content-center" >
-                    <div id="chart"></div>
-                </div>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-4">
+        <div class="card topCard">
+          <div class="row timeBox">
+            <div class="col-md-6">
+              <div>
+                you have take the
+                <h5>{{ totalTimeSpentForExam }} Min</h5>
+              </div>
+              <div>
+                <h6>to solve test</h6>
+              </div>
             </div>
-            <div class="col-md-12">
-                <div class="d-flex justify-content-center">
-                    <h2><b>{{correctAnswer}}/{{totalQuestion}}</b></h2>
-                </div><br>
-                <div class="d-flex justify-content-center">
-                    <h2 class="overallAccuracy">Correct</h2>
-                </div>
+            <div class="col-md-6">
+              <div *ngIf="showGraph" class="clockImg">
+                <img src="assets/img/timeClock.png" alt="" />
+              </div>
             </div>
-        </div> -->
-        <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-4">
-                <div class="card topCard">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div *ngIf="showGraph">
-                                <div id="chart2"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div>
-                                <h5>{{unattempts}}/{{totalQuestion}}</h5>
-                            </div>
-                            <div>
-                                <h6>Skipped</h6>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4">
-                <div class="card topCard">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div *ngIf="showGraph">
-                                <div id="chart3"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div>
-                                <h5>{{wrongAnswer}}/{{totalQuestion}}</h5>
-                            </div>
-                            <div>
-                                <h6>Incorrect</h6>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4">
-                <div class="card topCard">
-                    <div class="row timeBox">
-                        <div class="col-md-6">
-                            <div>
-                                you have take the 
-                                <h5>{{totalTimeSpentForExam}} Min</h5>
-                            </div>
-                            <div>
-                                <h6>to solve test</h6>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div *ngIf="showGraph" class="clockImg">
-                                <img src="assets/img/timeClock.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card lastCard">
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-12">
-                            <div>
-                                <h2 *ngIf="correctAnswer >= 85"><span>Excellent!</span> Well done! Keep it Up!.</h2>
-                                <h2 *ngIf="correctAnswer >= 60 && correctAnswer <= 84"><span style="color: orange;">Going Good!</span> Keep Practicing.
-                                </h2>
-                                <h2 *ngIf="correctAnswer <= 40"><span style="color: orangered;">Oops!</span> You didn't perform well this time. You need to Practice more.</h2>
-                                <h2 *ngIf="correctAnswer >= 41 && correctAnswer <=59"><span style="color: blue;">Hmm!</span>
-                                      You Need To Practice More!</h2>
-                            </div>
-                            <div>
-                                <p *ngIf="correctAnswer >= 85">You are excellent in <b>{{quiz_pool_name}}</b> with <b>{{ correctAnswer }}%</b> . Well done, keep it up!
-                                </p>
-                                <p *ngIf="correctAnswer >= 60 && correctAnswer <= 84">You are Good in <b>{{ quiz_pool_name }}</b>  with <b>{{ correctAnswer }}%</b>. Well done, keep it up!
-                                </p>
-                                <p *ngIf="average">You are doing good enough in <b>{{ quiz_pool_name }}</b> with  {{resultPrediction}}% . But you need more
-                                    practice.
-                                </p>
-                                <p *ngIf="correctAnswer <= 40">Its Seem You have not study well these time, Try to do better next Time. BETTER LUCK NEXT TIME :)
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-12">
-                            <div>
-                                <button class="btn" routerLink="/overall-history">Check History</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card lastCard">
+          <div class="row">
+            <div class="col-xl-8 col-lg-12">
+              <div>
+                <h2 *ngIf="percentage >= 85">
+                  <span>Excellent!</span> Well done! Keep it Up!.
+                </h2>
+                <h2 *ngIf="percentage >= 60 && percentage <= 84">
+                  <span style="color: orange">Going Good!</span> Keep
+                  Practicing.
+                </h2>
+                <h2 *ngIf="percentage <= 40">
+                  <span style="color: orangered">Oops!</span> You didn't perform
+                  well this time. You need to Practice more.
+                </h2>
+                <h2 *ngIf="percentage >= 41 && percentage <= 59">
+                  <span style="color: blue">Hmm!</span> You Need To Practice
+                  More!
+                </h2>
+              </div>
+              <div>
+                <p *ngIf="percentage >= 85">
+                  You are excellent in <b>{{ quiz_pool_name }}</b> with
+                  <b>{{ percentage }}%</b> . Well done, keep it up!
+                </p>
+                <p *ngIf="percentage >= 60 && percentage <= 84">
+                  You are Good in <b>{{ quiz_pool_name }}</b> with
+                  <b>{{ percentage }}%</b>. Well done, keep it up!
+                </p>
+                <p *ngIf="average">
+                  You are doing good enough in <b>{{ quiz_pool_name }}</b> with
+                  {{ resultPrediction }}% . But you need more practice.
+                </p>
+                <p *ngIf="percentage <= 40">
+                  Its Seem You have not study well these time, Try to do better
+                  next Time. BETTER LUCK NEXT TIME :)
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-12">
+              <div>
+                <button class="btn" routerLink="/overall-history">
+                  Check History
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-

@@ -1,11 +1,11 @@
-:host ::ng-deep caption {
+/* :host ::ng-deep caption {
     text-align: center;
     caption-side: top;
-  }
+  } */
   
-  :host ::ng-deep ul li {
+  /* :host ::ng-deep ul li {
     list-style-type: disc;
-  }
+  } */
   
   .mypath {
     min-height: 88vh;
@@ -121,7 +121,7 @@
     border-radius: 5px 5px 5px 5px;
     font-family: "jaldi", sans-serif;
     list-style-type: none;
-    height: 49vh;
+    height: 60vh;
     overflow-y: scroll;
   }
   
