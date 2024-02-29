@@ -3,8 +3,16 @@
       <div class="container">
         <div class="row practiceExamScreen">
          <h5>Exam Details-</h5>
+         <div class="attempt__details">
+          <h6>Attempt Number - {{ attemptNUmber }} </h6> &nbsp;&nbsp; &nbsp;&nbsp;
+          <h6>Select the previous attempt for details-
+            <select class="form-control" id="" (change)="changeDetails($event)">Select Attempt
+              <option [value]="attempt.id" *ngFor="let attempt of attemptDropdown">{{ attempt.position }}</option>
+            </select>
+          </h6>
+         </div>
           <div class="col-xl-8 practiceQuestionAndSolutionDiv">
-            <div class="card">
+            <div class="card graphArea">
               <div class="row" *ngIf="!showLoader">
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
                   <h2>
@@ -84,7 +92,7 @@
             </div>
           </div>
           <div class="col-xl-4 practiceLegendsDiv">
-            <div class="card">
+            <div class="card graphArea">
               <h2>Question Status</h2>
               <div class="row questionNumberHEight">
                 <div class="col-xl-15" *ngFor="let question of questions; let i = index" >
@@ -136,7 +144,6 @@
               </div>
             </div>
           </div>
-         
         </div>
       </div>
     </div>    

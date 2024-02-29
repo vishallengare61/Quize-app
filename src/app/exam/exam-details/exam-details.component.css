@@ -46,7 +46,7 @@
       margin: 10px 0px 0px 0px;
     }
   
-    .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .btnFinishPractice {
+    /* .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .btnFinishPractice {
       font-family: 'jaldi', Sans-serif;
       font-size: .9em;
       font-weight: 700;
@@ -61,7 +61,7 @@
     }
     .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .btnFinishPractice:hover {
       background-color: #007bba;
-    }
+    } */
     .practicePaperSecondSection .practiceExamScreen .practiceQuestionAndSolutionDiv .allButtonsDiv .prevNextBtnDiv {
       display: flex;
     }
@@ -384,10 +384,7 @@
       font-weight: normal;
       background-color: #007bba !important;
     }
-    /* .labl > input:checked + div{ 
-      background-color: rgb(14, 215, 14);
-      border: 1px solid #0781B1;
-    } */
+
     .labl > input:checked + div > .optionNumbering{
       background-color: #048adf;
       border: 1px solid #048adf;
@@ -497,7 +494,7 @@
       height: 40px;
     }
   }
-  /* Add this to your component's CSS file */
+ 
 .correct-answer {
   background-color: #2CB20F !important;
 }
@@ -516,12 +513,26 @@
 } */
 
 .highchartsStyle {
-  width: 100%; /* Adjust width as needed */
-  height: 300px; /* Adjust height as needed */
-  /* margin: auto; */
+  width: 100%; 
+  height: 300px; 
 }
 #chart {
-  /* max-width: 850px; */
 width: 100%;
 height: 100%;
+}
+.attempt__details {
+  display: flex;
+  align-items: center;
+}
+
+.attempt__details h6 {
+  margin-right: 10px; 
+}
+
+.form-control {
+  width: 80px; 
+  display: inline;
+}
+.graphArea{
+  height: 500px !important;
 }

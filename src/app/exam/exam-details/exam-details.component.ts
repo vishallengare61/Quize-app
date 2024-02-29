@@ -26,6 +26,8 @@ export class ExamDetailsComponent implements OnInit {
   showLoader: boolean = true;
   questionStartTime: Date | null = null;
 
+  attemptNUmber: any;
+  attemptDropdown: any;
 
   constructor(private _router: Router, private _route : ActivatedRoute, private _loginService:LoginService, private renderer: Renderer2,private _toastr: ToastrService, private _historyService: StudentHistoryService){}
 
@@ -47,11 +49,24 @@ export class ExamDetailsComponent implements OnInit {
    totalSkipped: any;
   totalQuestions:any;
 
+  chart: any;
 
   ngOnInit(): void {
+
     this.quizePoolId = this._route.snapshot.paramMap.get('quizeId');
     this.findCurrentQuestion();
-    this._historyService.getQuizeHistory(this.quizePoolId).subscribe( (apiResponse: any) => {
+    this.getExamDetailsData(this.quizePoolId);
+
+  }
+
+  changeDetails(quizeID: any){
+    this.clearCharts();
+    const quize__id = quizeID.target.value;
+    // console.log('changeDetails', quize__id);
+    this._historyService.getQuizeHistory(quize__id).subscribe( (apiResponse: any) => {
+      console.log(apiResponse,'--------------------------------');
+      // this.attemptNUmber = apiResponse.currentAttemptNo;
+      // this.attemptDropdown = apiResponse.allPositions;
       this.showLoader = false;
       this.quizPoolId = apiResponse.quizPoolId;
       this.questions = apiResponse.questionDetails || [];
@@ -62,7 +77,7 @@ export class ExamDetailsComponent implements OnInit {
       
       this.appexGraph(this.totalAnswersCount, this.totalSkipped)
     
-   
+  
       if (apiResponse.status && apiResponse.questionDetails && Array.isArray(apiResponse.questionDetails)) {
         this.questions = apiResponse.questionDetails.map((apiQuestion: any) => {
           return {
@@ -90,40 +105,105 @@ export class ExamDetailsComponent implements OnInit {
       this.selectedOptionsMap[answeredQuestion.questionId] =
         answeredQuestion.selectedOptionId;
     }
-   
+  
   }
 
+  getExamDetailsData(quizePoolId: any){
+    const getQuizePollID = quizePoolId;
+    this._historyService.getQuizeHistory(this.quizePoolId).subscribe( (apiResponse: any) => {
+      // console.log(apiResponse,'--------------------------------');
+      this.attemptNUmber = apiResponse.currentAttemptNo;
+      this.attemptDropdown = apiResponse.allPositions;
+      this.showLoader = false;
+      this.quizPoolId = apiResponse.quizPoolId;
+      this.questions = apiResponse.questionDetails || [];
+      this.totalAnswersCount = this.questions.filter(q => q.selected_answer !== "#").length;
+      this.totalSkipped = this.questions.filter(q => q.selected_answer == "#").length;
+      this.skippedQuestionsCount = this.questions.filter(q => q.selected_answer === "#").length;
+      this.calculateAnswerStatistics();
+      
+      this.appexGraph(this.totalAnswersCount, this.totalSkipped)
+    
+  
+      if (apiResponse.status && apiResponse.questionDetails && Array.isArray(apiResponse.questionDetails)) {
+        this.questions = apiResponse.questionDetails.map((apiQuestion: any) => {
+          return {
+            id: apiQuestion.id,
+            question: apiQuestion.question,
+            timeConsumed: apiQuestion.timeConsumed,
+            answerkey: apiQuestion.answerkey,
+            selected_answer: apiQuestion.selected_answer,
+            options: [
+              apiQuestion.optiona,
+              apiQuestion.optionb,
+              apiQuestion.optionc,
+              apiQuestion.optiond,
+            ],
+          };
+        });
+      } else {
+        console.error('API response is not as expected:', apiResponse);
+      }
+    },
+    (error) => {},
+    () => {}
+  );
+    for (const answeredQuestion of this.answeredQuestions) {
+      this.selectedOptionsMap[answeredQuestion.questionId] =
+        answeredQuestion.selectedOptionId;
+    }
+  
+  }
+
+
+  clearCharts() {
+    const chartElements = document.querySelectorAll('.chart');
+    chartElements.forEach((element) => {
+      const chart = ApexCharts.exec(element.id, 'destroy');
+      if (chart) {
+        chart.destroy();
+      }
+    });
+  }
+  
   appexGraph(answered: any, skipped: any) {
     const answeredCount = answered;
     const skippedCount = skipped;
-    const options = {
-      chart: {
-        height: 350,
-        width: 350,
-        type: 'donut', 
-      },
-      series: [answeredCount, skippedCount], 
-      labels: ['Answered', 'Skipped'], 
-      dataLabels: {
-        enabled: false,
-        formatter: function (val:any, opts:any) {
-          return opts.w.globals.labels[opts.seriesIndex] + ": " + val;
-        }
-      },
-      plotOptions: {
-        pie: {
-          donut: {
-            size: '70%' 
+    
+    // Check if chart already exists
+    if (this.chart) {
+      // Update the series data
+      this.chart.updateSeries([answeredCount, skippedCount]);
+    } else {
+      const options = {
+        chart: {
+          height: 350,
+          width: 350,
+          type: 'donut', 
+        },
+        series: [answeredCount, skippedCount], 
+        labels: ['Answered', 'Skipped'], 
+        dataLabels: {
+          enabled: false,
+          formatter: function (val:any, opts:any) {
+            return opts.w.globals.labels[opts.seriesIndex] + ": " + val;
           }
-        }
-      },
-      colors: ['#1FD115', '#FF1900'] // Green for Answered, Red for Skipped
-    };
-  
-    const chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: '70%' 
+            }
+          }
+        },
+        colors: ['#1FD115', '#FF1900'] 
+      };
+    
+      this.chart = new ApexCharts(document.querySelector("#chart"), options);
+      this.chart.render();
+    }
   }
-  
+    
   calculateAnswerStatistics() {
     this.answeredQuestions.forEach((question:any) => {
       const correctAnswer = question.answerkey.toLowerCase().trim();
@@ -136,7 +216,6 @@ export class ExamDetailsComponent implements OnInit {
     });
   }
 
-  
   isCorrect(questionIndex:any){
     return this.questions[questionIndex].answerkey === this.questions[questionIndex].selected_answer;
   }
@@ -195,7 +274,6 @@ export class ExamDetailsComponent implements OnInit {
     const optionLetters = ['a', 'b', 'c', 'd'];
     return index !== undefined ? optionLetters[index] : '';
   }
-
 
   isCorrectAnswer(optionIndex: number): boolean {
     return this.questions[this.currentQuestion].answerkey === String.fromCharCode(97 + optionIndex);
