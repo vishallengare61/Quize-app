@@ -13,7 +13,7 @@
     font-weight: 400;
     line-height: 1.278em;
     letter-spacing: 0px;
-    padding: 36px 0px 10px 0px;
+    /* padding: 36px 0px 10px 0px; */
   }
   .paperPractice span {
     color: #007bba;
@@ -185,7 +185,7 @@
     margin-bottom: 5px;
     font-family: "jaldi", sans-serif;
     text-align: center;
-    padding-top: 17px;
+    /* padding-top: 17px; */
   }
   
   .heading span {
@@ -337,7 +337,7 @@
 }
 hr{
   border: 2px solid black;
-  margin-top: 50px !important;
+  /* margin-top: 50px !important; */
 }
 .loader {
   position: absolute;

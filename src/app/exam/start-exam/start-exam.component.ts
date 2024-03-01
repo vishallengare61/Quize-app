@@ -60,9 +60,12 @@ export class StartExamComponent implements OnInit {
    quizPoolId: any;
    diff_level: any;
 
+   isExamInProgress: boolean = true;
 
   ngOnInit() {
-    this._sideBar.toggleSidebar(false);
+    this._sideBar.setSidebarOpen(false);
+    this._sideBar.setExamStarted(true);
+    this.disableBrowserBackButton();
     this.start_time = Math.floor(Date.now() / 1000);
     const localStorageUser = localStorage.getItem('user');
     this.part_id = localStorage.getItem('parts_id');
@@ -97,6 +100,13 @@ export class StartExamComponent implements OnInit {
     // this.partsMixtTest();
   }
   
+  disableBrowserBackButton() {
+    window.history.pushState(null, '', window.location.href);
+    window.onpopstate = function () {
+      window.history.pushState(null, '', window.location.href);
+    };
+  }
+
   regularChapterTest(){
     console.log('RegularchapterTest is colling');
     this._loginService.getQuestions(this.subjectName, this.chapter_id, this.class_id) .subscribe( (apiResponse: any) => {
@@ -372,6 +382,7 @@ this.calculateRemainingTime();
   jumpToQuestion(questionIndex: any) {
     this.currentQuestion = questionIndex;
   }
+
   completeTest() {
     this.end_time = Math.floor(Date.now() / 1000);
     if (this.setIntervalRef) {
@@ -411,6 +422,7 @@ this.calculateRemainingTime();
         this.UserResultData = response.data;
         localStorage.setItem('result', JSON.stringify(this.UserResultData));
         this._loginService.resultData = this.UserResultData;
+        this._sideBar.setSidebarOpen(true);
         this._router.navigate([`/report`]);
       });
   }

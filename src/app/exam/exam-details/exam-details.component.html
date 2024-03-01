@@ -5,7 +5,7 @@
          <h5>Exam Details-</h5>
          <div class="attempt__details">
           <h6>Attempt Number - {{ attemptNUmber }} </h6> &nbsp;&nbsp; &nbsp;&nbsp;
-          <h6>Select the previous attempt for details-
+          <h6 *ngIf="attemptNUmber > 1">Select the previous attempt for details-
             <select class="form-control" id="" (change)="changeDetails($event)">Select Attempt
               <option [value]="attempt.id" *ngFor="let attempt of attemptDropdown">{{ attempt.position }}</option>
             </select>
