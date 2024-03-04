@@ -264,9 +264,9 @@
     -webkit-appearance: none;
     margin: 0;
   }
-  .makePaper input[type="number"] {
+  /* .makePaper input[type="number"] {
     -moz-appearance: textfield;
-  }
+  } */
   .makePaper label.custom-control-label {
     position: relative;
     padding-right: 1.5rem;

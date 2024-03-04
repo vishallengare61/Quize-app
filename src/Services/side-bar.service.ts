@@ -22,8 +22,8 @@ export class SideBarService {
     this.examStartedSubject.next(started);
   }
 
-  isExamStarted(): Observable<boolean> {
-    return this.examStarted$;
-  }
-  
+  // isExamStarted(): Observable<boolean> {
+  //   return this.examStarted$;
+  // }
+
 }
