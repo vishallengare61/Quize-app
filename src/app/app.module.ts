@@ -19,6 +19,9 @@ import { HomeContentComponent } from './home-content/home-content.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
+import { NgApexchartsModule } from "ng-apexcharts";
+
+
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
     HighchartsChartModule,
     ExamModule,
     HttpClientModule,
+    NgApexchartsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       timeOut: 5000

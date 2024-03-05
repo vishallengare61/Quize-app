@@ -93,9 +93,9 @@ export class QuizeReportComponent implements OnInit {
 
   updateGraphData() {
     this.clearCharts();
-    this.appexGraph(this.correctAnswer, this.wrongAnswer);
-    this.appexGraph2(this.unattempts, this.totalQuestion);
-    this.appexGraph3(this.wrongAnswer, this.totalQuestion);
+    this.appexGraph(this.correctAnswer, this.wrongAnswer, this.unattempts);
+    // this.appexGraph2(this.unattempts, this.totalQuestion);
+    // this.appexGraph3(this.wrongAnswer, this.totalQuestion);
   }
 
   clearCharts() {
@@ -129,13 +129,15 @@ export class QuizeReportComponent implements OnInit {
 }
 
 
-  appexGraph(answered: any, wrong: any) {
+  appexGraph(answered: any, wrong: any, skipped: any) {
     const answeredCount = answered;
-    const skippedCount = wrong;
-    // Check if chart instance exists
+    const incorret = wrong;
+    const unattempts = skipped;
+    // console.log(answeredCount, incorret, unattempts);
+    
     if (this.chart) {
-      // Update series data dynamically
-      this.chart.updateSeries([answeredCount, skippedCount]);
+
+      this.chart.updateSeries([answeredCount, incorret, unattempts]);
     } else {
       const options = {
         chart: {
@@ -143,8 +145,8 @@ export class QuizeReportComponent implements OnInit {
           width: 350,
           type: 'donut',
         },
-        series: [answeredCount, skippedCount],
-        labels: ['Correct', 'Incorrect'],
+        series: [answeredCount, incorret, unattempts],
+        labels: ['Correct', 'Incorrect', 'skipped'],
         dataLabels: {
           enabled: false,
           show: false,
@@ -159,85 +161,85 @@ export class QuizeReportComponent implements OnInit {
             },
           },
         },
-        colors: ['#1FD115', '#FF1900'],
+        colors: ['#1FD115', '#FF1900','#ffa500'],
       };
 
       this.chart = new ApexCharts(document.querySelector('#chart'), options);
       this.chart.render();
     }
   }
-  appexGraph2(skipped: any, total: any) {
-    const skippedCount = skipped;
-    const answeredCount = total;
-    // Check if chart instance exists
-    if (this.chart2) {
-      // Update series data dynamically
-      this.chart2.updateSeries([skippedCount, answeredCount]);
-    } else {
-      const options = {
-        chart: {
-          height: 250,
-          width: 250,
-          type: 'donut',
-        },
-        series: [skippedCount, answeredCount],
-        labels: ['skipped', 'total'],
-        dataLabels: {
-          enabled: false,
-          formatter: function (val: any, opts: any) {
-            return opts.w.globals.labels[opts.seriesIndex] + ': ' + val;
-          },
-        },
-        plotOptions: {
-          pie: {
-            donut: {
-              size: '70%',
-            },
-          },
-        },
-        colors: ['#ffa500', '#6d7fcc'],
-      };
 
-      this.chart2 = new ApexCharts(document.querySelector('#chart2'), options);
-      this.chart2.render();
-    }
-  }
-  appexGraph3(incorrect: any, total: any) {
-    const answeredCount = incorrect;
-    const skippedCount = total;
-    // Check if chart instance exists
-    if (this.chart3) {
-      // Update series data dynamically
-      this.chart3.updateSeries([answeredCount, skippedCount]);
-    } else {
-      const options = {
-        chart: {
-          height: 250,
-          width: 250,
-          type: 'donut',
-        },
-        series: [answeredCount, skippedCount],
-        labels: ['incorrect', 'total'],
-        dataLabels: {
-          enabled: false,
-          formatter: function (val: any, opts: any) {
-            return opts.w.globals.labels[opts.seriesIndex] + ': ' + val;
-          },
-        },
-        plotOptions: {
-          pie: {
-            donut: {
-              size: '70%',
-            },
-          },
-        },
-        colors: ['#FF1900', '#6d7fcc'],
-      };
+  // appexGraph2(skipped: any, total: any) {
+  //   const skippedCount = skipped;
+  //   const answeredCount = total;
 
-      this.chart3 = new ApexCharts(document.querySelector('#chart3'), options);
-      this.chart3.render();
-    }
-  }
+  //   if (this.chart2) {
+
+  //     this.chart2.updateSeries([skippedCount, answeredCount]);
+  //   } else {
+  //     const options = {
+  //       chart: {
+  //         height: 250,
+  //         width: 250,
+  //         type: 'donut',
+  //       },
+  //       series: [skippedCount, answeredCount],
+  //       labels: ['skipped', 'total'],
+  //       dataLabels: {
+  //         enabled: false,
+  //         formatter: function (val: any, opts: any) {
+  //           return opts.w.globals.labels[opts.seriesIndex] + ': ' + val;
+  //         },
+  //       },
+  //       plotOptions: {
+  //         pie: {
+  //           donut: {
+  //             size: '70%',
+  //           },
+  //         },
+  //       },
+  //       colors: ['#ffa500', '#6d7fcc'],
+  //     };
+
+  //     this.chart2 = new ApexCharts(document.querySelector('#chart2'), options);
+  //     this.chart2.render();
+  //   }
+  // }
+
+  // appexGraph3(incorrect: any, total: any) {
+  //   const answeredCount = incorrect;
+  //   const skippedCount = total;
+  //   if (this.chart3) {
+  //     this.chart3.updateSeries([answeredCount, skippedCount]);
+  //   } else {
+  //     const options = {
+  //       chart: {
+  //         height: 250,
+  //         width: 250,
+  //         type: 'donut',
+  //       },
+  //       series: [answeredCount, skippedCount],
+  //       labels: ['incorrect', 'total'],
+  //       dataLabels: {
+  //         enabled: false,
+  //         formatter: function (val: any, opts: any) {
+  //           return opts.w.globals.labels[opts.seriesIndex] + ': ' + val;
+  //         },
+  //       },
+  //       plotOptions: {
+  //         pie: {
+  //           donut: {
+  //             size: '70%',
+  //           },
+  //         },
+  //       },
+  //       colors: ['#FF1900', '#6d7fcc'],
+  //     };
+
+  //     this.chart3 = new ApexCharts(document.querySelector('#chart3'), options);
+  //     this.chart3.render();
+  //   }
+  // }
 
   generatePDF() {
     const reportElement = document.getElementById('disply-container')!;

@@ -9,14 +9,14 @@
     </div>
     <div class="practiceReportContainer">
       <h2 class="practiceReportHeading">Practice Report Card</h2>
-      <div class="reportDetails">
+      <!-- <div class="reportDetails">
         <h5 class="reportCard">
           Subject - <span class="spanContent">{{ quiz_pool_name }}</span>
         </h5>
         <h5 class="reportCard">
           Date - <span class="spanContent">{{ quize_date }}</span>
         </h5>
-      </div>
+      </div> -->
       <div class="reportDetails2">
         <h5 class="reportCard">
           Attempt Number -
@@ -25,7 +25,7 @@
         <h5 class="reportCard" *ngIf="quizeAttemptNumber > 1">
           Check Previous report -
           <select name="" id="" (change)="data($event)">
-            Select Attempt Number
+            <option selected>Select Attempt Number</option>
             <option *ngFor="let attempts of attempDropdown" [value]="attempts.id" >
               {{ attempts.position }}
             </option>
@@ -54,7 +54,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-4 col-lg-4 col-md-4">
+
+      <!-- <div class="col-xl-4 col-lg-4 col-md-4">
         <div class="card topCard">
           <div class="row">
             <div class="col-md-6">
@@ -72,8 +73,9 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-xl-4 col-lg-4 col-md-4">
+      </div> -->
+
+      <!-- <div class="col-xl-4 col-lg-4 col-md-4">
         <div class="card topCard">
           <div class="row">
             <div class="col-md-6">
@@ -91,8 +93,28 @@
             </div>
           </div>
         </div>
+      </div> -->
+
+      <div class="col-xl-6 col-lg-6 col-md-6">
+        <div class="card topCard">
+          <div class="timeBox">
+            <div class="col-md-12 boxData">
+              <div >
+                  <dl class="row">
+                    <dt class="col-sm-6"><h6>Subject</h6></dt>
+                    <dd class="col-sm-6"><h6>:{{ quiz_pool_name }}</h6></dd>
+                    <dt class="col-sm-6"><h6>Date</h6></dt>
+                    <dd class="col-sm-6"><h6>:{{ quize_date }}</h6></dd>
+                    <dt class="col-sm-6"><h6>Score</h6></dt>
+                    <dd class="col-sm-6"><h6>:{{ percentage }}%</h6></dd>
+                  </dl>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-xl-4 col-lg-4 col-md-4">
+
+      <div class="col-xl-6 col-lg-6 col-md-6">
         <div class="card topCard">
           <div class="row timeBox">
             <div class="col-md-6">
@@ -112,6 +134,7 @@
           </div>
         </div>
       </div>
+      
     </div>
 
     <div class="row">

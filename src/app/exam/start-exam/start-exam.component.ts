@@ -5,6 +5,9 @@ import { LoginService } from 'src/Services/login.service';
 import { TryReportService } from 'src/Services/try-report.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SideBarService } from 'src/Services/side-bar.service';
+
+
+
 @Component({
   selector: 'app-start-exam',
   templateUrl: './start-exam.component.html',
@@ -59,8 +62,8 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     this._sideBar.setSidebarOpen(false);
     this._sideBar.setExamStarted(true);
     // this.disableBrowserBackButton();
-    // this.videoRef = document.getElementById('video');
-    // this.setUpCamera();
+    this.videoRef = document.getElementById('video');
+    this.setUpCamera();
     this.start_time = Math.floor(Date.now() / 1000);
     const localStorageUser = localStorage.getItem('user');
     this.part_id = localStorage.getItem('parts_id');
@@ -90,52 +93,52 @@ export class StartExamComponent implements OnInit, OnDestroy  {
       this.regularChapterTest();
     }
 
-    // document.addEventListener('visibilitychange', this.handleVisibilityChange);
-    // window.addEventListener('beforeunload', this.beforeUnloadHandler);
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+    window.addEventListener('beforeunload', this.beforeUnloadHandler);
     // this.chapterWiseTest();
     // this.partsMixtTest();
   }
 
   ngOnDestroy() {
-    // document.removeEventListener('visibilitychange', this.handleVisibilityChange);
-    // window.removeEventListener('beforeunload', this.beforeUnloadHandler);
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    window.removeEventListener('beforeunload', this.beforeUnloadHandler);
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
+  } 
+
+  handleVisibilityChange = () => {
+    this.navigationAttemptCount++;
+    // console.log('------warning number----------------', this.navigationAttemptCount);
+    if (document.hidden) {
+      this._toastr.warning('Please focus on the exam screen.');
+      window.alert(`you have tried to switch the tab while attendnig the exam, plz dont swith the tab ! IF you switch the tab 3 times then exam will submit atomatically!
+      current warnig- ${this.navigationAttemptCount -1}`)
+    }
+    if (this.navigationAttemptCount === 4) {
+      this.completeTest();
+    }
+  };
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: BeforeUnloadEvent) {
+    event.preventDefault();
+    event.returnValue = 'Are you sure you want to leave the exam?'; 
+    return event.returnValue;
   }
 
-  // handleVisibilityChange = () => {
-  //   this.navigationAttemptCount++;
-  //   console.log('------warning number----------------', this.navigationAttemptCount);
-  //   if (document.hidden) {
-  //     this._toastr.warning('Please focus on the exam screen.');
-  //     window.alert(`you have tried to switch the tab while attendnig the exam, plz dont swith the tab ! IF you switch the tab 3 times then exam will submit atomatically!
-  //     current warnig- ${this.navigationAttemptCount -1}`)
-  //   }
-  //   if (this.navigationAttemptCount === 4) {
-  //     this.completeTest();
-  //   }
-  // };
 
-  // @HostListener('window:beforeunload', ['$event'])
-  // beforeUnloadHandler(event: BeforeUnloadEvent) {
-  //   event.preventDefault();
-  //   event.returnValue = 'Are you sure you want to leave the exam?'; 
-  //   return event.returnValue;
-  // }
-
-
-  // setUpCamera() {
-  //   navigator.mediaDevices.getUserMedia({
-  //     video: { width: 100, height: 100 },
-  //     audio: false
-  //   }).then(stream => {
-  //     this.stream = stream;
-  //     this.videoRef.srcObject = stream;
-  //   }).catch(error => {
-  //     console.error('Error accessing camera:', error);
-  //   });
-  // }
+  setUpCamera() {
+    navigator.mediaDevices.getUserMedia({
+      video: { width: 100, height: 100 },
+      audio: false
+    }).then(stream => {
+      this.stream = stream;
+      this.videoRef.srcObject = stream;
+    }).catch(error => {
+      console.error('Error accessing camera:', error);
+    });
+  }
 
   disableBrowserBackButton() {
     window.history.pushState(null, '', window.location.href);

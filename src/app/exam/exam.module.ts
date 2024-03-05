@@ -24,6 +24,7 @@ import { StudentDetailsComponent } from './Admin/student-details/student-details
 import { QuizeReportComponent } from './quize-report/quize-report.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { MixTestDetailsComponent } from './mix-test-details/mix-test-details.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 // Define routes for the Exam Module
@@ -75,6 +76,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     AppRoutingModule,
     HighchartsChartModule,
+    NgApexchartsModule
   
   ],
 })
