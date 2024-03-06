@@ -24,8 +24,8 @@
         </h5>
         <h5 class="reportCard" *ngIf="quizeAttemptNumber > 1">
           Check Previous report -
-          <select name="" id="" (change)="data($event)">
-            <option selected>Select Attempt Number</option>
+          <select  (change)="data($event)">
+            <option selected>Select Attempt</option>
             <option *ngFor="let attempts of attempDropdown" [value]="attempts.id" >
               {{ attempts.position }}
             </option>
@@ -100,13 +100,14 @@
           <div class="timeBox">
             <div class="col-md-12 boxData">
               <div >
-                  <dl class="row">
-                    <dt class="col-sm-6"><h6>Subject</h6></dt>
-                    <dd class="col-sm-6"><h6>:{{ quiz_pool_name }}</h6></dd>
+                
+                  <dl class="row dataShow ">
+                    <dt class="col-sm-6"><h6>Test Name</h6></dt>
+                    <dd class="col-sm-6"><h6>: {{ quiz_pool_name }}</h6></dd>
                     <dt class="col-sm-6"><h6>Date</h6></dt>
-                    <dd class="col-sm-6"><h6>:{{ quize_date }}</h6></dd>
+                    <dd class="col-sm-6"><h6>: {{ quize_date }}</h6></dd>
                     <dt class="col-sm-6"><h6>Score</h6></dt>
-                    <dd class="col-sm-6"><h6>:{{ percentage }}%</h6></dd>
+                    <dd class="col-sm-6"><h6>: {{ percentage }}%</h6></dd>
                   </dl>
               </div>
             </div>

@@ -2,8 +2,8 @@
 
 .clockImg {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 42% !important;
+  height: 70% !important;
   /* border: 1px solid black; */
   overflow: hidden; /* Ensure that the image doesn't overflow the container */
 }
@@ -122,8 +122,8 @@
   }
   
   .practiceReport .practiceReportHeading {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 600;
     line-height: 0.4;
     font-family: "jaldi", sans-serif;
     text-align: center;
@@ -335,9 +335,9 @@
   .apexcharts-legend{
     display: none !important;
   } 
-  .topCard .timeBox{
+  /* .topCard .timeBox{
     height: 115px !important;
-  }
+  } */
   .boxData {
     display: flex;
     flex-direction: column;
@@ -346,3 +346,10 @@
   .boxData h4 {
     margin-bottom: 0;
   }
+  .dataShow{
+    text-align: start !important;
+  }
+  .dataShow dd{
+    color: #007bba;
+  }
+  

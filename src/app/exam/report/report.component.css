@@ -320,3 +320,8 @@
   .spanContent{
     color: #ffcc03;
   }
+  .mainChart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
