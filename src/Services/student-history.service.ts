@@ -41,4 +41,11 @@ export class StudentHistoryService {
   }
   
 
+
+  //dashboard data
+
+  getDashboardData(){
+    return this._httpClient.get(`${this.baseUrl}userDetails`);
+  }
+
 }
