@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/Services/login.service';
 import { TryReportService } from 'src/Services/try-report.service';
@@ -97,11 +97,32 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     window.addEventListener('beforeunload', this.beforeUnloadHandler);
     // this.chapterWiseTest();
     // this.partsMixtTest();
+
+
+    this._router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        // Check if the user is navigating away from the start-exam component
+        if (event.url !== '/start-exam') {
+          // Show the sidebar if navigating away from the start-exam component
+          this._sideBar.setSidebarOpen(true);
+        }
+      }
+    });
+
+
+
+
+
+
   }
 
   ngOnDestroy() {
     document.removeEventListener('visibilitychange', this.handleVisibilityChange);
     window.removeEventListener('beforeunload', this.beforeUnloadHandler);
+    if (this.stream) {
+      this.stream.getTracks().forEach(track => track.stop());
+      this.stream = undefined;
+    }
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }

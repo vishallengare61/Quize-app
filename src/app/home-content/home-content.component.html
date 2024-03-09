@@ -99,22 +99,10 @@
             <div class="col-xl-4 col-lg-6 mb-3" data-aos="zoom-in" data-aos-duration="2000">
                 <a class="anchorTag" href="javascript:void(0)" >
                     <div class="card h-100">
-                        <!-- <ng-container *ngFor="let category of examCategories">
-                            <a *ngIf="category?.title == 'K-12'"
-                                routerLink="/assessment/dashboard/all-exams/{{category?.id}}">
-                                <h1>K-12/Academics</h1>
-                            </a>
-                        </ng-container> -->
                         <p>Wide career path begins during academic preparation. Absolute study helps the students to prepare
                             for their school examinations and board exams. Moreover, we aim to help students prepare
                             for Olympiads and Other Scholarship Exams.</p>
                         <ul>
-                            <!-- <ng-container *ngFor="let domain of kdomains">
-                                <li *ngIf="domain?.show_home"
-                                    routerLink="/assessment/dashboard/choose-subcategory/{{ domain?.id }}"
-                                    (click)="selectCourse(domain?.id)"><i class="fa fa-check"
-                                        aria-hidden="true"></i> <span>{{domain?.title}}</span></li>
-                            </ng-container> -->
                             <ng-container *ngFor="let category of examCategories">
                                 <li *ngIf="category?.title == 'K-12'"
                                     routerLink="/assessment/dashboard/all-exams/{{category?.id}}"><i

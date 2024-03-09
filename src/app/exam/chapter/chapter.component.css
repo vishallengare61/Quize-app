@@ -344,7 +344,7 @@
   }
   .chapterCheckbox {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
   }
   .chapterCheckbox label {
     font-family: "Jaldi", Sans-serif;
@@ -448,19 +448,19 @@
       display: none;
     }
     .topDiv {
-      .firstDiv,
+      /* .firstDiv,
       .secondDiv {
         label {
           font-size: 1.2em !important;
         }
-      }
+      } */
       .thirdDiv {
-        label {
+        /* label {
           font-size: 0.9em !important;
-        }
-        p {
+        } */
+        /* p {
           font-size: 0.9em !important;
-        }
+        } */
         .noOfProblems {
           font-size: 0.9em !important;
         }

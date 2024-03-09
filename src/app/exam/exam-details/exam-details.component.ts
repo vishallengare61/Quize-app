@@ -51,8 +51,8 @@ export class ExamDetailsComponent implements OnInit {
 
   changeDetails(quizeID: any) {
     const quize__id = quizeID.target.value;
-    this._historyService.getQuizeHistory(quize__id).subscribe(
-      (apiResponse: any) => {
+    this._historyService.getQuizeHistory(quize__id).subscribe((apiResponse: any) => {
+     
         this.showLoader = false;
         this.quizPoolId = apiResponse.quizPoolId;
         this.questions = apiResponse.questionDetails || [];
@@ -95,6 +95,7 @@ export class ExamDetailsComponent implements OnInit {
   getExamDetailsData(quizePoolId: any) {
     const getQuizePollID = quizePoolId;
     this._historyService.getQuizeHistory(this.quizePoolId).subscribe( (apiResponse: any) => {
+      console.log('quize history', apiResponse);
         this.attemptNUmber = apiResponse.currentAttemptNo;
         this.attemptDropdown = apiResponse.allPositions;
         this.showLoader = false;
@@ -156,12 +157,12 @@ export class ExamDetailsComponent implements OnInit {
     } else {
       const options = {
         chart: {
-          height: 350,
+          height: 300,
           width: 350,
           type: 'donut',
         },
         series: [answeredCount, skippedCount],
-        labels: ['Answered', 'Skipped'],
+        labels: ['correct', 'Skipped'],
         dataLabels: {
           enabled: false,
           formatter: function (val: any, opts: any) {

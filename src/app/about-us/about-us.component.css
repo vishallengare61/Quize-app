@@ -358,28 +358,28 @@
   }
   .aboutUS .ourValues {
     padding: 15px;
-    .card {
+    /* .card {
       margin-bottom: 20px;
     }
     p {
       font-size: 17px;
-    }
+    } */
     .ourValuesBg {
       display: none;
     }
   }
   .aboutUS .ourTeam {
     padding: 15px;
-    p {
+    /* p {
       font-size: 17px;
-    }
+    } */
   }
   .aboutUS .chairmansDesk .chairmansNameMobile {
     display: block;
     text-align: center;
-    span {
+    /* span {
       float: none;
-    }
+    } */
   }
   .aboutUS .chairmansDesk .chairmansNameDesktop {
     display: none;
@@ -395,9 +395,9 @@
 @media screen and (max-width: 620px) {
   .aboutUS .whoWeAre h3 {
     width: 100%;
-    span {
+    /* span {
       float: none;
-    }
+    } */
   }
 }
 
