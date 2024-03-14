@@ -78,13 +78,16 @@ getPartsID(id:number, name:any){
   this.parts_id = id;
   localStorage.setItem('parts_id', this.parts_id);
   this.parts_name = name;
-  this._loginService.getChapters(id, name).pipe(
-      catchError(error => {
+  this._loginService.getChapters(id, name).pipe( catchError(error => {
+    console.log('getting the parts data--', error);
         const errorMessage = error?.error?.message || 'An error occurred';
         this._toastr.error(errorMessage);
+        this.subjectPartsVailable = false;
+        this.unSelectPart = true;
         return throwError(error); 
       })
     ).subscribe((chapters:any) =>{
+      console.log('getting the parts data--', chapters);
       if (chapters.status === false) {
         this.unSelectPart = true;
         this._toastr.error(chapters.message);

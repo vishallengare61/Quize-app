@@ -38,8 +38,6 @@ export class SubjectsComponent {
 
   
   selectCourse(id:any,s_name:AnalyserNode) {
-    // localStorage.setItem('subject_id', id)
-    // console.log('gettingChapterID', id);
     this._router.navigate([`/chapters/${id}/${s_name}`]);
 
   }
