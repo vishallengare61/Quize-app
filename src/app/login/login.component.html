@@ -186,14 +186,6 @@
                               <option *ngFor="let class of classData" [value]="class.id">{{class.name}}</option>
                             </select>
                           </div>
-                          <!-- <div class="mt-1">            
-                            <label for="">Select the group</label>              
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="user_type">
-                              <option selected>Select Group</option>
-                              <option value="Student">Student</option>
-                              <option value="Mentor" disabled>Mentor</option>
-                            </select>
-                          </div> -->
                           <div id="loginError" class="mt-2" *ngIf="name && !validName">
                             <span class="text-danger">Please enter valid Name</span>
                           </div>
@@ -226,14 +218,6 @@
                               <input class="form-control mentorInput" type="password" name="registerpassword" placeholder="Enter Password"  required (input)="validateSignUpName()" formControlName="password" />
                             </div>
                           </div>
-                          <!-- <div class="mt-1">            
-                            <label for="">Select the group</label>              
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="user_type">
-                              <option selected>Select Group</option>
-                              <option value="Mentor">Mentor</option>
-                              <option value="Student" disabled>Student</option>
-                            </select>
-                          </div> -->
                           <div id="loginError" class="mt-2" *ngIf="name && !validName">
                             <span class="text-danger">Please enter valid Name</span>
                           </div>

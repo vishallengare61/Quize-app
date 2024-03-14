@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit{
       class_register_id: ['', Validators.required],
       user_type: ['Student']
     }, {
-      // validators: this.passwordMatchValidator.bind(this)
     });
 
     this.registerForm = this.formBuilder.group({
@@ -89,14 +88,12 @@ export class LoginComponent implements OnInit{
     //IMPORTANT-->
     this.routerSubscription = this._router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        // Remove modal backdrop on navigation start
         const modalBackdrop = document.querySelector('.modal-backdrop');
         if (modalBackdrop) {
           modalBackdrop.remove();
         }
       }
       if (event instanceof NavigationEnd) {
-        // Ensure modal backdrop is removed after navigation is complete
         const modalBackdrop = document.querySelector('.modal-backdrop');
         if (modalBackdrop) {
           modalBackdrop.remove();
@@ -117,7 +114,6 @@ export class LoginComponent implements OnInit{
            next: (classes: any) => {
              console.log('getting classes based on selected board--', classes)
                this.classData = classes.allClasses;
-              //  console.log('getting classes based on selected board--', classes.error.message)
            },
            error: (error: any) => {
                if (error.status === 404) {
@@ -149,17 +145,6 @@ onClassSelectionChange(event: any){
     this.showFaqSection = section === 'faq';
   }
 
-  // passwordMatchValidator(formGroup: FormGroup) {
-  //   const password = formGroup.get('password')?.value;
-  //   const confirmPassword = formGroup.get('confirmPassword')?.value;
-  //   if (password !== confirmPassword) {
-  //     formGroup.get('confirmPassword')?.setErrors({ passwordMismatch: true });
-  //   } else {
-  //     formGroup.get('confirmPassword')?.setErrors(null);
-  //   }
-
-  // }
-
   changeLoginForm(){
     this.isLogin =false;
     this.isRegister = true;
@@ -176,11 +161,7 @@ onClassSelectionChange(event: any){
       console.log('getting data of logged in user-----',result);
       if (result) {
         this._toastr.success(result.user.message);
-        // const userToken = result.user.token;
-        // localStorage.setItem('userToken', userToken);
         localStorage.setItem('user', JSON.stringify(result));
-        // this.class_id = result.user.class_id[0]
-        // localStorage.setItem('id',this.class_id);
         this._router.navigate(['/dashboard']);
       }
     })  
@@ -252,6 +233,7 @@ onClassSelectionChange(event: any){
         console.log('Student Registered-----',result);
         this._toastr.success('registration Success!');
         this._bt.hideModal();
+        this.showLogin = true;
       })
       this.registerStudentForm.reset();
     } else {

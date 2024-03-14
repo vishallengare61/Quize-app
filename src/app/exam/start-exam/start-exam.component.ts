@@ -5,8 +5,8 @@ import { LoginService } from 'src/Services/login.service';
 import { TryReportService } from 'src/Services/try-report.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SideBarService } from 'src/Services/side-bar.service';
-
-
+import { Subject } from 'rxjs';
+import { WebcamImage } from 'ngx-webcam';
 
 @Component({
   selector: 'app-start-exam',
@@ -21,7 +21,6 @@ export class StartExamComponent implements OnInit, OnDestroy  {
   UserResultData: any[] = [];
   selectedOptionsMap: { [questionId: string]: number } = {};
   currentTime: Date = new Date();
-  // Add a variable to store the total time in seconds (30 minutes)
   totalTimeInSeconds: number = 0;
   private timerInterval: any;
   showLoader: boolean = true;
@@ -57,13 +56,19 @@ export class StartExamComponent implements OnInit, OnDestroy  {
 
    videoRef: any;
    stream: MediaStream | undefined;
+   isOnExamScreen: boolean = false;
 
+   triggerObservable: Subject<void> = new Subject<void>();
+
+   
   ngOnInit() {
+    this.isOnExamScreen = true;
     this._sideBar.setSidebarOpen(false);
     this._sideBar.setExamStarted(true);
-    // this.disableBrowserBackButton();
+    this.disableBrowserBackButton();
     this.videoRef = document.getElementById('video');
-    this.setUpCamera();
+    // this.setUpCamera();
+    this.startCapture();
     this.start_time = Math.floor(Date.now() / 1000);
     const localStorageUser = localStorage.getItem('user');
     this.part_id = localStorage.getItem('parts_id');
@@ -80,11 +85,31 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     this.chapter_id = this._route.snapshot.paramMap.get('chapter_id');
     this.q_count = this._route.snapshot.paramMap.get('q_count');
     this.diff_level = this._route.snapshot.paramMap.get('diff_level');
-
-    //getting the difficulty level of selected Mixsubject/Mixparts/chapter
-    
-    // console.log('getting difficulty level--------------------------------', this.diff_level);
  
+   this.startExam();
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+    window.addEventListener('beforeunload', this.beforeUnloadHandler);
+
+    this._router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        if (event.url !== '/start-exam') {
+          this._sideBar.setSidebarOpen(true);
+        }
+      }
+    });
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+  }
+
+  handleImage(image: WebcamImage) {
+    // Handle captured image data here
+  }
+
+  startCapture() {
+    this.triggerObservable.next();
+  }
+
+  startExam(){
+    // this.detectScreenSharing();
     if (this.chapter_id === 'chapterMixTest') {
       this.partsMixTest();
     }else if(this.chapter_id === 'SubjectMixTest'){
@@ -92,28 +117,6 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     }else{
       this.regularChapterTest();
     }
-
-    document.addEventListener('visibilitychange', this.handleVisibilityChange);
-    window.addEventListener('beforeunload', this.beforeUnloadHandler);
-    // this.chapterWiseTest();
-    // this.partsMixtTest();
-
-
-    this._router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        // Check if the user is navigating away from the start-exam component
-        if (event.url !== '/start-exam') {
-          // Show the sidebar if navigating away from the start-exam component
-          this._sideBar.setSidebarOpen(true);
-        }
-      }
-    });
-
-
-
-
-
-
   }
 
   ngOnDestroy() {
@@ -130,13 +133,19 @@ export class StartExamComponent implements OnInit, OnDestroy  {
 
   handleVisibilityChange = () => {
     this.navigationAttemptCount++;
-    // console.log('------warning number----------------', this.navigationAttemptCount);
-    if (document.hidden) {
-      this._toastr.warning('Please focus on the exam screen.');
-      window.alert(`you have tried to switch the tab while attendnig the exam, plz dont swith the tab ! IF you switch the tab 3 times then exam will submit atomatically!
-      current warnig- ${this.navigationAttemptCount -1}`)
+
+    if (document.hidden && this.isOnExamScreen) {
+      // Show alert to the user
+      // alert('Please close all other tabs/windows before starting the exam.');
     }
-    if (this.navigationAttemptCount === 4) {
+
+    if (document.hidden) {
+      // this._toastr.warning('You Have try to switch the tab while attendnig the exam, your test will submit atomatically, thanks!');
+      // window.alert(`you have tried to switch the tab while attendnig the exam, plz dont swith the tab ! IF you switch the tab 3 times then exam will submit atomatically!
+      // current warnig- ${this.navigationAttemptCount -1}`)
+    }
+    if (this.navigationAttemptCount === 1) {
+      window.alert('You Have try to switch the tab while attendnig the exam, your test will submit atomatically, thanks!');
       this.completeTest();
     }
   };
@@ -149,17 +158,42 @@ export class StartExamComponent implements OnInit, OnDestroy  {
   }
 
 
-  setUpCamera() {
-    navigator.mediaDevices.getUserMedia({
-      video: { width: 100, height: 100 },
-      audio: false
-    }).then(stream => {
-      this.stream = stream;
-      this.videoRef.srcObject = stream;
-    }).catch(error => {
-      console.error('Error accessing camera:', error);
-    });
+  async detectScreenSharing() {
+    try {
+      const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+      // If the user is able to get display media, it indicates screen sharing.
+      this.handleScreenSharingDetected();
+    } catch (error) {
+      // If the user is unable to get display media, screen sharing is likely disabled or not supported.
+      this.handleScreenSharingNotDetected();
+    }
+}
+
+handleScreenSharingDetected() {
+  alert('You are currently sharing your screen. Please stop screen sharing before starting the exam.');
+  // Or show a modal dialog to inform the user to stop screen sharing.
+}
+
+  handleScreenSharingNotDetected(){
+    alert('you are good to go. best of luck!')
   }
+
+  // setUpCamera() {
+  //   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  //     navigator.mediaDevices.getUserMedia({
+  //       video: { width: 100, height: 100 },
+  //       audio: false
+  //     }).then(stream => {
+  //       this.stream = stream;
+  //       this.videoRef.srcObject = stream;
+  //     }).catch(error => {
+  //       console.error('Error accessing camera:', error);
+  //     });
+  //   } else {
+  //     console.error('getUserMedia is not supported in this browser.');
+  //   }
+  // }
+  
 
   disableBrowserBackButton() {
     window.history.pushState(null, '', window.location.href);
@@ -169,12 +203,9 @@ export class StartExamComponent implements OnInit, OnDestroy  {
   }
 
   regularChapterTest(){
-    // console.log('RegularchapterTest is colling');
     this._loginService.getQuestions(this.subjectName, this.chapter_id, this.class_id) .subscribe( (apiResponse: any) => {
       this.showLoader = false;
       this.quizPoolId = apiResponse.quizPoolId;
-      // console.log('getting the quizPoolId ------------', apiResponse.quizPoolId);
-      // console.log('chapterwise  question.s ------------', apiResponse);
       if ( apiResponse.status && apiResponse.all_question && Array.isArray(apiResponse.all_question) ) {
         this.questions = apiResponse.all_question.map(
           (apiQuestion: any) => {
@@ -185,7 +216,6 @@ export class StartExamComponent implements OnInit, OnDestroy  {
                 apiQuestion.optionc,
                 apiQuestion.optiond,
               ],
-              // correctAnswer: // Your logic to map the correct answer based on the API response,
             };
           }
         );
@@ -202,19 +232,13 @@ for (const answeredQuestion of this.answeredQuestions) {
     answeredQuestion.selectedOptionId;
 }
 this.calculateRemainingTime();
-
  }
 
  partsMixTest(){
-  // console.log('partsMixtTest is colling');
-  
   const modal = {part_id: parseInt(this.part_id), no_of_question: parseInt(this.q_count)};
-
   this._loginService.getMixQuestions(modal).subscribe( (apiResponse: any) => {
     this.showLoader = false;
     this.quizPoolId = apiResponse.quizPoolId;
-    // console.log('Mix question.s ------------', apiResponse);
-
     if (apiResponse.all_question && Array.isArray(apiResponse.all_question) ) {
       this.questions = apiResponse.all_question.map(
         (apiQuestion: any) => {
@@ -225,7 +249,6 @@ this.calculateRemainingTime();
               apiQuestion.optionc,
               apiQuestion.optiond,
             ],
-            // correctAnswer: // Your logic to map the correct answer based on the API response,
           };
         }
       );
@@ -245,9 +268,7 @@ this.calculateRemainingTime();
  }
 
  subjectMixTest(){  
-  //here in subject Name for these method only we are getting the subject ID.
   const modal = {subject_id: parseInt(this.subjectName), no_of_question: parseInt(this.q_count)};
-
   this._loginService.getMixQuestions(modal).subscribe( (apiResponse: any) => {
     this.showLoader = false;
     this.quizPoolId = apiResponse.quizPoolId;
@@ -261,7 +282,6 @@ this.calculateRemainingTime();
               apiQuestion.optionc,
               apiQuestion.optiond,
             ],
-            // correctAnswer: // Your logic to map the correct answer based on the API response,
           };
         }
       );
@@ -280,7 +300,6 @@ this.selectedOptionsMap[answeredQuestion.questionId] =
 this.calculateRemainingTime();
  }
 
-
   calculateRemainingTime(): void {
     this.setIntervalRef = setInterval(() => {
       this.updateTimer();
@@ -288,9 +307,6 @@ this.calculateRemainingTime();
   }
 
   updateTimer() {
-    // if (this.totalTimeInSeconds > 0) {
-    // this.totalTimeInSeconds -= 1;
-
     if (this.totalTimeInSeconds < 60 * 60) {
       this.totalTimeInSeconds += 1;
       if (this.totalTimeInSeconds === 30 * 60) {
@@ -304,13 +320,13 @@ this.calculateRemainingTime();
         );
       }
     } else {
-      // Timer reached zero, handle the event (e.g., display a message, complete the test)
       if (this.setIntervalRef) {
         clearInterval(this.setIntervalRef);
         this.completeTest();
       }
     }
   }
+
   formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -326,6 +342,7 @@ this.calculateRemainingTime();
       (answer) => answer.questionId === this.questions[questionIndex].id
     );
   }
+
   currentQuestion = 0;
   notAttemptedQuestions: any;
   answeredQuestionValues: any;
@@ -337,7 +354,6 @@ this.calculateRemainingTime();
     const question = this.questions[currentQuestion];
   }
   
-  // Find Answered Questions
   findAnsweredQuestions() {
     const answeredQuestions = this.answeredQuestions.map((answer) => {
       const question = this.questions.find(
@@ -345,8 +361,8 @@ this.calculateRemainingTime();
       );
       return { ...answer, question };
     });
-    // console.log('Answered Questions:', answeredQuestions);
   }
+
   findAnsweredQuestionValues() {
     this.answeredQuestionValues = this.answeredQuestions.map((answer) => {
       return {
@@ -355,21 +371,19 @@ this.calculateRemainingTime();
         selectedOptionId: answer.selectedOptionId,
       };
     });
-    // console.log('Answered Questions Values:', this.answeredQuestionValues);
   }
-  // Find Not Attempted Questions
+
   findNotAttemptedQuestions() {
     this.notAttemptedQuestions = this.questions.filter((question: any) => {
       return !this.answeredQuestions.some(
         (answer) => answer.questionId === question.id
       );
     });
-    // console.log('not attempted questions --',this.notAttemptedQuestions);
   }
+
   findVisitedNotAnsweredQuestions() {
     this.visitedNotAnsweredQuestions = this.questions.filter(
       (question: any) => {
-        // Check if the question is visited but not answered
         const questionId = question.id;
         const isVisited =
           this.testObj?.data?.questions[questionId]?.visited ?? false;
@@ -379,18 +393,16 @@ this.calculateRemainingTime();
         return isVisited && !isAnswered;
       }
     );
-    // console.log('Visited but not Answered Questions:', this.visitedNotAnsweredQuestions);
   }
+
   selectMCQ(event: any, optionIndex: any) {
     const selectedAnswer = this.questions[this.currentQuestion].options[optionIndex];
     const questionId = this.questions[this.currentQuestion].id;
-    const timestamp = Date.now(); // Record current timestamp
+    const timestamp = Date.now(); 
   
-    // Calculate time taken for the current question in seconds
     const startTime = this.questionStartTime ? this.questionStartTime.getTime() : 0;
     const timeTakenInSeconds = Math.floor((timestamp - startTime) / 1000);
-  
-    // Store time taken along with other answer details
+
     this.selectedOptionsMap[questionId] = optionIndex;
     const existingAnswerIndex = this.answeredQuestions.findIndex(
       (q) => q.questionId === questionId
@@ -410,9 +422,8 @@ this.calculateRemainingTime();
         timeTaken: timeTakenInSeconds,
       });
     }
-  
-    // console.log('question and answer------', this.answeredQuestions);
   }
+
   nextQuestion() {
     if (this.currentQuestion < this.questions.length - 1) {
       this.currentQuestion++;
@@ -422,7 +433,6 @@ this.calculateRemainingTime();
       (q) => q.questionId === currentQuestionId
     );
     if (attemptedAnswer) {
-      // console.log(Question ID: ${currentQuestionId}, Attempted Answer: ${attemptedAnswer.answer});
     } else {
     }
     this.findCurrentQuestion();
@@ -431,11 +441,13 @@ this.calculateRemainingTime();
     this.findAnsweredQuestionValues();
     this.findVisitedNotAnsweredQuestions();
   }
+
   previousQuestion() {
     if (this.currentQuestion > 0) {
       this.currentQuestion--;
     }
   }
+
   jumpToQuestion(questionIndex: any) {
     this.currentQuestion = questionIndex;
   }
@@ -455,7 +467,6 @@ this.calculateRemainingTime();
     const score: any = 5;
     document.getElementById('dimissModal')?.click();
     const selected_by_user: any[] = [];
-    // Create a separate array with information about all questions
     const allQuestionsInfo = this.questions.map((question) => {
       const answer = this.answeredQuestions.find(
         (a) => a.questionId === question.id
@@ -475,7 +486,6 @@ this.calculateRemainingTime();
       };
     });
     this._loginService.getResult({ selected_by_user, start_time: this.start_time, end_time:this.end_time, quizPoolId:this.quizPoolId }) .subscribe((response: any) => {
-        // console.log('getting result-------', response.data);
         this.UserResultData = response.data;
         localStorage.setItem('result', JSON.stringify(this.UserResultData));
         this._loginService.resultData = this.UserResultData;
@@ -484,13 +494,16 @@ this.calculateRemainingTime();
           this.stream.getTracks().forEach(track => track.stop());
           this.stream = undefined;
         }
+        this.isOnExamScreen = false;
         this._router.navigate([`/report`]);
       });
   }
+
   getOptionLetter(index: number | undefined): string {
     const optionLetters = ['a', 'b', 'c', 'd'];
     return index !== undefined ? optionLetters[index] : '';
   }
+
   get progressPercentage() {
     const cQuestion = this.answeredQuestionValues.length;
     const percentage = (cQuestion / this.questions.length) * 100;

@@ -9,7 +9,9 @@
               {{ formatTime(totalTimeInSeconds) }}
             </p>
           </h5>
-          <video id="video" autoplay></video>
+          <!-- <video id="video" autoplay></video> -->
+          <webcam [height]="150" [width]="150" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+
         </div>
         <div class="col-xl-8 practiceQuestionAndSolutionDiv">
           <div class="card">

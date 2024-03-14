@@ -20,7 +20,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { NgApexchartsModule } from "ng-apexcharts";
-
+import { WebcamModule } from 'ngx-webcam';
 
 
 @NgModule({
@@ -46,6 +46,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     HighchartsChartModule,
     ExamModule,
     HttpClientModule,
+    WebcamModule,
     NgApexchartsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',

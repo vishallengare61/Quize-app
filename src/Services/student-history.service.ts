@@ -1,12 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentHistoryService {
 
+  // baseUrl = environment.apiUrl;
   baseUrl = environment.apiUrl;
   token: string | null = null;
 
@@ -47,5 +49,11 @@ export class StudentHistoryService {
   getDashboardData(){
     return this._httpClient.get(`${this.baseUrl}userDetails`);
   }
+
+  updateProfileData(formData: FormData){
+    console.log(formData,'formData is service');
+    return this._httpClient.post(`${this.baseUrl}updateprofile`, formData);
+  }
+
 
 }
