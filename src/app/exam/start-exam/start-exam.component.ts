@@ -67,7 +67,6 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     this._sideBar.setExamStarted(true);
     this.disableBrowserBackButton();
     this.videoRef = document.getElementById('video');
-    // this.setUpCamera();
     this.startCapture();
     this.start_time = Math.floor(Date.now() / 1000);
     const localStorageUser = localStorage.getItem('user');
@@ -100,8 +99,22 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 
+
+  ngOnDestroy() {
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    window.removeEventListener('beforeunload', this.beforeUnloadHandler);
+    if (this.stream) {
+      this.stream.getTracks().forEach(track => track.stop());
+      this.stream = undefined;
+    }
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+  } 
+
+  
   handleImage(image: WebcamImage) {
-    // Handle captured image data here
+
   }
 
   startCapture() {
@@ -119,17 +132,7 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     }
   }
 
-  ngOnDestroy() {
-    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
-    window.removeEventListener('beforeunload', this.beforeUnloadHandler);
-    if (this.stream) {
-      this.stream.getTracks().forEach(track => track.stop());
-      this.stream = undefined;
-    }
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-    }
-  } 
+
 
   handleVisibilityChange = () => {
     this.navigationAttemptCount++;
@@ -178,22 +181,6 @@ handleScreenSharingDetected() {
     alert('you are good to go. best of luck!')
   }
 
-  // setUpCamera() {
-  //   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  //     navigator.mediaDevices.getUserMedia({
-  //       video: { width: 100, height: 100 },
-  //       audio: false
-  //     }).then(stream => {
-  //       this.stream = stream;
-  //       this.videoRef.srcObject = stream;
-  //     }).catch(error => {
-  //       console.error('Error accessing camera:', error);
-  //     });
-  //   } else {
-  //     console.error('getUserMedia is not supported in this browser.');
-  //   }
-  // }
-  
 
   disableBrowserBackButton() {
     window.history.pushState(null, '', window.location.href);
