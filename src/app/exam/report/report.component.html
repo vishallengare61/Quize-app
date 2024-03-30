@@ -11,7 +11,12 @@
         <div class="practiceReportContainer">
             <h2 class="practiceReportHeading">Practice Report Card</h2>
             <div class="reportDetails">
-
+                <span>
+                    Test Name: <h6 style="display: inline;">{{testName}} </h6>
+                </span>
+                <span style="margin-left: 20px;">
+                    date: <h6 style="display: inline;">{{ date | date: 'EEE MMM dd yyyy HH:mm' }}</h6>
+                </span>
               <!-- <h5 class="reportCard">Attempt Number - <span class="spanContent">2</span> </h5> -->
             </div>
           </div>

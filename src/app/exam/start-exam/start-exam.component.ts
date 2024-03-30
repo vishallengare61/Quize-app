@@ -7,6 +7,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SideBarService } from 'src/Services/side-bar.service';
 import { Subject } from 'rxjs';
 import { WebcamImage } from 'ngx-webcam';
+import screenfull from 'screenfull';
+
 
 @Component({
   selector: 'app-start-exam',
@@ -84,8 +86,8 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     this.chapter_id = this._route.snapshot.paramMap.get('chapter_id');
     this.q_count = this._route.snapshot.paramMap.get('q_count');
     this.diff_level = this._route.snapshot.paramMap.get('diff_level');
- 
-   this.startExam();
+    screenfull.toggle();
+    this.startExam();
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
     window.addEventListener('beforeunload', this.beforeUnloadHandler);
 
@@ -97,8 +99,29 @@ export class StartExamComponent implements OnInit, OnDestroy  {
       }
     });
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
+    screenfull.on('change', () => {
+      if (!screenfull.isFullscreen) {
+        this.exitFullscreen();
+      }
+    });
+    document.addEventListener('fullscreenchange', this.fullScreenChangeHandler);
+    document.addEventListener('mozfullscreenchange', this.fullScreenChangeHandler);
+    document.addEventListener('webkitfullscreenchange', this.fullScreenChangeHandler);
+    document.addEventListener('msfullscreenchange', this.fullScreenChangeHandler);
+    this.enterFullscreen();
   }
 
+  enterFullscreen() {
+    if (screenfull.isEnabled) {
+      screenfull.request();
+    }
+  }
+
+  exitFullscreen() {
+    if (screenfull.isEnabled && screenfull.isFullscreen) {
+      screenfull.exit();
+    }
+  }
 
   ngOnDestroy() {
     document.removeEventListener('visibilitychange', this.handleVisibilityChange);
@@ -110,6 +133,10 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
+    document.removeEventListener('fullscreenchange', this.fullScreenChangeHandler);
+    document.removeEventListener('mozfullscreenchange', this.fullScreenChangeHandler);
+    document.removeEventListener('webkitfullscreenchange', this.fullScreenChangeHandler);
+    document.removeEventListener('msfullscreenchange', this.fullScreenChangeHandler);
   } 
 
   
@@ -121,6 +148,18 @@ export class StartExamComponent implements OnInit, OnDestroy  {
     this.triggerObservable.next();
   }
 
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscapeKeyDown(event: KeyboardEvent) {
+    if (screenfull.isEnabled && screenfull.isFullscreen) {
+      this.exitFullscreen();
+    }
+  }
+  fullScreenChangeHandler() {
+    if (!screenfull.isFullscreen) {
+      this.exitFullscreen();
+    }
+  }
+  
   startExam(){
     // this.detectScreenSharing();
     if (this.chapter_id === 'chapterMixTest') {
@@ -440,6 +479,8 @@ this.calculateRemainingTime();
   }
 
   completeTest() {
+    screenfull.exit();
+    this.enterFullscreen()
     this.end_time = Math.floor(Date.now() / 1000);
     if (this.setIntervalRef) {
       clearInterval(this.setIntervalRef);

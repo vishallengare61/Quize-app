@@ -3,7 +3,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 body {
     background: #f4f4f5 !important; 
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
 
     /* If want then add the image on cursor as well */
     /* cursor: url('assets/img/LTS_company logo white bg.png')10 10, auto; */

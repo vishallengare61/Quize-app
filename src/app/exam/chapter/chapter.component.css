@@ -723,3 +723,9 @@
   margin: 0;
   cursor: pointer;
 }
+
+.warningMsg{
+  color: orange;
+  font-weight: 700;
+  margin-top: 10px !important;
+}

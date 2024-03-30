@@ -35,9 +35,11 @@ export class ReportComponent implements OnInit {
   totalQuestion:any = undefined;
   unattempts:any = undefined;
   wrongAnswer:any = undefined;
+  testName:any = undefined;
   allResultData:any = undefined;
   totalTimeSpentForExam: any;
   resultPrediction: any;
+  date!: Date;
 
   constructor(private _router: Router, private _route : ActivatedRoute, private _loginService:LoginService, private _tryService: TryReportService){
   }
@@ -52,6 +54,7 @@ export class ReportComponent implements OnInit {
       this.totalQuestion = paresedData.totalQuestions;
       this.unattempts = paresedData.unattempts;
       this.wrongAnswer = paresedData.wrongAnswer;
+      this.testName = paresedData.quiz_pool_name
     }
      // Set correct values for the charts
      this.UserScore = this.correctAnswer; 
@@ -62,6 +65,10 @@ export class ReportComponent implements OnInit {
      this.incorrectPerc = (this.wrongAnswer / this.totalQuestion) * 100;
     
     this.initGraph();
+
+
+    this.date = new Date();
+
     // this.initGrapha();
     this.initGraphb();
     this.initGraphc();

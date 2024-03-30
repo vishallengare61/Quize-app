@@ -23,7 +23,7 @@ export class ExamOverviewComponent implements OnInit{
     {
     id: 2,
     title: 'paper pattern',
-    content: "<p><u><strong>Mode of Exam</strong></u></p>\n\n<p>Offline</p>\n\n<p><strong><u>Medium of Language</u></strong></p>\n\n<p>English/Hindi</p>\n\n<p>&nbsp;</p>",
+    content: "<p><u><strong>Mode of Exam</strong></u></p>\n\n<p>Online</p>\n\n<p><strong><u>Medium of Language</u></strong></p>\n\n<p>English/Hindi</p>\n\n<p>&nbsp;</p>",
     "is_active": true,
   },
     {
@@ -35,7 +35,7 @@ export class ExamOverviewComponent implements OnInit{
     {
     id: 4,
     title: 'exam centers and conducting authority',
-    content: "<p><u><strong>Exam Centres</strong></u></p>\n\n<p>Your School</p>\n\n<p><u><strong>Exam conducting authority</strong></u></p>\n\n<p>Your School</p>",
+    content: "<p><u><strong>Exam Centres</strong></u></p>\n\n<p>Virtual / Your School</p>\n\n<p><u><strong>Exam conducting authority</strong></u></p>\n\n<p>Your School</p>",
     "is_active": true,
   },
     {
